@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.erp01.mapper.TailorMapper">
+
+    <insert id="addTailorDataBatch" parameterType="java.util.List">
+        INSERT INTO tailor(orderID,bedNumber,layerNumer,styleID,sizeID,colorID,packageNumber,partName,tailorQcode)
+        VALUES
+        <foreach collection="tailorDataList" item="item">
+          (#{item.orderID},#{item.bedNumber},#{item.layerNumer},#{item.styleID},#{item.sizeID},#{item.colorID},#{item.packageNumber},#{item.partName},#{item.tailorQcode})
+        </foreach>
+    </insert>
+
+    <delete id="deleteTailorDataByOrderID">
+        DELETE FROM tailor WHERE orderID = #{orderID}
+    </delete>
+
+    <delete id="deleteTailorDataByQcodeBatch">
+        DELETE FROM tailor WHERE tailorQcode IN
+        <foreach collection="tailorQcodeList" item="item">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="getTailorDataByOrderID" resultType="map">
+        SELECT * FROM tailor WHERE orderID = #{orderID}
+    </select>
+
+
+</mapper>
