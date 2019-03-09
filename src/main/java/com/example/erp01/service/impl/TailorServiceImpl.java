@@ -56,8 +56,6 @@ public class TailorServiceImpl implements TailorService {
         }
 
 
-
-
         return tailorList;
     }
 
