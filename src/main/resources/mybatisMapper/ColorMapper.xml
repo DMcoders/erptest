@@ -4,12 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.erp01.mapper.ColorMapper">
 
-
     <insert id="addColor">
-        INSERT INTO color (colorName) VALUES (#{colorName})
+        INSERT INTO color(colorNumber,colorName) VALUES (#{colorNumber},#{colorName})
     </insert>
 
-    <delete id="deleteColorByID">
+    <delete id="deleteColor">
         DELETE FROM color WHERE colorID = #{colorID}
     </delete>
 
@@ -17,11 +16,4 @@
         SELECT * FROM color
     </select>
 
-    <select id="getColorByID" resultType="com.example.erp01.model.Color">
-        SELECT * FROM color WHERE colorID = #{colorID}
-    </select>
-
-    <select id="getColorByName" resultType="com.example.erp01.model.Color">
-        SELECT * FROM color WHERE colorName = #{colorName}
-    </select>
 </mapper>

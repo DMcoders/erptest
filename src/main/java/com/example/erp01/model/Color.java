@@ -6,9 +6,12 @@ public class Color {
 
     private Integer colorID;
 
+    private String colorNumber;
+
     private String colorName;
 
-    public Color(String colorName) {
+    public Color(String colorNumber, String colorName) {
+        this.colorNumber = colorNumber;
         this.colorName = colorName;
     }
 
@@ -18,6 +21,14 @@ public class Color {
 
     public void setColorID(Integer colorID) {
         this.colorID = colorID;
+    }
+
+    public String getColorNumber() {
+        return colorNumber;
+    }
+
+    public void setColorNumber(String colorNumber) {
+        this.colorNumber = colorNumber;
     }
 
     public String getColorName() {

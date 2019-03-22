@@ -1,8 +1,8 @@
 package com.example.erp01.service.impl;
 
-import com.example.erp01.mapper.ColorMapper;
-import com.example.erp01.model.Color;
-import com.example.erp01.service.ColorService;
+import com.example.erp01.mapper.SizeMapper;
+import com.example.erp01.model.Size;
+import com.example.erp01.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ColorServiceImpl implements ColorService {
-
+public class SizeServiceImpl implements SizeService {
     @Autowired
-    private ColorMapper colorMapper;
+    private SizeMapper sizeMapper;
 
     @Override
-    public int addColor(Color color) {
+    public int addSize(Size size) {
         try{
-            colorMapper.addColor(color);
+            sizeMapper.addSize(size);
             return 0;
         }catch (Exception e){
             e.printStackTrace();
@@ -27,9 +26,9 @@ public class ColorServiceImpl implements ColorService {
     }
 
     @Override
-    public int deleteColor(Integer colorID) {
+    public int deleteSize(Integer sizeID) {
         try{
-            colorMapper.deleteColor(colorID);
+            sizeMapper.deleteSize(sizeID);
             return 0;
         }catch (Exception e){
             e.printStackTrace();
@@ -38,11 +37,11 @@ public class ColorServiceImpl implements ColorService {
     }
 
     @Override
-    public List<Color> getAllColor() {
-        List<Color> colorList = new ArrayList<>();
+    public List<Size> getAllSize() {
+        List<Size> sizeList = new ArrayList<>();
         try{
-            colorList = colorMapper.getAllColor();
-            return colorList;
+            sizeList = sizeMapper.getAllSize();
+            return sizeList;
         }catch (Exception e){
             e.printStackTrace();
         }

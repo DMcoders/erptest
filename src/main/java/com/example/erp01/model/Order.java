@@ -8,23 +8,22 @@ public class Order {
 
     private String orderName;
 
-    private Integer customerID;
+    private Integer customerName;
 
-    private Integer clothesID;
-
-    private Integer clothesCount;
+    private Date orderDate;
 
     private Date orderDeadline;
 
+    private Integer orderTotalCount;
+
     private String orderNote;
 
-    public Order(String orderName, Integer customerID, Integer clothesID, Integer clothesCount, Date orderDeadline, String orderNote) {
+    public Order(String orderName, Integer customerName, Date orderDate, Date orderDeadline, Integer orderTotalCount) {
         this.orderName = orderName;
-        this.customerID = customerID;
-        this.clothesID = clothesID;
-        this.clothesCount = clothesCount;
+        this.customerName = customerName;
+        this.orderDate = orderDate;
         this.orderDeadline = orderDeadline;
-        this.orderNote = orderNote;
+        this.orderTotalCount = orderTotalCount;
     }
 
     public Integer getOrderID() {
@@ -43,28 +42,20 @@ public class Order {
         this.orderName = orderName;
     }
 
-    public Integer getCustomerID() {
-        return customerID;
+    public Integer getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomerID(Integer customerID) {
-        this.customerID = customerID;
+    public void setCustomerName(Integer customerName) {
+        this.customerName = customerName;
     }
 
-    public Integer getClothesID() {
-        return clothesID;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setClothesID(Integer clothesID) {
-        this.clothesID = clothesID;
-    }
-
-    public Integer getClothesCount() {
-        return clothesCount;
-    }
-
-    public void setClothesCount(Integer clothesCount) {
-        this.clothesCount = clothesCount;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Date getOrderDeadline() {
@@ -73,6 +64,14 @@ public class Order {
 
     public void setOrderDeadline(Date orderDeadline) {
         this.orderDeadline = orderDeadline;
+    }
+
+    public Integer getOrderTotalCount() {
+        return orderTotalCount;
+    }
+
+    public void setOrderTotalCount(Integer orderTotalCount) {
+        this.orderTotalCount = orderTotalCount;
     }
 
     public String getOrderNote() {

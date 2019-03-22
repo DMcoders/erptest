@@ -1,23 +1,17 @@
 package com.example.erp01.service;
 
 import com.example.erp01.model.Tailor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
-@Service
 public interface TailorService {
 
-    List<Map<Integer,Tailor>> generateTailorData(Map<String,Object> info);
+    List<Tailor> generateTailorData(String jsonStr);
 
-    int addTailorDataBatch(List<Tailor> tailordata);
+    int saveTailorData(List<Tailor> tailorList);
 
-    int deleteTailorDataByOrderID(Integer orderID);
+    List<Tailor> getAllTailorData();
 
-    int deleteTailorDataByQcodeBatch(List<String> tailorQcodeList);
-
-    List<Tailor> getTailorDataByOrderID(Integer orderID);
-
+    List<Tailor> getAllTailorDataByOrder(String orderName);
 
 }

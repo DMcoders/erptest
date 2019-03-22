@@ -1,24 +1,28 @@
 package com.example.erp01.model;
 
-public class Inbound {
+public class Storage {
 
-    private Integer inboundID;
+    private Integer storageID;
 
     private String storehouseQcode;
 
     private String tailorQcode;
 
-    public Inbound(String storehouseQcode, String tailorQcode) {
+    public Storage() {
+    }
+
+
+    public Storage(String storehouseQcode, String tailorQcode) {
         this.storehouseQcode = storehouseQcode;
         this.tailorQcode = tailorQcode;
     }
 
-    public Integer getInboundID() {
-        return inboundID;
+    public Integer getStorageID() {
+        return storageID;
     }
 
-    public void setInboundID(Integer inboundID) {
-        this.inboundID = inboundID;
+    public void setStorageID(Integer storageID) {
+        this.storageID = storageID;
     }
 
     public String getStorehouseQcode() {

@@ -1,12 +1,13 @@
-package com.example.erp01.mapper;
+package com.example.erp01.service;
+
 
 import com.example.erp01.model.Customer;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper
-public interface CustomerMapper {
+@Service
+public interface CustomerService {
 
     int addCustomer(Customer customer);
 
@@ -17,6 +18,5 @@ public interface CustomerMapper {
     Customer getCustomerByName(String customerName);
 
     Customer getCustomerByID(Integer customerID);
-
 
 }

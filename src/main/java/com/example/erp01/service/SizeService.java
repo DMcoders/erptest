@@ -1,12 +1,12 @@
-package com.example.erp01.mapper;
+package com.example.erp01.service;
 
 import com.example.erp01.model.Size;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper
-public interface SizeMapper {
+@Service
+public interface SizeService {
 
     int addSize(Size size);
 

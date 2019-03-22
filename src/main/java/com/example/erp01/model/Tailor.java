@@ -4,33 +4,36 @@ public class Tailor {
 
     private Integer tailorID;
 
-    private Integer orderID;
+    private String orderName;
+
+    private String customerName;
 
     private Integer bedNumber;
 
-    private Integer layerNumber;
+    private String jarName;
 
-    private Integer styleID;
+    private String colorName;
 
-    private Integer sizeID;
-
-    private Integer colorID;
-
-    private Integer packageNumber;
+    private String sizeName;
 
     private String partName;
 
+    private Integer layerCount;
+
+    private Integer packageNumber;
+
     private String tailorQcode;
 
-    public Tailor(Integer orderID, Integer bedNumber, Integer layerNumber, Integer styleID, Integer sizeID, Integer colorID, Integer packageNumber, String partName, String tailorQcode) {
-        this.orderID = orderID;
+    public Tailor(String orderName, String customerName, Integer bedNumber, String jarName, String colorName, String sizeName, String partName, Integer layerCount, Integer packageNumber, String tailorQcode) {
+        this.orderName = orderName;
+        this.customerName = customerName;
         this.bedNumber = bedNumber;
-        this.layerNumber = layerNumber;
-        this.styleID = styleID;
-        this.sizeID = sizeID;
-        this.colorID = colorID;
-        this.packageNumber = packageNumber;
+        this.jarName = jarName;
+        this.colorName = colorName;
+        this.sizeName = sizeName;
         this.partName = partName;
+        this.layerCount = layerCount;
+        this.packageNumber = packageNumber;
         this.tailorQcode = tailorQcode;
     }
 
@@ -42,12 +45,28 @@ public class Tailor {
         this.tailorID = tailorID;
     }
 
-    public Integer getOrderID() {
-        return orderID;
+    public String getOrderName() {
+        return orderName;
     }
 
-    public void setOrderID(Integer orderID) {
-        this.orderID = orderID;
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getTailorQcode() {
+        return tailorQcode;
+    }
+
+    public void setTailorQcode(String tailorQcode) {
+        this.tailorQcode = tailorQcode;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public Integer getBedNumber() {
@@ -58,44 +77,28 @@ public class Tailor {
         this.bedNumber = bedNumber;
     }
 
-    public Integer getLayerNumber() {
-        return layerNumber;
+    public String getJarName() {
+        return jarName;
     }
 
-    public void setLayerNumber(Integer layerNumber) {
-        this.layerNumber = layerNumber;
+    public void setJarName(String jarName) {
+        this.jarName = jarName;
     }
 
-    public Integer getStyleID() {
-        return styleID;
+    public String getColorName() {
+        return colorName;
     }
 
-    public void setStyleID(Integer styleID) {
-        this.styleID = styleID;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
-    public Integer getSizeID() {
-        return sizeID;
+    public String getSizeName() {
+        return sizeName;
     }
 
-    public void setSizeID(Integer sizeID) {
-        this.sizeID = sizeID;
-    }
-
-    public Integer getColorID() {
-        return colorID;
-    }
-
-    public void setColorID(Integer colorID) {
-        this.colorID = colorID;
-    }
-
-    public Integer getPackageNumber() {
-        return packageNumber;
-    }
-
-    public void setPackageNumber(Integer packageNumber) {
-        this.packageNumber = packageNumber;
+    public void setSizeName(String sizeName) {
+        this.sizeName = sizeName;
     }
 
     public String getPartName() {
@@ -106,11 +109,19 @@ public class Tailor {
         this.partName = partName;
     }
 
-    public String getTailorQcode() {
-        return tailorQcode;
+    public Integer getLayerCount() {
+        return layerCount;
     }
 
-    public void setTailorQcode(String tailorQcode) {
-        this.tailorQcode = tailorQcode;
+    public void setLayerCount(Integer layerCount) {
+        this.layerCount = layerCount;
+    }
+
+    public Integer getPackageNumber() {
+        return packageNumber;
+    }
+
+    public void setPackageNumber(Integer packageNumber) {
+        this.packageNumber = packageNumber;
     }
 }

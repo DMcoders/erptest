@@ -10,13 +10,8 @@ public interface ColorService {
 
     int addColor(Color color);
 
-    int deleteColorByID(Integer colorID);
-
-    Color getColorByID(Integer id);
-
-    Color getColorByName(String colorName);
+    int deleteColor(Integer colorID);
 
     List<Color> getAllColor();
-
 
 }

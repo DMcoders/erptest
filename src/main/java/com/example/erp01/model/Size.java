@@ -5,9 +5,9 @@ public class Size {
 
     private Integer sizeID;
 
-    private Integer sizeName;
+    private String sizeName;
 
-    public Size(Integer sizeName) {
+    public Size(String sizeName) {
         this.sizeName = sizeName;
     }
 
@@ -19,11 +19,11 @@ public class Size {
         this.sizeID = sizeID;
     }
 
-    public Integer getSizeName() {
+    public String getSizeName() {
         return sizeName;
     }
 
-    public void setSizeName(Integer sizeName) {
+    public void setSizeName(String sizeName) {
         this.sizeName = sizeName;
     }
 }

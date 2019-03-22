@@ -4,6 +4,7 @@ import com.example.erp01.model.User;
 import com.example.erp01.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,61 +17,72 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value ="/userlogin")
+    @RequestMapping(value ="/userlogin", method = RequestMethod.POST)
     public String userLogin(@RequestParam("userName")String userName,
-                            @RequestParam("passWord")String passWord){
+                            @RequestParam("passWord")String passWord,
+                            ModelMap map){
         System.out.println("用户名："+userName+"密码："+passWord);
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(passWord)){
-            return "用户名或密码不能为空！";
+            map.addAttribute("msg","用户名或密码不能为空！");
+            return "redirect:/login";
         }
         User user = userService.userLogin(userName,passWord);
         if (user != null){
-            return "登录成功！";
+            map.addAttribute("msg","登录成功！");
+            return "index";
+        }else{
+            map.addAttribute("msg","登录失败，用户名或密码错误！");
         }
-        System.out.println("登录失败，用户名或密码错误！");
-        return "login.html";
+        return "redirect:/login";
         //return "登录失败，用户名或密码错误！";
     }
 
-    @RequestMapping(value ="/adduser")
+    @RequestMapping(value ="/adduser", method = RequestMethod.POST)
     public String addUser(@RequestParam("userName")String userName,
-                       @RequestParam("passWord")String passWord,
-                       @RequestParam("userPhone")String userPhone,
-                       @RequestParam("userCardID")String userCardID,
-                       String userNote){
-        User user = new User(userName,passWord,userPhone,userCardID,userNote);
+                          @RequestParam("passWord")String passWord,
+                          @RequestParam("phoneNumber")String phoneNumber,
+                          @RequestParam("userCardID")String userCardID,
+                          ModelMap map){
+        User user = new User(userName,passWord,phoneNumber,userCardID);
         int res = userService.addUser(user);
         if (res == 0){
-            return "添加成功！";
+            map.addAttribute("msg","添加成功！");
         }else{
-            return "添加失败！";
+            map.addAttribute("msg","添加失败！");
         }
+        return "index";
     }
 
-    @RequestMapping(value = "/getuserbyname")
+    @RequestMapping(value = "/getuserbyname", method = RequestMethod.GET)
+    @ResponseBody
     public User getUserByName(@RequestParam("userName")String userName){
         User user = userService.getUserByName(userName);
         return user;
     }
 
-    @RequestMapping(value = "/deleteuserbyid")
-    public String deleteUserByID(@RequestParam("userID")Integer userID){
-        int res = userService.deleteUserByID(userID);
+    @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
+    public String deleteUser(@RequestParam("userID")Integer userID, ModelMap map){
+        int res = userService.deleteUser(userID);
         if (0 == res){
-            return "删除成功";
+            map.addAttribute("msg","删除成功!");
         }else{
-            return "删除失败";
+            map.addAttribute("msg","删除失败!");
         }
+        return "index";
     }
-    @RequestMapping(value = "/getuserbyid")
+    @RequestMapping(value = "/getuserbyid", method = RequestMethod.GET)
+    @ResponseBody
     public User getUserByID(@RequestParam("userID")Integer userID){
         User user = userService.getUserByID(userID);
         return user;
     }
-    @RequestMapping(value = "/getalluser")
+    @RequestMapping(value = "/getalluser", method = RequestMethod.GET)
+    @ResponseBody
     public List<User> getAllUser(){
         List<User> userList = null;
         userList = userService.getAllUser();
         return userList;
     }
+
+
 }

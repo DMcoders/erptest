@@ -11,9 +11,7 @@ public interface UserMapper {
 
     int addUser(User user);
 
-    int updateUser(User user);
-
-    int deleteUserByID(Integer id);
+    int deleteUser(Integer userID);
 
     List<User> getAllUser();
 

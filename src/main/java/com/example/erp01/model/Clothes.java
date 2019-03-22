@@ -4,22 +4,13 @@ public class Clothes {
 
     private Integer clothesID;
 
-    private String clothesName;
+    private String styleNumber;
 
-    private Integer styleID;
+    private String styleName;
 
-    private Integer colorID;
-
-    private Integer sizeID;
-
-    private String clothesNote;
-
-    public Clothes(String clothesName, Integer styleID, Integer colorID, Integer sizeID, String clothesNote) {
-        this.clothesName = clothesName;
-        this.styleID = styleID;
-        this.colorID = colorID;
-        this.sizeID = sizeID;
-        this.clothesNote = clothesNote;
+    public Clothes(String styleNumber, String styleName) {
+        this.styleNumber = styleNumber;
+        this.styleName = styleName;
     }
 
     public Integer getClothesID() {
@@ -30,43 +21,19 @@ public class Clothes {
         this.clothesID = clothesID;
     }
 
-    public String getClothesName() {
-        return clothesName;
+    public String getStyleNumber() {
+        return styleNumber;
     }
 
-    public void setClothesName(String clothesName) {
-        this.clothesName = clothesName;
+    public void setStyleNumber(String styleNumber) {
+        this.styleNumber = styleNumber;
     }
 
-    public Integer getStyleID() {
-        return styleID;
+    public String getStyleName() {
+        return styleName;
     }
 
-    public void setStyleID(Integer styleID) {
-        this.styleID = styleID;
-    }
-
-    public Integer getColorID() {
-        return colorID;
-    }
-
-    public void setColorID(Integer colorID) {
-        this.colorID = colorID;
-    }
-
-    public Integer getSizeID() {
-        return sizeID;
-    }
-
-    public void setSizeID(Integer sizeID) {
-        this.sizeID = sizeID;
-    }
-
-    public String getClothesNote() {
-        return clothesNote;
-    }
-
-    public void setClothesNote(String clothesNote) {
-        this.clothesNote = clothesNote;
+    public void setStyleName(String styleName) {
+        this.styleName = styleName;
     }
 }

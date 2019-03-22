@@ -28,17 +28,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int deleteUserByID(Integer userID){
-        try{
-            userMapper.deleteUserByID(userID);
-            return 0;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 1;
-    }
-
-    @Override
     public List<User> getAllUser() {
          List<User> userList = null;
          try{
@@ -73,6 +62,18 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public int deleteUser(Integer userID) {
+         try{
+             userMapper.deleteUser(userID);
+             return 0;
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+        return 1;
+    }
+
 
     @Override
     public User userLogin(String userName, String passWord) {

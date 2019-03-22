@@ -9,10 +9,10 @@
     </select>
 
     <insert id="addUser">
-        INSERT INTO user(userName,passWord,userPhone,userCardID) VALUES (#{userName},#{passWord},#{userPhone},#{userCardID})
+        INSERT INTO user(userName,passWord,phoneNumber,userCardID) VALUES (#{userName},#{passWord},#{phoneNumber},#{userCardID})
     </insert>
 
-    <delete id="deleteUserByID">
+    <delete id="deleteUser">
         DELETE FROM user WHERE userID = #{userID}
     </delete>
 
@@ -27,6 +27,5 @@
     <select id="getUserByName" resultType="com.example.erp01.model.User">
         SELECT * FROM user WHERE userName = #{userName}
     </select>
-
 
 </mapper>

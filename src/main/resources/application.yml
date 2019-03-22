@@ -3,7 +3,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/erpmodel?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/erptest?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
     initialSize: 5
@@ -46,4 +46,5 @@ mybatis:
 
 server:
   tomcat:
-    uri-encoding: UTF-8
+    uri-encoding: utf-8
+  max-http-header-size: 100000000

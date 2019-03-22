@@ -5,6 +5,8 @@ public class Customer {
 
     private Integer customerID;
 
+    private String customerName;
+
     private String companyName;
 
     private String linkmanName;
@@ -13,14 +15,17 @@ public class Customer {
 
     private String companyAddress;
 
-    private String customerNote;
 
-    public Customer(String companyName, String linkmanName, String linkmanPhone, String companyAddress, String customerNote) {
+    public Customer() {
+    }
+
+    public Customer(String customerName, String companyName, String linkmanName, String linkmanPhone, String companyAddress) {
+        this.customerName = customerName;
         this.companyName = companyName;
         this.linkmanName = linkmanName;
         this.linkmanPhone = linkmanPhone;
         this.companyAddress = companyAddress;
-        this.customerNote = customerNote;
+
     }
 
     public Integer getCustomerID() {
@@ -29,6 +34,14 @@ public class Customer {
 
     public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getCompanyName() {
@@ -63,11 +76,4 @@ public class Customer {
         this.companyAddress = companyAddress;
     }
 
-    public String getCustomerNote() {
-        return customerNote;
-    }
-
-    public void setCustomerNote(String customerNote) {
-        this.customerNote = customerNote;
-    }
 }

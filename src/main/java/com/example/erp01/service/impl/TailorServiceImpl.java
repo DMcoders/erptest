@@ -7,100 +7,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Service
 public class TailorServiceImpl implements TailorService {
+
+
     @Autowired
     private TailorMapper tailorMapper;
 
     @Override
-    public List<Map<Integer,Tailor>> generateTailorData(Map<String,Object> info) {
-        Integer orderId;
-        Integer bedNumber;
-        Integer layerCount;
-        String styleName;
-        String colorName;
-        Map<Integer,Integer> sizeMap;
-        Set<Integer> sizeIndex;
-        List<Map<Integer,Tailor>> tailorList = null;
-        if(info.containsKey("orderID") && info.get("orderID") instanceof Integer){
-            orderId = (Integer) info.get("orderID");
-        }else{
-            return null;
-        }
-        if(info.containsKey("bedNumber") && info.get("bedNumber") instanceof Integer){
-            bedNumber = (Integer) info.get("bedNumber");
-        }else{
-            return null;
-        }
-        if(info.containsKey("layerCount") && info.get("layerCount") instanceof Integer){
-            layerCount = (Integer) info.get("layerCount");
-        }else{
-            return null;
-        }
-        if(info.containsKey("styleName") && info.get("styleName") instanceof String){
-            styleName = (String) info.get("styleName");
-        }else {
-            return null;
-        }
-        if(info.containsKey("colorName") && info.get("colorName") instanceof String){
-            colorName = (String) info.get("colorName");
-        }else {
-            return null;
-        }
-        if(info.containsKey("sizeList") && info.get("sizeList") instanceof Map){
-            sizeMap = (Map) info.get("sizeList");
-            sizeIndex = sizeMap.keySet();
-        }
-
-
-        return tailorList;
-    }
-
-    @Override
-    public int addTailorDataBatch(List<Tailor> tailorDataList) {
+    public List<Tailor> generateTailorData(String jsonStr) {
+        List<Tailor> tailorList = null;
         try{
-            tailorMapper.addTailorDataBatch(tailorDataList);
-            return 0;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 1;
-    }
-
-    @Override
-    public int deleteTailorDataByOrderID(Integer orderID) {
-        try{
-            tailorMapper.deleteTailorDataByOrderID(orderID);
-            return 0;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 1;
-    }
-
-    @Override
-    public int deleteTailorDataByQcodeBatch(List<String> tailorQcodeList) {
-        try{
-            tailorMapper.deleteTailorDataByQcodeBatch(tailorQcodeList);
-            return 0;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    @Override
-    public List<Tailor> getTailorDataByOrderID(Integer orderID) {
-        List<Tailor> tailorList;
-        try{
-            tailorList = tailorMapper.getTailorDataByOrderID(orderID);
+            tailorList = tailorMapper.generateTailorData(jsonStr);
             return tailorList;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return tailorList;
+    }
+
+    @Override
+    public int saveTailorData(List<Tailor> tailorList) {
+        try{
+            tailorMapper.saveTailorData(tailorList);
+            return 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+
+    @Override
+    public List<Tailor> getAllTailorData() {
+        List<Tailor> tailorList = null;
+        try{
+            tailorList = tailorMapper.getAllTailorData();
+            return tailorList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return tailorList;
+    }
+
+    @Override
+    public List<Tailor> getAllTailorDataByOrder(String orderName) {
+        List<Tailor> tailorList = null;
+        try{
+            tailorList = tailorMapper.getAllTailorDataByOrder(orderName);
+            return tailorList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return tailorList;
     }
 }
