@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,8 +20,9 @@ import java.util.Map;
 @Controller
 public class EmbStorageController {
 
-    @Autowired
+    @Autowired(required=true)
     private EmbStorageService embStorageService;
+//    @Resource
     private StorageService storageService;
 
     @RequestMapping(value = "/embinstore", method = RequestMethod.POST)
