@@ -17,7 +17,7 @@ public interface UserMapper {
 
     User getUserByID(Integer id);
 
-    User userLogin(String userName,String passWord);
+    User userLogin(@Param("userName")String userName,@Param("passWord")String passWord);
 
     User getUserByName(String userName);
 

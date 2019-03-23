@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>祥胜制衣管理系统</title>
 </head>
-<#include "fb_script.ftl">
+<#include "feedback/fb_script.ftl">
 <@script> </@script>
 <body>
+    <input  type="hidden" value="${basePath}"  id="basePath"/>
     <div class="row" style="text-align: center">
         <label style="color:rgb(45, 202, 147);font-size: 50px;margin-top: 8%;">祥胜制衣管理系统</label>
     </div>

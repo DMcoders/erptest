@@ -4,11 +4,14 @@ import com.example.erp01.model.User;
 import com.example.erp01.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -18,23 +21,31 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value ="/userlogin", method = RequestMethod.POST)
-    public String userLogin(@RequestParam("userName")String userName,
-                            @RequestParam("passWord")String passWord,
-                            ModelMap map){
+    @ResponseBody
+    public Map<String,Object> userLogin(@RequestParam("userName")String userName,
+                                        @RequestParam("passWord")String passWord){
         System.out.println("用户名："+userName+"密码："+passWord);
+        Map<String,Object> result = new HashMap<String,Object>();
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(passWord)){
-            map.addAttribute("msg","用户名或密码不能为空！");
-            return "redirect:/login";
+            result.put("flag",false);
+            result.put("msg","用户名或密码不能为空！");
         }
         User user = userService.userLogin(userName,passWord);
         if (user != null){
-            map.addAttribute("msg","登录成功！");
-            return "index";
+            result.put("flag","true");
+            result.put("msg","登录成功！");
         }else{
-            map.addAttribute("msg","登录失败，用户名或密码错误！");
+            result.put("msg","登录失败，用户名或密码错误！");
+            result.put("flag",false);
         }
-        return "redirect:/login";
-        //return "登录失败，用户名或密码错误！";
+        return result;
+    }
+
+    @RequestMapping(value ="/homepage")
+    public String getHomePageStart(Model model) {
+        model.addAttribute("bigMenuTag",0);
+        model.addAttribute("menuTag",0);
+        return "homepage/homepage";
     }
 
     @RequestMapping(value ="/adduser", method = RequestMethod.POST)

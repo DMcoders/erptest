@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="app">
-<#include "../fb_script.ftl">
+<#include "../feedback/fb_script.ftl">
 <@script> </@script>
 <body>
 <section class="vbox">
