@@ -20,9 +20,8 @@ import java.util.Map;
 @Controller
 public class EmbStorageController {
 
-    @Autowired(required=true)
+    @Autowired
     private EmbStorageService embStorageService;
-//    @Resource
     private StorageService storageService;
 
     @RequestMapping(value = "/embinstore", method = RequestMethod.POST)
