@@ -1,0 +1,69 @@
+<#macro aside>
+<aside class="bg-dark lter aside-md hidden-print" id="nav">
+    <section class="vbox">
+        <section class="w-f scrollable">
+            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                 data-size="5px" data-color="#333333"> <!-- nav -->
+                <nav class="nav-primary hidden-xs">
+                    <ul class="nav">
+                        <li><a href="/homepage"> <i
+                                class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>主页</span>
+                        </a></li>
+
+                        <li <#if bigMenuTag==1> class="active"</#if>> <a href="#" <#if bigMenuTag==1> class="active"</#if>> <i class="fa fa-building-o icon"> <b class="bg-success"></b> </i>
+                            <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
+                            <span>订单模块</span> </a>
+                            <ul class="nav lt">
+                                <li<#if menuTag==1> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>订单信息</span> </a></li>
+                            </ul>
+                        </li>
+
+                        <li <#if bigMenuTag==2> class="active"</#if>> <a href="#" <#if bigMenuTag==2> class="active"</#if>> <i class="fa fa-columns icon"> <b class="bg-success"></b> </i>
+                            <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
+                            <span>裁片超市</span> </a>
+                            <ul class="nav lt">
+                                <li<#if menuTag==1> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>输入裁片信息</span> </a></li>
+                                <li<#if menuTag==2> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>扎号信息</span> </a></li>
+                                <li<#if menuTag==3> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>裁片入库</span> </a></li>
+                                <li<#if menuTag==4> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>裁片调库</span> </a></li>
+                                <li<#if menuTag==5> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>库存信息</span> </a></li>
+                                <li<#if menuTag==6> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>花片出厂</span> </a></li>
+                                <li<#if menuTag==7> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>花片回厂</span> </a></li>
+                                <li<#if menuTag==8> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>花片配对</span> </a></li>
+                            </ul>
+                        </li>
+
+                        <li <#if bigMenuTag==3> class="active"</#if>> <a href="#" <#if bigMenuTag==3> class="active"</#if>> <i class="fa fa-columns icon"> <b class="bg-success"></b> </i>
+                            <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
+                            <span>衣胚超市</span> </a>
+                            <ul class="nav lt">
+                                <li<#if menuTag==1> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>衣胚入库</span> </a></li>
+                                <li<#if menuTag==2> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>衣胚调库</span> </a></li>
+                                <li<#if menuTag==3> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>衣胚库存</span> </a></li>
+                            </ul>
+                        </li>
+
+                        <li <#if bigMenuTag==3> class="active"</#if>> <a href="#" <#if bigMenuTag==3> class="active"</#if>> <i class="fa fa-columns icon"> <b class="bg-success"></b> </i>
+                            <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
+                            <span>工厂信息录入</span> </a>
+                            <ul class="nav lt">
+                                <li<#if menuTag==1> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>仓库信息</span> </a></li>
+                                <li<#if menuTag==2> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>衣胚仓库</span> </a></li>
+                                <li<#if menuTag==3> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>顾客信息</span> </a></li>
+                                <li<#if menuTag==3> class="active" </#if>><a href="#"> <i class="fa fa-angle-right"></i> <span>用户信息</span> </a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <footer class="footer lt hidden-xs b-t b-dark">
+            <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon"> <i
+                    class="fa fa-angle-left text"></i> <i class="fa fa-angle-right text-active"></i> </a>
+        </footer>
+    </section>
+</aside>
+</#macro>

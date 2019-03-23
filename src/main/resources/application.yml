@@ -27,11 +27,26 @@ spring:
       suffix: .html
     static-path-pattern: /**
   resources:
-    static-locations: classpath:/templates,classpath:/static/
+    static-locations: classpath:/templates,classpath:/static
   http:
     encoding:
       force: true
       charset: UTF-8
+      enabled: true
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache:  false
+    charset:  UTF-8
+    check-template-location:  true
+    content-type: text/html
+    expose-request-attributes:  false
+    expose-session-attributes:  false
+    request-context-attribute:  request
+    suffix: .ftl
+  devtools:
+    restart:
+      #需要实时更新的目录
+      #additional-paths: resources/**,static/**,templates/**
       enabled: true
 #日志
 logging:

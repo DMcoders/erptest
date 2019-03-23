@@ -1,0 +1,123 @@
+#word{
+    position: absolute;
+    z-index: 99;
+    text-align: left;
+    padding-left: 10px;
+    width: 350px;
+    height: auto;
+    background-color: white;
+    border: #d9d9d9 solid 1px;
+    display: none;
+    margin-left: 148px;
+}
+.click_work{
+    padding-bottom: 8px;
+    /*font-weight:lighter;*/
+    font-size: 13px;
+    cursor:pointer;/*鼠标放上变成小手*/
+    color: #429b99;
+}
+.click_work:hover{
+    color: orange;
+    background-color: gray;
+}
+.error{
+    color: gray;
+    cursor:pointer;/*鼠标放上变成小手*/
+}
+
+#cityWord{
+    position: absolute;
+    z-index: 99;
+    text-align: left;
+    padding-left: 10px;
+    width: 180px;
+    height: auto;
+    background-color: white;
+    border: #d9d9d9 solid 1px;
+    display: none;
+    margin-left: 81px;
+}
+
+.click_city{
+     padding-bottom: 8px;
+     /*font-weight:lighter;*/
+     font-size: 13px;
+     cursor:pointer;/*鼠标放上变成小手*/
+ }
+.click_city:hover{
+    color: white;
+    background-color: #4bc0c1;
+}
+
+#districtWord{
+    position: absolute;
+    z-index: 99;
+    text-align: left;
+    padding-left: 10px;
+    width: 180px;
+    height: auto;
+    background-color: white;
+    border: #d9d9d9 solid 1px;
+    display: none;
+    margin-left: 46px;
+}
+
+.click_district{
+    padding-bottom: 8px;
+    /*font-weight:lighter;*/
+    font-size: 13px;
+    cursor:pointer;/*鼠标放上变成小手*/
+}
+.click_district:hover{
+    color: white;
+    background-color: #4bc0c1;
+}
+
+#areaWord{
+    position: absolute;
+    z-index: 99;
+    text-align: left;
+    padding-left: 10px;
+    width: 180px;
+    height: auto;
+    background-color: white;
+    border: #d9d9d9 solid 1px;
+    display: none;
+    margin-left: 46px;
+}
+
+.click_area{
+    padding-bottom: 8px;
+    /*font-weight:lighter;*/
+    font-size: 13px;
+    cursor:pointer;/*鼠标放上变成小手*/
+}
+.click_area:hover{
+    color: white;
+    background-color: #4bc0c1;
+}
+
+#landmarkWord{
+    position: absolute;
+    z-index: 99;
+    text-align: left;
+    padding-left: 10px;
+    width: 180px;
+    height: auto;
+    background-color: white;
+    border: #d9d9d9 solid 1px;
+    display: none;
+    margin-left: 47px;
+}
+
+.click_landmark{
+    padding-bottom: 8px;
+    /*font-weight:lighter;*/
+    font-size: 13px;
+    cursor:pointer;/*鼠标放上变成小手*/
+}
+.click_landmark:hover{
+    color: white;
+    background-color: #4bc0c1;
+}

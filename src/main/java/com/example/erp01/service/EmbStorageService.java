@@ -1,10 +1,8 @@
 package com.example.erp01.service;
 
 import com.example.erp01.model.EmbStorage;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 public interface EmbStorageService {
 
