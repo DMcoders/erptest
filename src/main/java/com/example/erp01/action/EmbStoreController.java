@@ -4,6 +4,7 @@ import com.example.erp01.model.EmbStore;
 import com.example.erp01.service.EmbStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,13 @@ public class EmbStoreController {
 
     @Autowired
     private EmbStoreService embStoreService;
+
+    @RequestMapping("/embInStoreStart")
+    public String embInStoreStart(Model model) {
+        model.addAttribute("bigMenuTag",3);
+        model.addAttribute("menuTag",1);
+        return "embMarket/embInStore";
+    }
 
     @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
     public String addEmbStore(@RequestParam("embStoreLocation")String embStoreLocation,

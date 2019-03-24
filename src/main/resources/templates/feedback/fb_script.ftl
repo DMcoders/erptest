@@ -21,6 +21,23 @@
     <link rel="stylesheet" href="/css/chosen.css?t=201708231201" type="text/css">
     <link rel="stylesheet" href="/css/autoseacrh.css?t=201805031901" type="text/css">
     <style type="text/css">
+
+        @font-face {
+            font-family: 'PingFangSC-Semibold';
+            src: url('/fonts/苹方黑体-中粗-简.ttf');
+            font-family: 'PingFangSC-Regular';
+            src: url('/fonts/苹方黑体-准-简.ttf');
+            font-family: 'PingFangSC-Thin';
+            src: url('/fonts/苹方黑体-纤细-简.ttf');
+            font-family: 'PingFangSC-Light';
+            src: url('/fonts/苹方黑体-细-简.ttf');
+            font-family: 'PingFangSC-Ultralight';
+            src: url('/fonts/苹方黑体-极细-简.ttf');
+            font-family: 'PingFangSC-Medium';
+            src: url('/fonts/苹方黑体-中黑-简.ttf');
+
+        }
+
         body {
             font-family: "微软雅黑";
         }
