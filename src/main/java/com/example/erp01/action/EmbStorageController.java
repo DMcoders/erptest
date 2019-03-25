@@ -3,7 +3,10 @@ package com.example.erp01.action;
 import com.example.erp01.model.EmbStorage;
 import com.example.erp01.service.EmbStorageService;
 import com.example.erp01.service.StorageService;
-import com.google.gson.*;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +26,7 @@ public class EmbStorageController {
 
     @Autowired
     private EmbStorageService embStorageService;
+    @Autowired
     private StorageService storageService;
 
     @RequestMapping(value = "/embinstore", method = RequestMethod.POST)
@@ -33,7 +36,7 @@ public class EmbStorageController {
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embInStoreJson);
             String embStoreQcode = json.get("embStoreQcode").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorCode").getAsJsonObject();
+            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
             Iterator iterator = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator.hasNext()){
@@ -46,6 +49,7 @@ public class EmbStorageController {
                 EmbStorage embStorage = new EmbStorage(embStoreQcode,tailorQcodeList.get(i));
                 embStorageList.add(embStorage);
             }
+            System.out.println(embStorageList.toString());
             int res2 = embStorageService.embInStore(embStorageList);
             if (0 == res1 && 0 == res2){
                 map.addAttribute("msg","入库成功！");
@@ -68,7 +72,9 @@ public class EmbStorageController {
         JsonParser jsonParser = new JsonParser();
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embOutStoreJson);
-            Iterator iterator = json.entrySet().iterator();
+            String embStoreQcode = json.get("embStoreQcode").getAsString();
+            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
+            Iterator iterator = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator.hasNext()){
                 Map.Entry entry = (Map.Entry) iterator.next();
