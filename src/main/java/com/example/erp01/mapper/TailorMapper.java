@@ -2,10 +2,12 @@ package com.example.erp01.mapper;
 
 import com.example.erp01.model.Tailor;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+//@Repository
 public interface TailorMapper {
 
     List<Tailor> generateTailorData(String jsonStr);
@@ -15,5 +17,8 @@ public interface TailorMapper {
     List<Tailor> getAllTailorData();
 
     List<Tailor> getAllTailorDataByOrder(String orderName);
+
+    //由订单号获取当前最大床号
+    int getMaxBedNumber(String orderName);
 
 }

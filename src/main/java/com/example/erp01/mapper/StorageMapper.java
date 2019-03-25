@@ -2,10 +2,12 @@ package com.example.erp01.mapper;
 
 import com.example.erp01.model.Storage;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+//@Repository
 public interface StorageMapper {
 
     int inStore(List<Storage> storageList);
