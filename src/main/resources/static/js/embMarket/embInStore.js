@@ -2,7 +2,6 @@ $(document).ready(function () {
     $("#embStoreQcode")[0].focus();
 
     document.onkeyup = function (event) {
-        var isie = (document.all) ? true : false;
         e = event ? event : (window.event ? window.event : null);
         if (e.keyCode==13 && e.target.getAttribute("id")=="embStoreQcode") {
             $("#tailorQcode").focus();

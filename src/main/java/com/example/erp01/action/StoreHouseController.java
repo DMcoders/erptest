@@ -6,6 +6,7 @@ import org.apache.ibatis.session.ResultContext;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,48 +24,34 @@ public class StoreHouseController {
     @Autowired
     private StoreHouseService storeHouseService;
 
-    @RequestMapping(value = "/addstorehouse", method = RequestMethod.POST)
-    public String addStoreHouse(@RequestParam("storehouseLocation")String storehouseLocation,
-                                @RequestParam("storehouseQcode")String storehouseQcode,
-                                @RequestParam("storehouseCount")Integer storehouseCount,
-                                ModelMap map){
-        StoreHouse storeHouse = new StoreHouse(storehouseLocation,storehouseQcode,storehouseCount);
+    @RequestMapping("/storeHouseStart")
+    public String addStoreHouse(Model model){
+        model.addAttribute("bigMenuTag",4);
+        model.addAttribute("menuTag",1);
+        List<StoreHouse>  storeHouses = getAllStoreHouse();
+        model.addAttribute("storeHouses",storeHouses);
+        return "factoryMsg/storeHouse";
+    }
+
+    @RequestMapping(value = "/addstorehouse")
+    @ResponseBody
+    public int addStoreHouse(StoreHouse storeHouse){
+        storeHouse.setStorehouseID(null);
         int res = storeHouseService.addStoreHouse(storeHouse);
-        if(0 == res){
-            map.addAttribute("msg","添加成功！");
-        }else{
-            map.addAttribute("msg","添加失败！");
-        }
-        return "index";
+        return res;
     }
-    @RequestMapping(value = "/deletestorehouse", method = RequestMethod.POST)
-    public String deleteStoreHouse(@RequestParam("storehouseID")Integer storehouseID,
-                                ModelMap map){
-
+    @RequestMapping(value = "/deletestorehouse")
+    @ResponseBody
+    public int deleteStoreHouse(@RequestParam("storehouseID")Integer storehouseID){
         int res = storeHouseService.deleteStoreHouse(storehouseID);
-        if(0 == res){
-            map.addAttribute("msg","删除成功！");
-        }else{
-            map.addAttribute("msg","删除失败！");
-        }
-        return "index";
+        return res;
     }
 
-    @RequestMapping(value = "/updatestorehouse",method = RequestMethod.POST)
-    public String updateStoreHouse(@RequestParam("storehouseID")Integer storehouseID,
-                                   @RequestParam("storehouseLocation")String storehouseLocation,
-                                   @RequestParam("storehouseQcode")String storehouseQcode,
-                                   @RequestParam("storehouseCount")Integer storehouseCount,
-                                   ModelMap map
-                                   ){
-        StoreHouse storeHouse = new StoreHouse(storehouseID,storehouseLocation,storehouseQcode,storehouseCount);
+    @RequestMapping(value = "/updatestorehouse")
+    @ResponseBody
+    public int updateStoreHouse(StoreHouse storeHouse){
         int res = storeHouseService.updateStoreHouse(storeHouse);
-        if (0 == res){
-            map.addAttribute("msg","修改成功！");
-        }else {
-            map.addAttribute("msg","修改失败！");
-        }
-        return "index";
+        return res;
 
     }
 

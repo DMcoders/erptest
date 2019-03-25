@@ -43,7 +43,11 @@
         }
 
         button {
-            outline:none
+            outline:none;
+            background:rgb(45, 202, 147);
+            opacity:0.86;
+            color: white;
+            font-family: PingFangSC-Semibold, sans-serif;
         }
 
         button:focus {
