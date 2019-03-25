@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.erp01.mapper.EmbStorageMapper">
+
+    <insert id="embInStore" parameterType="java.util.List">
+        INSERT INTO embstorage(embStoreQcode,tailorQcode) VALUES
+        <foreach collection="list" item="embstorage" separator=",">
+            (#{embstorage.embStoreQcode},#{embstorage.tailorQcode})
+        </foreach>
+    </insert>
+
+    <delete id="embOutStore" parameterType="java.util.List">
+        DELETE FROM embstorage WHERE tailorQcode IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+
+</mapper>

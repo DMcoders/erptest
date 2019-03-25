@@ -14,4 +14,6 @@ public interface TailorService {
 
     List<Tailor> getAllTailorDataByOrder(String orderName);
 
+    int getMaxBedNumber(String orderName);
+
 }

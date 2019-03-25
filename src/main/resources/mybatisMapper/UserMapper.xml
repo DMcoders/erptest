@@ -9,7 +9,7 @@
     </select>
 
     <insert id="addUser">
-        INSERT INTO user(userName,passWord,phoneNumber,userCardID) VALUES (#{userName},#{passWord},#{phoneNumber},#{userCardID})
+        INSERT INTO user(userName,passWord,role,phoneNumber,userCardID) VALUES (#{userName},#{passWord},#{role},#{phoneNumber},#{userCardID})
     </insert>
 
     <delete id="deleteUser">

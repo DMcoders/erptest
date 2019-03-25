@@ -18,5 +18,8 @@
     <select id="getAllTailorDataByOrder" resultType="map">
         SELECT * FROM tailor WHERE orderName=#{orderName}
     </select>
+    <select id="getMaxBedNumber" resultType="int">
+        SELECT MAX(bedNumber) FROM tailor WHERE orderName=#{orderName}
+    </select>
 
 </mapper>

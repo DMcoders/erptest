@@ -10,7 +10,7 @@ public class OrderClothes {
 
     private String purchaseMethod;
 
-    private String styleNumber;
+    private String orderName;
 
     private String styleDescription;
 
@@ -26,12 +26,15 @@ public class OrderClothes {
 
     private Date orderDate;
 
-    private Date deadlineDate;
+    private String season;
 
-    public OrderClothes(String customerName, String purchaseMethod, String styleNumber, String styleDescription, String clothesVersionNumber, String colorNumber, String colorName, String sizeName, Integer count, Date orderDate, Date deadlineDate) {
+    private Date deadLine;
+
+
+    public OrderClothes(String customerName, String purchaseMethod, String orderName, String styleDescription, String clothesVersionNumber, String colorNumber, String colorName, String sizeName, Integer count, Date orderDate, String season, Date deadLine) {
         this.customerName = customerName;
         this.purchaseMethod = purchaseMethod;
-        this.styleNumber = styleNumber;
+        this.orderName = orderName;
         this.styleDescription = styleDescription;
         this.clothesVersionNumber = clothesVersionNumber;
         this.colorNumber = colorNumber;
@@ -39,7 +42,11 @@ public class OrderClothes {
         this.sizeName = sizeName;
         this.count = count;
         this.orderDate = orderDate;
-        this.deadlineDate = deadlineDate;
+        this.season = season;
+        this.deadLine = deadLine;
+    }
+
+    public OrderClothes() {
     }
 
     public Integer getOrderClothesID() {
@@ -66,12 +73,12 @@ public class OrderClothes {
         this.purchaseMethod = purchaseMethod;
     }
 
-    public String getStyleNumber() {
-        return styleNumber;
+    public String getOrderName() {
+        return orderName;
     }
 
-    public void setStyleNumber(String styleNumber) {
-        this.styleNumber = styleNumber;
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
 
     public String getStyleDescription() {
@@ -130,11 +137,19 @@ public class OrderClothes {
         this.orderDate = orderDate;
     }
 
-    public Date getDeadlineDate() {
-        return deadlineDate;
+    public String getSeason() {
+        return season;
     }
 
-    public void setDeadlineDate(Date deadlineDate) {
-        this.deadlineDate = deadlineDate;
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public Date getDeadLine() {
+        return deadLine;
+    }
+
+    public void setDeadLine(Date deadLine) {
+        this.deadLine = deadLine;
     }
 }

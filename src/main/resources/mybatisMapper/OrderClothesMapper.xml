@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.erp01.mapper.OrderClothesMapper">
+
+    <insert id="addOrderClothes" parameterType="java.util.List">
+        INSERT INTO orderclothes(customerName,purchaseMethod,orderName,styleDescription,clothesVersionNumber,colorNumber,colorName,sizeName,count,orderDate,season,deadLine) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.customerName},#{item.purchaseMethod},#{item.orderName},#{item.styleDescription},#{item.clothesVersionNumber},#{item.colorNumber},#{item.colorName},#{item.sizeName},#{item.count},#{item.orderDate},#{season},#{item.deadLine})
+        </foreach>
+    </insert>
+
+    <select id="getAllOrderClothes" resultType="map">
+        SELECT * FROM orderclothes
+    </select>
+
+    <select id="getOrderSummary" resultType="map">
+        SELECT customerName,orderName,COUNT(orderName) AS orderSum,orderDate,season,deadLine FROM orderclothes GROUP BY orderName,orderDate
+    </select>
+
+    <select id="getByNameDate" resultType="map">
+        SELECT * FROM orderclothes WHERE orderName=#{orderName} AND orderDate=#{orderDate}
+    </select>
+
+    <delete id="deleteByNameDate">
+        DELETE FROM orderclothes WHERE orderName=#{orderName} AND orderDate=#{orderDate}
+    </delete>
+    <select id="getOrderHint" resultType="map">
+        SELECT orderName FROM orderclothes WHERE orderName LIKE CONCAT('%',#{subOrderName},'%')
+    </select>
+    <select id="getColorHint" resultType="map">
+        SELECT colorName FROM orderclothes WHERE orderName=#{orderName}
+    </select>
+    <select id="getCustomerNameByOrderName" resultType="string">
+        SELECT customerName FROM ordercolthes WHERE orderName=#{orderName}
+    </select>
+</mapper>

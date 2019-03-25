@@ -2,6 +2,10 @@ package com.example.erp01.action;
 
 import com.example.erp01.model.User;
 import com.example.erp01.service.UserService;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+//用户基本操作，新增，删除，登录等操作
 
 @Controller
 public class UserController {
@@ -53,21 +59,50 @@ public class UserController {
         return "homepage/homepage";
     }
 
+
     @RequestMapping(value ="/adduser", method = RequestMethod.POST)
-    public String addUser(@RequestParam("userName")String userName,
-                          @RequestParam("passWord")String passWord,
-                          @RequestParam("phoneNumber")String phoneNumber,
-                          @RequestParam("userCardID")String userCardID,
+    public String addUser(@RequestParam("userJson")String userJson,
                           ModelMap map){
-        User user = new User(userName,passWord,phoneNumber,userCardID);
-        int res = userService.addUser(user);
-        if (res == 0){
-            map.addAttribute("msg","添加成功！");
-        }else{
-            map.addAttribute("msg","添加失败！");
+        JsonParser jsonParser = new JsonParser();
+        try{
+            JsonObject json = (JsonObject) jsonParser.parse(userJson);
+            String userName = json.get("userName").getAsString();
+            String passWord = json.get("passWord").getAsString();
+            String role = json.get("role").getAsString();
+            String phoneNumber = json.get("phoneNumber").getAsString();
+            String userCardID = json.get("userCardID").getAsString();
+            User user = new User(userName,passWord,role,phoneNumber,userCardID);
+            int res = userService.addUser(user);
+            if (res == 0){
+                map.addAttribute("msg","添加成功！");
+            }else{
+                map.addAttribute("msg","添加失败！");
+            }
+        }catch (JsonIOException e){
+            e.printStackTrace();
+        }catch (JsonSyntaxException e){
+            e.printStackTrace();
         }
         return "index";
     }
+
+
+
+//    @RequestMapping(value ="/adduser", method = RequestMethod.POST)
+//    public String addUser(@RequestParam("userName")String userName,
+//                          @RequestParam("passWord")String passWord,
+//                          @RequestParam("phoneNumber")String phoneNumber,
+//                          @RequestParam("userCardID")String userCardID,
+//                          ModelMap map){
+//        User user = new User(userName,passWord,phoneNumber,userCardID);
+//        int res = userService.addUser(user);
+//        if (res == 0){
+//            map.addAttribute("msg","添加成功！");
+//        }else{
+//            map.addAttribute("msg","添加失败！");
+//        }
+//        return "index";
+//    }
 
     @RequestMapping(value = "/getuserbyname", method = RequestMethod.GET)
     @ResponseBody

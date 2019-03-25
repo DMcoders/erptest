@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-@Service
+//@Service
 public interface StoreHouseService {
 
     int addStoreHouse(StoreHouse storeHouse);

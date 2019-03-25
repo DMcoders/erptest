@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
+//裁片出入库基本操作，包括裁片入库，裁片调库，裁片出库等
 @Controller
 public class StorageController {
 
