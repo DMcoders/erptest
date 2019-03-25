@@ -17,6 +17,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
+//衣胚出入库相关操作，出库，入库等
 @Controller
 public class EmbStorageController {
 
