@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 //@Configuration
 public class SystemConfig {
 
-//    @Bean
+    @Bean
     public ServletWebServerFactory webServerFactory() {
         TomcatServletWebServerFactory fa = new TomcatServletWebServerFactory();
-//        fa.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> connector.setProperty("relaxedQueryChars", "[]{}#"));
+        fa.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> connector.setProperty("relaxedQueryChars", "[]{}#"));
         return fa;
     }
 
