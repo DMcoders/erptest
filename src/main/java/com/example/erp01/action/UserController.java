@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//用户基本操作，新增，删除，登录等操作
+
 @Controller
 public class UserController {
 

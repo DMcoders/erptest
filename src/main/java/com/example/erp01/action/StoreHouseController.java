@@ -1,7 +1,12 @@
 package com.example.erp01.action;
 
+import com.example.erp01.model.EmbStore;
 import com.example.erp01.model.StoreHouse;
 import com.example.erp01.service.StoreHouseService;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import org.apache.ibatis.session.ResultContext;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//裁片仓库基本操作，添加删除等
+
 @Controller
 public class StoreHouseController {
 
@@ -24,16 +31,28 @@ public class StoreHouseController {
     private StoreHouseService storeHouseService;
 
     @RequestMapping(value = "/addstorehouse", method = RequestMethod.POST)
-    public String addStoreHouse(@RequestParam("storehouseLocation")String storehouseLocation,
-                                @RequestParam("storehouseQcode")String storehouseQcode,
-                                @RequestParam("storehouseCount")Integer storehouseCount,
+    public String addStoreHouse(@RequestParam("storeHouseJson")String storeHouseJson,
                                 ModelMap map){
-        StoreHouse storeHouse = new StoreHouse(storehouseLocation,storehouseQcode,storehouseCount);
-        int res = storeHouseService.addStoreHouse(storeHouse);
-        if(0 == res){
-            map.addAttribute("msg","添加成功！");
-        }else{
-            map.addAttribute("msg","添加失败！");
+
+
+        JsonParser jsonParser = new JsonParser();
+        try{
+            JsonObject json = (JsonObject) jsonParser.parse(storeHouseJson);
+            String storeHouseLocation = json.get("storeHouseLocation").getAsString();
+            String storeHouseQcode = json.get("storeHouseQcode").getAsString();
+            Integer storeHouseCount = json.get("storeHouseCount").getAsInt();
+            StoreHouse storeHouse = new StoreHouse(storeHouseLocation,storeHouseQcode,storeHouseCount);
+            int res = storeHouseService.addStoreHouse(storeHouse);
+            if(0 == res){
+                map.addAttribute("msg","添加成功！");
+            }else{
+                map.addAttribute("msg","添加失败！");
+            }
+            return "index";
+        }catch (JsonIOException e){
+            e.printStackTrace();
+        }catch (JsonSyntaxException e){
+            e.printStackTrace();
         }
         return "index";
     }
