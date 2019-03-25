@@ -6,7 +6,21 @@ public class EmbStorage {
 
     private String embStoreQcode;
 
-    private String tailorCode;
+    private String tailorQcode;
+
+    public EmbStorage(String embStoreQcode, String tailorQcode) {
+        this.embStoreQcode = embStoreQcode;
+        this.tailorQcode = tailorQcode;
+    }
+
+    public EmbStorage(Integer embStorageID, String embStoreQcode, String tailorQcode) {
+        this.embStorageID = embStorageID;
+        this.embStoreQcode = embStoreQcode;
+        this.tailorQcode = tailorQcode;
+    }
+
+    public EmbStorage() {
+    }
 
     public Integer getEmbStorageID() {
         return embStorageID;
@@ -24,25 +38,11 @@ public class EmbStorage {
         this.embStoreQcode = embStoreQcode;
     }
 
-    public String getTailorCode() {
-        return tailorCode;
+    public String getTailorQcode() {
+        return tailorQcode;
     }
 
-    public void setTailorCode(String tailorCode) {
-        this.tailorCode = tailorCode;
-    }
-
-    public EmbStorage() {
-    }
-
-    public EmbStorage(String embStoreQcode, String tailorCode) {
-        this.embStoreQcode = embStoreQcode;
-        this.tailorCode = tailorCode;
-    }
-
-    public EmbStorage(Integer embStorageID, String embStoreQcode, String tailorCode) {
-        this.embStorageID = embStorageID;
-        this.embStoreQcode = embStoreQcode;
-        this.tailorCode = tailorCode;
+    public void setTailorQcode(String tailorQcode) {
+        this.tailorQcode = tailorQcode;
     }
 }
