@@ -9,6 +9,15 @@
             <i class="fa fa-cog"></i>
         </a>
     </div>
+    <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> ${userName!""} <b
+                class="caret"></b> </a>
+            <ul class="dropdown-menu animated fadeInRight">
+                <span class="arrow top"></span>
+                <li><a onclick="if(!confirm('你确定退出么？')) return false;" href="/">退出</a></li>
+            </ul>
+        </li>
+    </ul>
 </header>
 </#macro>
 

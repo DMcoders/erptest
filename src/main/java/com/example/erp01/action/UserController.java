@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,8 @@ public class UserController {
     @RequestMapping(value ="/userlogin", method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> userLogin(@RequestParam("userName")String userName,
-                                        @RequestParam("passWord")String passWord){
+                                        @RequestParam("passWord")String passWord,
+                                        HttpServletRequest request){
         System.out.println("用户名："+userName+"密码："+passWord);
         Map<String,Object> result = new HashMap<String,Object>();
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(passWord)){
@@ -38,6 +40,8 @@ public class UserController {
         if (user != null){
             result.put("flag","true");
             result.put("msg","登录成功！");
+            request.getSession().setAttribute("userName", user.getUserName());
+            request.getSession().setMaxInactiveInterval(1800);
         }else{
             result.put("msg","登录失败，用户名或密码错误！");
             result.put("flag",false);
@@ -49,6 +53,7 @@ public class UserController {
     public String getHomePageStart(Model model) {
         model.addAttribute("bigMenuTag",0);
         model.addAttribute("menuTag",0);
+
         return "homepage/homepage";
     }
 
