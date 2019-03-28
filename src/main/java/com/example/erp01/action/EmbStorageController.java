@@ -3,16 +3,14 @@ package com.example.erp01.action;
 import com.example.erp01.model.EmbStorage;
 import com.example.erp01.service.EmbStorageService;
 import com.example.erp01.service.StorageService;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -127,6 +125,17 @@ public class EmbStorageController {
             e.printStackTrace();
         }
         return "index";
+    }
+
+//    获取裁片仓库信息
+    @RequestMapping(value = "/getembstoragestate",method = RequestMethod.GET)
+    @ResponseBody
+    public String getEmbStorageState(){
+        List<EmbStorage> embStorageList = new ArrayList<>();
+        embStorageList = embStorageService.getEmbStorageState();
+        Gson gson=new Gson();
+        String storageStateJson=gson.toJson(embStorageList);
+        return storageStateJson;
     }
 
 }
