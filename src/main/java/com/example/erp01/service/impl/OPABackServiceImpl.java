@@ -1,0 +1,40 @@
+package com.example.erp01.service.impl;
+
+import com.example.erp01.mapper.OPABackMapper;
+import com.example.erp01.model.OPABack;
+import com.example.erp01.service.OPABackService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class OPABackServiceImpl implements OPABackService {
+
+    @Autowired
+    private OPABackMapper opaBackMapper;
+
+    @Override
+    public int addOPABack(List<OPABack> opaBackList) {
+        try{
+            opaBackMapper.addOPABack(opaBackList);
+            return 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+
+    @Override
+    public List<OPABack> getAllOPABack() {
+        List<OPABack> opaBackList = new ArrayList<>();
+        try{
+            opaBackList = opaBackMapper.getAllOPABack();
+            return opaBackList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return opaBackList;
+    }
+}
