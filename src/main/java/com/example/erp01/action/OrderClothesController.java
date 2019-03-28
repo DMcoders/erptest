@@ -25,11 +25,11 @@ public class OrderClothesController {
     private OrderClothesService orderClothesService;
 
     @RequestMapping(value = "/commitclothesorder",method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("clothesorderstring")String clothesorderstring,
+    public String addOrderClothes(@RequestParam("clothesorderJson")String clothesorderJson,
                                   ModelMap map){
         JsonParser jsonParser = new JsonParser();
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(clothesorderstring);
+            JsonObject json = (JsonObject) jsonParser.parse(clothesorderJson);
             JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
