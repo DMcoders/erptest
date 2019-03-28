@@ -18,6 +18,10 @@
         </foreach>
     </delete>
 
+    <select id="getStorageState" resultType="map">
+        SELECT storehouseQcode,COUNT(*) as storageState  FROM storage GROUP BY storehouseQcode
+    </select>
+
     <!--<update id="changeStore" parameterType="java.util.List">-->
         <!--<foreach collection="list" item="storage" separator=",">-->
             <!--UPDATE storage SET-->
