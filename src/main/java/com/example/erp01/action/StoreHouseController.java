@@ -24,6 +24,11 @@ public class StoreHouseController {
     @Autowired
     private StoreHouseService storeHouseService;
 
+    /**
+     * 进入仓库信息页面
+     * @param model
+     * @return
+     */
     @RequestMapping("/storeHouseStart")
     public String addStoreHouse(Model model){
         model.addAttribute("bigMenuTag",4);

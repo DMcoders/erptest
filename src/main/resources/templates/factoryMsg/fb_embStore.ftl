@@ -7,34 +7,34 @@
                 <li class="active">仓库信息</li>
             </ul>
             <div class="col-md-12" style="padding-top: 20px;">
-                <span style="font-size: 20px;font-family: PingFangSC-Semibold">仓库信息录入</span>
+                <span style="font-size: 20px;font-family: PingFangSC-Semibold">衣胚仓库信息录入</span>
             </div>
             <div class="col-md-12" style="padding-top: 20px;">
                 <section class="panel panel-default">
                     <div class="panel-body" style="text-align: left">
                         <div class="row" style="margin-left: 10px;margin-bottom: 20px">
-                            <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addStoreHouse()">增加仓库</button>
+                            <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addEmbStore()">增加仓库</button>
                         </div>
                         <div style="overflow-x: auto;overflow-y:auto;max-height: 600px;text-align: center;font-family: PingFangSC-Semibold,sans-serif;">
                             <table class="table table-striped table-bordered ">
-                            <#if storeHouses?? && storeHouses?size gt 0>
+                            <#if embStores?? && embStores?size gt 0>
                                 <thead>
                                     <tr bgcolor="#ffcb99" style="color: black;">
                                         <th style="width: 10%;text-align:center;font-size:14px">序号</th>
-                                        <th style="width: 24%;text-align:center;font-size:14px">仓库</th>
+                                        <th style="width: 24%;text-align:center;font-size:14px">仓库位置</th>
                                         <th style="width: 24%;text-align:center;font-size:14px">容量</th>
                                         <th style="width: 24%;text-align:center;font-size:14px">二维码</th>
                                         <th style="width: 15%;text-align:center;font-size:14px">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <#list storeHouses as storeHouse>
+                                    <#list embStores as embStore>
                                     <tr>
-                                        <td>${storeHouse.storehouseID?c}</td>
-                                        <td>${storeHouse.storehouseLocation!}</td>
-                                        <td>${storeHouse.storehouseCount?c}</td>
-                                        <td><a href="#" style="color:#3e8eea" onclick="showQrCode('${storeHouse.storehouseLocation!}')">查看</a></td>
-                                        <td><a href="#" style="color:#3e8eea" onclick="addStoreHouse(${storeHouse.storehouseID?c},'${storeHouse.storehouseLocation!}',${storeHouse.storehouseCount?c})">修改</a>&nbsp;&nbsp;<a href="#" style="color:red" onclick="deletestorehouse(${storeHouse.storehouseID?c})">删除</a></td>
+                                        <td>${embStore.embStoreID?c}</td>
+                                        <td>${embStore.embStoreLocation!}</td>
+                                        <td>${embStore.embStoreCount?c}</td>
+                                        <td><a href="#" style="color:#3e8eea" onclick="showQrCode('${embStore.embStoreLocation!}')">查看</a></td>
+                                        <td><a href="#" style="color:#3e8eea" onclick="addEmbStore(${embStore.embStoreID?c},'${embStore.embStoreLocation!}',${embStore.embStoreCount?c})">修改</a>&nbsp;&nbsp;<a href="#" style="color:red" onclick="deleteEmbStore(${embStore.embStoreID?c})">删除</a></td>
                                     </tr>
                                 </#list>
                                 </tbody>
@@ -49,7 +49,7 @@
             <div class="row">
                 <div id="entities" class="col-sm-12">
                 </div>
-                <#include "fb_storeHouseAdd.ftl">
+                <#include "fb_embStoreAdd.ftl">
                 <@entities></@entities>
                 <#include "fb_qrCode.ftl">
                 <@entities></@entities>
@@ -65,7 +65,7 @@
 </section>
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/qrcode.min.js" type="text/javascript" ></script>
-<script src="/js/factoryMsg/storeHouse.js?t=201903252212"></script>
+<script src="/js/factoryMsg/embStore.js?t=201903272212"></script>
 
 </#macro>
 

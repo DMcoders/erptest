@@ -15,13 +15,13 @@
         <div class="col-md-6 col-md-offset-3" style="margin-top: 50px;">
             <div class="center-block" style="width: 43%;text-align: left;">
                 <label style="color:white;font-size: 18px;">管理员账号</label>
-                <input  id="userName" type="text" class="form-control center-block" placeholder="请输入账号">
+                <input  id="userName" type="text" autocomplete="off" class="form-control center-block" placeholder="请输入账号">
             </div>
         </div>
         <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
             <div class="center-block" style="width: 43%;text-align: left;">
                 <label style="color:white;font-size: 18px;">密码</label>
-                <input id="passWord" type="password" class="form-control center-block" placeholder="请输入密码">
+                <input id="passWord" autocomplete="off" type="password" class="form-control center-block" placeholder="请输入密码">
             </div>
         </div>
         <div class="col-md-6 col-md-offset-3" style="margin-top: 84px;">
@@ -30,13 +30,13 @@
     </div>
 </body>
 </html>
-<script src="/js/login/login.js?t=201903231912"></script>
+<script src="/js/login/login.js?t=201903271912"></script>
 
 <style>
     html,body { height: 100% }
 
     body{
-        background:url("/pic/index2.jpg") no-repeat;
+        background:url("/images/index2.jpg") no-repeat;
         background-size: cover;
         text-align:center;
         filter: brightness(0.9);

@@ -10,7 +10,7 @@
                                 <#--class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>主页</span>-->
                         <#--</a></li>-->
 
-                        <li <#if bigMenuTag==1> class="active"</#if>> <a href="#" <#if bigMenuTag==1> class="active"</#if>> <i class="fa fa-clock-o icon"></i>
+                        <li <#if bigMenuTag==1> class="active"</#if>> <a href="#" <#if bigMenuTag==1> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>订单模块</span> </a>
                             <ul class="nav lt">
@@ -18,7 +18,7 @@
                             </ul>
                         </li>
 
-                        <li <#if bigMenuTag==2> class="active"</#if>> <a href="#" <#if bigMenuTag==2> class="active"</#if>> <i class="fa fa-clock-o icon"></i>
+                        <li <#if bigMenuTag==2> class="active"</#if>> <a href="#" <#if bigMenuTag==2> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>裁片超市</span> </a>
                             <ul class="nav lt">
@@ -33,7 +33,7 @@
                             </ul>
                         </li>
 
-                        <li <#if bigMenuTag==3> class="active"</#if>> <a href="#" <#if bigMenuTag==3> class="active"</#if>> <i class="fa fa-clock-o icon"></i>
+                        <li <#if bigMenuTag==3> class="active"</#if>> <a href="#" <#if bigMenuTag==3> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>衣胚超市</span> </a>
                             <ul class="nav lt">
@@ -43,12 +43,12 @@
                             </ul>
                         </li>
 
-                        <li <#if bigMenuTag==4> class="active"</#if>> <a href="#" <#if bigMenuTag==4> class="active"</#if>> <i class="fa fa-clock-o icon"></i>
+                        <li <#if bigMenuTag==4> class="active"</#if>> <a href="#" <#if bigMenuTag==4> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>工厂信息录入</span> </a>
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/storeHouseStart"> <span class="liActive">仓库信息</span> </a></li>
-                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"> <span class="liActive">衣胚仓库</span> </a></li>
+                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStoreStart"> <span class="liActive">衣胚仓库</span> </a></li>
                                 <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"> <span class="liActive">顾客信息</span> </a></li>
                                 <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"> <span class="liActive">用户信息</span> </a></li>
                             </ul>

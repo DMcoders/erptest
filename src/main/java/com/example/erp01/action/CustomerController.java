@@ -25,6 +25,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+
+
     @RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
     public String addCustomer(@RequestParam("customerJson")String customerJson,
                               ModelMap map){

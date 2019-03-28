@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 var basePath=$("#basePath").val();
 
-function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
+function addEmbStore(embStoreID,embStoreLocation,embStoreCount) {
     $.blockUI({
         css: {
             width: '25%',
@@ -19,19 +19,19 @@ function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
         },
         message: $('#editPro')
     });
-    var url = basePath + "addstorehouse";
-    if(storehouseId) {
-        $("#storehouseLocation").val(storehouseLocation);
-        $("#storehouseCount").val(storehouseCount);
-        $("#storehouseId").val(storehouseId);
-        url = basePath + "updatestorehouse";
+    var url = basePath + "addembstore";
+    if(embStoreID) {
+        $("#embStoreLocation").val(embStoreLocation);
+        $("#embStoreCount").val(embStoreCount);
+        $("#embStoreID").val(embStoreID);
+        url = basePath + "updateembstore";
     }
     $("#editYes").unbind("click").bind("click", function () {
-        if($("#storehouseLocation").val().trim()=="") {
+        if($("#embStoreLocation").val().trim()=="") {
             swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请输入仓库名！</span>",html: true});
             return false;
         }
-        if($("#storehouseCount").val().trim()=="") {
+        if($("#embStoreCount").val().trim()=="") {
             swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请输入容量！</span>",html: true});
             return false;
         }
@@ -39,9 +39,9 @@ function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
             url: url,
             type: 'POST',
             data: {
-                storehouseID:storehouseId,
-                storehouseLocation:$("#storehouseLocation").val(),
-                storehouseCount:$("#storehouseCount").val(),
+                embStoreID:embStoreID,
+                embStoreLocation:$("#embStoreLocation").val(),
+                embStoreCount:$("#embStoreCount").val(),
             },
             success: function (data) {
                 if(data == 0) {
@@ -54,7 +54,7 @@ function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
                         html: true
                     },
                     function(){
-                        location.href=basePath+"storeHouseStart";
+                        location.href=basePath+"embStoreStart";
                     });
                 }else {
                     swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，保存失败！</span>",html: true});
@@ -71,7 +71,7 @@ function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
     });
 }
 
-function deletestorehouse(storehouseID) {
+function deleteEmbStore(embStoreID) {
     swal({
         title: "",
         text: "<span style=\"font-weight:bolder;font-size: 20px\">您确定要删除该条仓库信息吗？</span>",
@@ -85,9 +85,10 @@ function deletestorehouse(storehouseID) {
         showLoaderOnConfirm: true
     }, function() {
         $.ajax({
-            url: basePath + "deletestorehouse",
+            url: basePath + "deleteembstore",
+            type:'POST',
             data: {
-                storehouseID:storehouseID
+                embStoreID:embStoreID
             },
             success: function (data) {
                 if(data == 0) {
@@ -100,7 +101,7 @@ function deletestorehouse(storehouseID) {
                             html: true
                         },
                         function(){
-                            location.href=basePath+"storeHouseStart";
+                            location.href=basePath+"embStoreStart";
                         });
                 }else {
                     swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，删除失败！</span>",html: true});
