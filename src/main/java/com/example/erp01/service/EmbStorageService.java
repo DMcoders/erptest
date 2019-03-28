@@ -12,4 +12,6 @@ public interface EmbStorageService {
 
     int embChangeStore(String embChangeStoreJson);
 
+    List<EmbStorage> getEmbStorageState();
+
 }
