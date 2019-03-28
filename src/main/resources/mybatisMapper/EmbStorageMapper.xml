@@ -18,5 +18,9 @@
         </foreach>
     </delete>
 
+    <select id="getEmbStorageState" resultType="map">
+        SELECT embStoreQcode,COUNT(*) as embStorageState  FROM embstorage GROUP BY embStoreQcode
+    </select>
+
 
 </mapper>
