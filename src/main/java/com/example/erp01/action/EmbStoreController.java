@@ -1,11 +1,10 @@
 package com.example.erp01.action;
 
 import com.example.erp01.model.EmbStore;
+import com.example.erp01.model.StoreHouse;
+import com.example.erp01.model.Tailor;
 import com.example.erp01.service.EmbStoreService;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 //衣胚仓库相关操作，仓库信息维护，增加衣胚仓库，删除衣胚仓库，衣胚仓库信息维护
 
@@ -26,6 +27,11 @@ public class EmbStoreController {
     @Autowired
     private EmbStoreService embStoreService;
 
+    /**
+     * 进入衣胚入库页面
+     * @param model
+     * @return
+     */
     @RequestMapping("/embInStoreStart")
     public String embInStoreStart(Model model) {
         model.addAttribute("bigMenuTag",3);
@@ -33,76 +39,40 @@ public class EmbStoreController {
         return "embMarket/embInStore";
     }
 
-    @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
-    public String addEmbStore(@RequestParam("embStoreJson")String embStoreJson,
-                              ModelMap map
-                              ){
-        JsonParser jsonParser = new JsonParser();
-        try{
-            JsonObject json = (JsonObject) jsonParser.parse(embStoreJson);
-            String embStoreLocation = json.get("embStoreLocation").getAsString();
-            Integer embStoreCount = json.get("embStoreCount").getAsInt();
-            String embStoreQcode = json.get("embStoreQcode").getAsString();
-            EmbStore embStore = new EmbStore(embStoreLocation,embStoreQcode,embStoreCount);
-            int res = embStoreService.addEmbStore(embStore);
-            if (0 == res){
-                map.addAttribute("msg","添加成功！");
-            }else{
-                map.addAttribute("msg","添加失败！");
-            }
-            return "index";
-        }catch (JsonIOException e){
-            e.printStackTrace();
-        }catch (JsonSyntaxException e){
-            e.printStackTrace();
-        }
-        return "index";
+    /**
+     * 进入衣胚仓库页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/embStoreStart")
+    public String addStoreHouse(Model model){
+        model.addAttribute("bigMenuTag",4);
+        model.addAttribute("menuTag",2);
+        List<EmbStore>  embStores = getAllEmbStore();
+        model.addAttribute("embStores",embStores);
+        return "factoryMsg/embStore";
     }
 
-
-//    @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
-//    public String addEmbStore(@RequestParam("embStoreLocation")String embStoreLocation,
-//                              @RequestParam("embStoreQcode")String embStoreQcode,
-//                              @RequestParam("embStoreCount")Integer embStoreCount,
-//                              ModelMap map
-//    ){
-//        EmbStore embStore = new EmbStore(embStoreLocation,embStoreQcode,embStoreCount);
-//        int res = embStoreService.addEmbStore(embStore);
-//        if (0 == res){
-//            map.addAttribute("msg","添加成功！");
-//        }else{
-//            map.addAttribute("msg","添加失败！");
-//        }
-//        return "index";
-//    }
-
+    @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
+    @ResponseBody
+    public int addEmbStore(EmbStore embStore){
+        int res = embStoreService.addEmbStore(embStore);
+        return res;
+    }
 
     @RequestMapping(value = "deleteembstore", method = RequestMethod.POST)
-    public String deleteEmbStore(@RequestParam("embStoreID")Integer embStoreID,
+    @ResponseBody
+    public int deleteEmbStore(@RequestParam("embStoreID")Integer embStoreID,
                                  ModelMap map){
         int res = embStoreService.deleteEmbStore(embStoreID);
-        if(0 == res){
-            map.addAttribute("msg","删除成功！");
-        }else{
-            map.addAttribute("msg","删除失败！");
-        }
-        return "index";
+        return res;
     }
 
     @RequestMapping(value = "updateembstore", method = RequestMethod.POST)
-    public String updateEmbStore(@RequestParam("embStoreID")Integer embStoreID,
-                                 @RequestParam("embStoreLocation")String embStoreLocation,
-                                 @RequestParam("embStoreQcode")String embStoreQcode,
-                                 @RequestParam("embStoreCount")Integer embStoreCount,
-                                 ModelMap map){
-        EmbStore embStore = new EmbStore(embStoreID,embStoreLocation,embStoreQcode,embStoreCount);
+    @ResponseBody
+    public int updateEmbStore(EmbStore embStore){
         int res = embStoreService.updateEmbStore(embStore);
-        if(0 == res){
-            map.addAttribute("msg","更新成功！");
-        }else {
-            map.addAttribute("msg","更新失败！");
-        }
-        return "index";
+        return res;
     }
 
     @RequestMapping(value = "getallembstore", method = RequestMethod.GET)

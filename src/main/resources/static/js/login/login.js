@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    // document.onkeydown = function (event) {
-    //     e = event ? event : (window.event ? window.event : null);
-    //     if (e.keyCode == 13) {
-    //         login();
-    //     }
-    // }
+    document.onkeyup = function (event) {
+        e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) {
+            login();
+        }
+    }
 });
 
 var basePath=$("#basePath").val();
