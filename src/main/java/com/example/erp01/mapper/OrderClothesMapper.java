@@ -17,9 +17,9 @@ public interface OrderClothesMapper {
 
     String getOrderSummary();
 
-    List<OrderClothes> getByNameDate(String orderName, Date orderDate);
+    List<OrderClothes> getOrderByName(String orderName);
 
-    int deleteByNameDate(String orderName, Date orderDate);
+    int deleteOrderByName(String orderName);
 
     //订单输入下拉提示
     List<String> getOrderHint(String subOrderName);
