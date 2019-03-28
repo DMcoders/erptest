@@ -24,6 +24,12 @@ public class OrderClothesController {
     @Autowired
     private OrderClothesService orderClothesService;
 
+    /****
+     * 测试未通过
+     * @param clothesorderJson
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/commitclothesorder",method = RequestMethod.POST)
     public String addOrderClothes(@RequestParam("clothesorderJson")String clothesorderJson,
                                   ModelMap map){
@@ -101,7 +107,7 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getorderbyname", method = RequestMethod.GET)
     @ResponseBody
-    List<OrderClothes> getByNameDate(@RequestParam("orderName")String orderName){
+    List<OrderClothes> getByName(@RequestParam("orderName")String orderName){
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getOrderByName(orderName);
         return orderClothesList;
@@ -109,7 +115,7 @@ public class OrderClothesController {
     }
 
     @RequestMapping(value = "/deleteorderbyname", method = RequestMethod.POST)
-    String deleteByNameDate(@RequestParam("orderName")String orderName,
+    String deleteByName(@RequestParam("orderName")String orderName,
                             ModelMap map){
         int res = orderClothesService.deleteOrderByName(orderName);
         if (res == 0){
