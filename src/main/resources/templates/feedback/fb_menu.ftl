@@ -49,8 +49,8 @@
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/storeHouseStart"> <span class="liActive">仓库信息</span> </a></li>
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStoreStart"> <span class="liActive">衣胚仓库</span> </a></li>
-                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"> <span class="liActive">顾客信息</span> </a></li>
-                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"> <span class="liActive">用户信息</span> </a></li>
+                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/customerStart"> <span class="liActive">顾客信息</span> </a></li>
+                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/userStart"> <span class="liActive">用户信息</span> </a></li>
                             </ul>
                         </li>
 

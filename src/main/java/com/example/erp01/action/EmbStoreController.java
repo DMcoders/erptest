@@ -45,7 +45,7 @@ public class EmbStoreController {
      * @return
      */
     @RequestMapping("/embStoreStart")
-    public String addStoreHouse(Model model){
+    public String embStoreStart(Model model){
         model.addAttribute("bigMenuTag",4);
         model.addAttribute("menuTag",2);
         List<EmbStore>  embStores = getAllEmbStore();
