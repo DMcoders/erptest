@@ -16,15 +16,15 @@
     </select>
 
     <select id="getOrderSummary" resultType="map">
-        SELECT customerName,orderName,COUNT(orderName) AS orderSum,orderDate,season,deadLine FROM orderclothes GROUP BY orderName,orderDate
+        SELECT customerName,orderName,COUNT(orderName) AS orderSum,orderDate,season,deadLine FROM orderclothes GROUP BY orderName
     </select>
 
-    <select id="getByNameDate" resultType="map">
-        SELECT * FROM orderclothes WHERE orderName=#{orderName} AND orderDate=#{orderDate}
+    <select id="getOrderByName" resultType="map">
+        SELECT * FROM orderclothes WHERE orderName=#{orderName}
     </select>
 
-    <delete id="deleteByNameDate">
-        DELETE FROM orderclothes WHERE orderName=#{orderName} AND orderDate=#{orderDate}
+    <delete id="deleteOrderByName">
+        DELETE FROM orderclothes WHERE orderName=#{orderName}
     </delete>
     <select id="getOrderHint" resultType="map">
         SELECT orderName FROM orderclothes WHERE orderName LIKE CONCAT('%',#{subOrderName},'%')

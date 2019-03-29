@@ -6,6 +6,7 @@ import com.example.erp01.service.EmbStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,5 +45,19 @@ public class EmbStorageServiceImpl implements EmbStorageService {
             e.printStackTrace();
         }
         return 1;
+    }
+
+    @Override
+    public List<EmbStorage> getEmbStorageState() {
+        try{
+            List<EmbStorage> embStorageList = new ArrayList<>();
+
+            embStorageList = embStorageMapper.getEmbStorageState();
+
+            return embStorageList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

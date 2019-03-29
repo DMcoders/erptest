@@ -8,9 +8,23 @@ public class Storage {
 
     private String tailorQcode;
 
+    private Integer storageState;
+
     public Storage() {
     }
 
+    public Storage(String storehouseQcode, Integer storageState) {
+        this.storehouseQcode = storehouseQcode;
+        this.storageState = storageState;
+    }
+
+    public Integer getStorageState() {
+        return storageState;
+    }
+
+    public void setStorageState(Integer storageState) {
+        this.storageState = storageState;
+    }
 
     public Storage(String storehouseQcode, String tailorQcode) {
         this.storehouseQcode = storehouseQcode;

@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-
-
-//订单信息基本操作
-
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class OrderClothesController {
@@ -25,12 +24,12 @@ public class OrderClothesController {
     @Autowired
     private OrderClothesService orderClothesService;
 
-    @RequestMapping(value = "/commitclothesorder", method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("clothesorderJson")String clothesorderJson,
+    @RequestMapping(value = "/commitclothesorder",method = RequestMethod.POST)
+    public String addOrderClothes(@RequestParam("clothesorderstring")String clothesorderstring,
                                   ModelMap map){
         JsonParser jsonParser = new JsonParser();
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(clothesorderJson);
+            JsonObject json = (JsonObject) jsonParser.parse(clothesorderstring);
             JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
@@ -83,6 +82,7 @@ public class OrderClothesController {
         return "index";
     }
 
+
     @RequestMapping(value = "/getallorderclothes", method = RequestMethod.GET)
     @ResponseBody
     List<OrderClothes> getAllOrderClothes(){
@@ -99,21 +99,19 @@ public class OrderClothesController {
         return orderSummaryJson;
     }
 
-    @RequestMapping(value = "/getbynamedate", method = RequestMethod.GET)
+    @RequestMapping(value = "/getorderbyname", method = RequestMethod.GET)
     @ResponseBody
-    List<OrderClothes> getByNameDate(@RequestParam("orderName")String orderName,
-                                     @RequestParam("orderDate")Date orderDate){
+    List<OrderClothes> getByNameDate(@RequestParam("orderName")String orderName){
         List<OrderClothes> orderClothesList = new ArrayList<>();
-        orderClothesList = orderClothesService.getByNameDate(orderName, orderDate);
+        orderClothesList = orderClothesService.getOrderByName(orderName);
         return orderClothesList;
 
     }
 
-    @RequestMapping(value = "/deletebynamedate", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteorderbyname", method = RequestMethod.POST)
     String deleteByNameDate(@RequestParam("orderName")String orderName,
-                            @RequestParam("orderDate")Date orderDate,
                             ModelMap map){
-        int res = orderClothesService.deleteByNameDate(orderName, orderDate);
+        int res = orderClothesService.deleteOrderByName(orderName);
         if (res == 0){
             map.addAttribute("msg","删除成功");
         }else {
@@ -122,7 +120,7 @@ public class OrderClothesController {
         return "index";
     }
 
-    @RequestMapping(value = "getorderhint",method = RequestMethod.GET)
+    @RequestMapping(value = "/getorderhint",method = RequestMethod.GET)
     @ResponseBody
     List<String> getOrderHint(@RequestParam("subOrderName")String subOrderName){
         List<String> orderNameList = new ArrayList<>();
@@ -130,7 +128,7 @@ public class OrderClothesController {
         return orderNameList;
     }
 
-    @RequestMapping(value = "getcolorhint",method = RequestMethod.GET)
+    @RequestMapping(value = "/getcolorhint",method = RequestMethod.GET)
     @ResponseBody
     List<String> getColorHint(@RequestParam("orderName")String orderName){
         List<String> colorList = new ArrayList<>();
@@ -138,12 +136,11 @@ public class OrderClothesController {
         return colorList;
     }
 
-    @RequestMapping(value = "getcustomernamebyordername",method = RequestMethod.GET)
+    @RequestMapping(value = "/getcustomernamebyordername",method = RequestMethod.GET)
     @ResponseBody
     String getCustomerNameByOrderName(@RequestParam("orderName")String orderName){
         String customerName = orderClothesService.getCustomerNameByOrderName(orderName);
         return customerName;
     }
-
 
 }

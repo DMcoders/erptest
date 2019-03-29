@@ -8,6 +8,21 @@ public class EmbStorage {
 
     private String tailorQcode;
 
+    private Integer embStorageState;
+
+    public EmbStorage(String embStoreQcode, Integer embStorageState) {
+        this.embStoreQcode = embStoreQcode;
+        this.embStorageState = embStorageState;
+    }
+
+    public Integer getEmbStorageState() {
+        return embStorageState;
+    }
+
+    public void setEmbStorageState(Integer embStorageState) {
+        this.embStorageState = embStorageState;
+    }
+
     public EmbStorage(String embStoreQcode, String tailorQcode) {
         this.embStoreQcode = embStoreQcode;
         this.tailorQcode = tailorQcode;

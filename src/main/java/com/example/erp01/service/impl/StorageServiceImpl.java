@@ -6,6 +6,7 @@ import com.example.erp01.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,5 +44,19 @@ public class StorageServiceImpl implements StorageService {
             e.printStackTrace();
         }
         return 1;
+    }
+
+    @Override
+    public List<Storage> getStorageState() {
+        try{
+            List<Storage> storageArrayList = new ArrayList<>();
+
+            storageArrayList = storageMapper.getStorageState();
+
+            return storageArrayList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

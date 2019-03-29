@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.erp01.mapper.OPABackMapper">
+
+    <insert id="addOPABack" parameterType="java.util.List">
+        INSERT INTO opaback(tailorQcode) VALUES
+        <foreach collection="list" item="opaback" separator=",">
+            (#{opaback.tailorQcode})
+        </foreach>
+    </insert>
+
+    <select id="getAllOPABack" resultType="map">
+        SELECT * FROM opaback
+    </select>
+
+
+</mapper>

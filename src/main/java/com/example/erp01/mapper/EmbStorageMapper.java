@@ -2,7 +2,6 @@ package com.example.erp01.mapper;
 
 import com.example.erp01.model.EmbStorage;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -15,5 +14,7 @@ public interface EmbStorageMapper {
     int embOutStore(List<String> embOutStoreList);
 
     int embChangeStore(String embChangeStoreJson);
+
+    List<EmbStorage> getEmbStorageState();
 
 }

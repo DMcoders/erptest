@@ -9,8 +9,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 //裁片出入库基本操作，包括裁片入库，裁片调库，裁片出库等
 @Controller
@@ -115,6 +119,17 @@ public class StorageController {
             e.printStackTrace();
         }
         return "index";
+    }
+
+//    获取仓库存储状态信息
+    @RequestMapping(value = "/getstoragestate", method = RequestMethod.GET)
+    @ResponseBody
+    public String getStorageState(){
+        List<Storage> storageStateList = new ArrayList<>();
+        storageStateList = storageService.getStorageState();
+        Gson gson=new Gson();
+        String storageStateJson=gson.toJson(storageStateList);
+        return storageStateJson;
     }
 
 }

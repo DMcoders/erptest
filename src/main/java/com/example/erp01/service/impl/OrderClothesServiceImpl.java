@@ -50,10 +50,10 @@ public class OrderClothesServiceImpl implements OrderClothesService {
     }
 
     @Override
-    public List<OrderClothes> getByNameDate(String orderName, Date orderDate) {
+    public List<OrderClothes> getOrderByName(String orderName) {
         List<OrderClothes> orderClothesList = null;
         try{
-            orderClothesList = orderClothesMapper.getByNameDate(orderName,orderDate);
+            orderClothesList = orderClothesMapper.getOrderByName(orderName);
             return orderClothesList;
         }catch (Exception e){
             e.printStackTrace();
@@ -62,9 +62,9 @@ public class OrderClothesServiceImpl implements OrderClothesService {
     }
 
     @Override
-    public int deleteByNameDate(String orderName, Date orderDate) {
+    public int deleteOrderByName(String orderName) {
         try{
-            orderClothesMapper.deleteByNameDate(orderName, orderDate);
+            orderClothesMapper.getOrderByName(orderName);
             return 0;
         }catch (Exception e){
             e.printStackTrace();
