@@ -29,7 +29,7 @@ public class StorageController {
         JsonParser jsonParser = new JsonParser();
         try{
             JsonObject json = (JsonObject) jsonParser.parse(instoreJson);
-            String storehouseQcode = json.get("storehouseQcode").getAsString();
+            String storehouseLocation = json.get("storehouseLocation").getAsString();
             JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
             Iterator iterator1 = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
@@ -39,11 +39,11 @@ public class StorageController {
             }
             List<Storage> storageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                Storage storage = new Storage(storehouseQcode,tailorQcodeList.get(i).replace("\"","").replace("\"",""));
+                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"","").replace("\"",""));
                 storageList.add(storage);
             }
-            Gson gson = new Gson();
-            String storageJson = gson.toJson(storageList);
+            //Gson gson = new Gson();
+            //String storageJson = gson.toJson(storageList);
             //int res = storageService.inStore(storageJson);
             int res = storageService.inStore(storageList);
             if (0 == res){
@@ -91,7 +91,7 @@ public class StorageController {
         JsonParser jsonParser = new JsonParser();
         try{
             JsonObject json = (JsonObject) jsonParser.parse(changestoreJson);
-            String storehouseQcode = json.get("storehouseQcode").getAsString();
+            String storehouseLocation = json.get("storehouseLocation").getAsString();
             JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
             Iterator iterator2 = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
@@ -102,7 +102,7 @@ public class StorageController {
             int res1 = storageService.outStore(tailorQcodeList);
             List<Storage> storageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                Storage storage = new Storage(storehouseQcode,tailorQcodeList.get(i));
+                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i));
                 storageList.add(storage);
             }
             //Gson gson = new Gson();

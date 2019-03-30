@@ -11,23 +11,20 @@ public class StoreHouse {
 
     private String storehouseLocation;
 
-    private String storehouseQcode;
-
     private Integer storehouseCount;
+
+
+    public StoreHouse(String storehouseLocation, Integer storehouseCount) {
+        this.storehouseLocation = storehouseLocation;
+        this.storehouseCount = storehouseCount;
+    }
 
     public StoreHouse() {
     }
 
-    public StoreHouse(String storehouseLocation, String storehouseQcode, Integer storehouseCount) {
-        this.storehouseLocation = storehouseLocation;
-        this.storehouseQcode = storehouseQcode;
-        this.storehouseCount = storehouseCount;
-    }
-
-    public StoreHouse(Integer storehouseID, String storehouseLocation, String storehouseQcode, Integer storehouseCount) {
+    public StoreHouse(Integer storehouseID, String storehouseLocation, Integer storehouseCount) {
         this.storehouseID = storehouseID;
         this.storehouseLocation = storehouseLocation;
-        this.storehouseQcode = storehouseQcode;
         this.storehouseCount = storehouseCount;
     }
 
@@ -45,14 +42,6 @@ public class StoreHouse {
 
     public void setStorehouseLocation(String storehouseLocation) {
         this.storehouseLocation = storehouseLocation;
-    }
-
-    public String getStorehouseQcode() {
-        return storehouseQcode;
-    }
-
-    public void setStorehouseQcode(String storehouseQcode) {
-        this.storehouseQcode = storehouseQcode;
     }
 
     public Integer getStorehouseCount() {

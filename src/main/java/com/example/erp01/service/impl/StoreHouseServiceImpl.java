@@ -51,23 +51,9 @@ public class StoreHouseServiceImpl implements StoreHouseService {
     }
 
     @Override
-    public StoreHouse getStoreHouseByQcode(String storehouseQcode) {
-        StoreHouse storeHouse = null;
+    public StoreHouse getStoreHouseByLocation(String storehouseLocation) {
         try{
-            storeHouse = storeHouseMapper.getStoreHouseByQcode(storehouseQcode);
-            return storeHouse;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
-    public List<Map<String,Integer>> getStorageState() {
-        List<Map<String, Integer>> storageMapList = new ArrayList<>();
-        try{
-            storageMapList = storeHouseMapper.getStorageState();
-            return storageMapList;
+            return storeHouseMapper.getStoreHouseByLocation(storehouseLocation);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -85,26 +71,5 @@ public class StoreHouseServiceImpl implements StoreHouseService {
         return 1;
     }
 
-//    @Override
-//    public int changeStorge(String storeHouseQcode, Integer number) {
-//        try{
-//            storeHouseMapper.changeStorge(storeHouseQcode, number);
-//            return 0;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return 1;
-//    }
 
-//    @Override
-//    public Map<String,Integer> getStorageState() {
-//        Map<String, Integer> storageMap = new HashMap<>();
-//        try{
-//            storageMap = storeHouseMapper.getStorageState();
-//            return storageMap;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
 }

@@ -19,11 +19,7 @@ public interface StoreHouseMapper {
 
     List<StoreHouse> getAllStoreHouse();
 
-    StoreHouse getStoreHouseByQcode(String storehouseQcode);
-
-//    Map<String,Integer> getStorageState();
-
-    List<Map<String,Integer>> getStorageState();
+    StoreHouse getStoreHouseByLocation(String storehouseLocation);
 
 
 }

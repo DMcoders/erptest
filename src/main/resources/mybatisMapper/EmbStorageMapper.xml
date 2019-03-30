@@ -5,9 +5,9 @@
 <mapper namespace="com.example.erp01.mapper.EmbStorageMapper">
 
     <insert id="embInStore" parameterType="java.util.List">
-        INSERT INTO embstorage(embStoreQcode,tailorQcode) VALUES
+        INSERT INTO embstorage(embStoreLocation,tailorQcode) VALUES
         <foreach collection="list" item="embstorage" separator=",">
-            (#{embstorage.embStoreQcode},#{embstorage.tailorQcode})
+            (#{embstorage.embStoreLocation},#{embstorage.tailorQcode})
         </foreach>
     </insert>
 
@@ -19,8 +19,7 @@
     </delete>
 
     <select id="getEmbStorageState" resultType="map">
-        SELECT embStoreQcode,COUNT(*) as embStorageState  FROM embstorage GROUP BY embStoreQcode
+        SELECT embStoreLocation,COUNT(*) as embStorageState  FROM embstorage GROUP BY embStoreLocation
     </select>
-
 
 </mapper>

@@ -6,24 +6,20 @@ public class EmbStore {
 
     private String embStoreLocation;
 
-    private String embStoreQcode;
-
     private Integer embStoreCount;
 
-    public EmbStore() {
-    }
-
-    public EmbStore(Integer embStoreID, String embStoreLocation, String embStoreQcode, Integer embStoreCount) {
+    public EmbStore(Integer embStoreID, String embStoreLocation, Integer embStoreCount) {
         this.embStoreID = embStoreID;
         this.embStoreLocation = embStoreLocation;
-        this.embStoreQcode = embStoreQcode;
         this.embStoreCount = embStoreCount;
     }
 
-    public EmbStore(String embStoreLocation, String embStoreQcode, Integer embStoreCount) {
+    public EmbStore(String embStoreLocation, Integer embStoreCount) {
         this.embStoreLocation = embStoreLocation;
-        this.embStoreQcode = embStoreQcode;
         this.embStoreCount = embStoreCount;
+    }
+
+    public EmbStore() {
     }
 
     public Integer getEmbStoreID() {
@@ -40,14 +36,6 @@ public class EmbStore {
 
     public void setEmbStoreLocation(String embStoreLocation) {
         this.embStoreLocation = embStoreLocation;
-    }
-
-    public String getEmbStoreQcode() {
-        return embStoreQcode;
-    }
-
-    public void setEmbStoreQcode(String embStoreQcode) {
-        this.embStoreQcode = embStoreQcode;
     }
 
     public Integer getEmbStoreCount() {

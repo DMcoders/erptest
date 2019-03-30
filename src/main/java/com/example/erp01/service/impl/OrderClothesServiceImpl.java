@@ -64,7 +64,7 @@ public class OrderClothesServiceImpl implements OrderClothesService {
     @Override
     public int deleteOrderByName(String orderName) {
         try{
-            orderClothesMapper.getOrderByName(orderName);
+            orderClothesMapper.deleteOrderByName(orderName);
             return 0;
         }catch (Exception e){
             e.printStackTrace();

@@ -9,7 +9,7 @@
         <result property="value" column="storehouseCount" jdbcType="INTEGER" javaType="java.lang.Integer"/>
     </resultMap>
     <insert id="addStoreHouse">
-        INSERT INTO storehouse(storehouseLocation,storehouseQcode,storehouseCount) VALUES (#{storehouseLocation},#{storehouseQcode},#{storehouseCount})
+        INSERT INTO storehouse(storehouseLocation,storehouseCount) VALUES (#{storehouseLocation},#{storehouseCount})
     </insert>
 
     <delete id="deleteStoreHouse">
@@ -19,7 +19,6 @@
     <update id="updateStoreHouse" parameterType="com.example.erp01.model.StoreHouse">
         UPDATE storehouse SET
         storehouseLocation=#{storehouseLocation},
-        storehouseQcode=#{storehouseQcode},
         storehouseCount=#{storehouseCount}
         WHERE storehouseID=#{storehouseID}
     </update>
@@ -28,15 +27,8 @@
         SELECT * FROM storehouse
     </select>
 
-    <select id="getStoreHouseByQcode" parameterType="java.lang.String" resultType="com.example.erp01.model.StoreHouse">
-        SELECT * FROM storehouse WHERE storehouseQcode=#{storehouseQcode}
+    <select id="getStoreHouseByLocation" parameterType="java.lang.String" resultType="com.example.erp01.model.StoreHouse">
+        SELECT * FROM storehouse WHERE storehouseLocation=#{storehouseLocation}
     </select>
-
-    <select id="getStorageState" resultMap="storageMap">
-        SELECT storehouseLocation,storehouseCount FROM storehouse
-    </select>
-    <!--<select id="getStorageState" resultType="java.util.Map">-->
-        <!--SELECT storehouseLocation,storehouseCount FROM storehouse-->
-    <!--</select>-->
 
 </mapper>

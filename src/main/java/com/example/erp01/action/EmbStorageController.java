@@ -28,20 +28,18 @@ public class EmbStorageController {
     private StorageService storageService;
 
     @RequestMapping(value = "/embinstore", method = RequestMethod.POST)
-    @ResponseBody
-    public Boolean embInStore(String embInStoreJson,
+    public String embInStore(@RequestParam("embInStoreJson")String embInStoreJson,
                              ModelMap map){
         JsonParser jsonParser = new JsonParser();
-        Boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embInStoreJson);
             String embStoreQcode = json.get("embStoreQcode").getAsString();
-            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
-            Iterator iterator = jsonTailorQcode.iterator();
+            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
+            Iterator iterator = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator.hasNext()){
-                JsonPrimitive tailorQcode = (JsonPrimitive) iterator.next();
-                tailorQcodeList.add(tailorQcode.toString().replace("\"",""));
+                Map.Entry entry = (Map.Entry) iterator.next();
+                tailorQcodeList.add(entry.getValue().toString().replace("\"","").replace("\"",""));
             }
             int res1 = storageService.outStore(tailorQcodeList);
             List<EmbStorage> embStorageList = new ArrayList<>();
@@ -52,18 +50,16 @@ public class EmbStorageController {
             System.out.println(embStorageList.toString());
             int res2 = embStorageService.embInStore(embStorageList);
             if (0 == res1 && 0 == res2){
-//                map.addAttribute("msg","入库成功！");
-                result = true;
+                map.addAttribute("msg","入库成功！");
             }else{
-//                map.addAttribute("msg","入库失败！");
-                result = false;
+                map.addAttribute("msg","入库失败！");
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return result;
+        return "index";
 
     }
 
