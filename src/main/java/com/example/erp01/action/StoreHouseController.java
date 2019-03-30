@@ -69,45 +69,11 @@ public class StoreHouseController {
 
 
 
-    @RequestMapping(value = "/getstorehousebyqcode", method = RequestMethod.GET)
+    @RequestMapping(value = "/getstorehousebylocation", method = RequestMethod.GET)
     @ResponseBody
-    public StoreHouse getStoreHouseByQcode(@RequestParam("storehouseQcode")String storehouseQcode){
-        StoreHouse storeHouse = storeHouseService.getStoreHouseByQcode(storehouseQcode);
+    public StoreHouse getStoreHouseByQcode(@RequestParam("storehouseLocation")String storehouseLocation){
+        StoreHouse storeHouse = storeHouseService.getStoreHouseByLocation(storehouseLocation);
         return storeHouse;
     }
 
-//    @RequestMapping(value = "/changestorage", method = RequestMethod.POST)
-//    public String changeStorage(@RequestParam("storehouseQcode")String storehouseQcode,
-//                                @RequestParam("number")Integer number,
-//                                ModelMap map){
-//        int res = storeHouseService.changeStorge(storehouseQcode,number);
-//        if(0 == res){
-//            map.addAttribute("msg","数据更新成功！");
-//        }else{
-//            map.addAttribute("msg","数据更新失败！");
-//        }
-//        return "index";
-//    }
-
-//    /**
-//     *
-//     * 测试不通过
-//     * */
-//    @RequestMapping(value = "/getstoragestate", method = RequestMethod.GET)
-//    @ResponseBody
-//    public List<Map<String,Integer>> getStorageSate(){
-//
-//        List<Map<String, Integer>> storageMapList = new ArrayList<>();
-//        storageMapList = storeHouseService.getStorageState();
-//        return storageMapList;
-//    }
-
-//    @RequestMapping(value = "/getstoragestate", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Map<String,Integer> getStorageSate(){
-//
-//        Map<String, Integer> storageMap = new HashMap<>();
-//        storageMap = storeHouseService.getStorageState();
-//        return storageMap;
-//    }
 }

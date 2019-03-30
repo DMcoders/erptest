@@ -4,7 +4,7 @@ public class Storage {
 
     private Integer storageID;
 
-    private String storehouseQcode;
+    private String storehouseLocation;
 
     private String tailorQcode;
 
@@ -13,8 +13,15 @@ public class Storage {
     public Storage() {
     }
 
-    public Storage(String storehouseQcode, Integer storageState) {
-        this.storehouseQcode = storehouseQcode;
+    public Storage(Integer storageID, String storehouseLocation, String tailorQcode, Integer storageState) {
+        this.storageID = storageID;
+        this.storehouseLocation = storehouseLocation;
+        this.tailorQcode = tailorQcode;
+        this.storageState = storageState;
+    }
+
+    public Storage(String storehouseLocation, Integer storageState) {
+        this.storehouseLocation = storehouseLocation;
         this.storageState = storageState;
     }
 
@@ -26,8 +33,8 @@ public class Storage {
         this.storageState = storageState;
     }
 
-    public Storage(String storehouseQcode, String tailorQcode) {
-        this.storehouseQcode = storehouseQcode;
+    public Storage(String storehouseLocation, String tailorQcode) {
+        this.storehouseLocation = storehouseLocation;
         this.tailorQcode = tailorQcode;
     }
 
@@ -39,12 +46,12 @@ public class Storage {
         this.storageID = storageID;
     }
 
-    public String getStorehouseQcode() {
-        return storehouseQcode;
+    public String getstorehouseLocation() {
+        return storehouseLocation;
     }
 
-    public void setStorehouseQcode(String storehouseQcode) {
-        this.storehouseQcode = storehouseQcode;
+    public void setstorehouseLocation(String storehouseLocation) {
+        this.storehouseLocation = storehouseLocation;
     }
 
     public String getTailorQcode() {

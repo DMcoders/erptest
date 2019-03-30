@@ -13,14 +13,10 @@ public interface StoreHouseService {
 
     int deleteStoreHouse(Integer storehouseID);
 
-    List<StoreHouse> getAllStoreHouse();
-
-    StoreHouse getStoreHouseByQcode(String storehouseQcode);
-
-    List<Map<String,Integer>> getStorageState();
-
     int updateStoreHouse(StoreHouse storeHouse);
 
-//    int changeStorge(String storeHouseQcode, Integer number);
+    List<StoreHouse> getAllStoreHouse();
+
+    StoreHouse getStoreHouseByLocation(String storehouseLocation);
 
 }

@@ -26,16 +26,16 @@ public class OrderClothesController {
 
     /****
      * 测试未通过
-     * @param clothesorderJson
+     * @param orderclothesJson
      * @param map
      * @return
      */
-    @RequestMapping(value = "/commitclothesorder",method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("clothesorderJson")String clothesorderJson,
+    @RequestMapping(value = "/commitorderclothes",method = RequestMethod.POST)
+    public String addOrderClothes(@RequestParam("orderclothesJson")String orderclothesJson,
                                   ModelMap map){
         JsonParser jsonParser = new JsonParser();
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(clothesorderJson);
+            JsonObject json = (JsonObject) jsonParser.parse(orderclothesJson);
             JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();

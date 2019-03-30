@@ -5,9 +5,9 @@
 <mapper namespace="com.example.erp01.mapper.StorageMapper">
 
     <insert id="inStore" parameterType="java.util.List">
-        INSERT INTO storage(storehouseQcode,tailorQcode) VALUES
+        INSERT INTO storage(storehouseLocation,tailorQcode) VALUES
         <foreach collection="list" item="item" separator=",">
-            (#{item.storehouseQcode},#{item.tailorQcode})
+            (#{item.storehouseLocation},#{item.tailorQcode})
         </foreach>
     </insert>
 
@@ -19,15 +19,8 @@
     </delete>
 
     <select id="getStorageState" resultType="map">
-        SELECT storehouseQcode,COUNT(*) as storageState  FROM storage GROUP BY storehouseQcode
+        SELECT storehouseLocation,COUNT(*) as storageState  FROM storage GROUP BY storehouseLocation
     </select>
 
-    <!--<update id="changeStore" parameterType="java.util.List">-->
-        <!--<foreach collection="list" item="storage" separator=",">-->
-            <!--UPDATE storage SET-->
-            <!--storehouseQcode=#{storage.storehouseQcode}-->
-            <!--WHERE tailorQcode=#{storage.tailorQcode}-->
-        <!--</foreach>-->
-    <!--</update>-->
 
 </mapper>
