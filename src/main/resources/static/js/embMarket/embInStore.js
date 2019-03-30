@@ -67,7 +67,7 @@ function embinstore() {
         return false;
     }
     var embInStoreJson = {};
-    embInStoreJson.embStoreQcode = $("#embStoreQcode").val();
+    embInStoreJson.embStoreLocation = $("#embStoreQcode").val();
     embInStoreJson.tailorQcode = tailorQcode;
 
     $.ajax({

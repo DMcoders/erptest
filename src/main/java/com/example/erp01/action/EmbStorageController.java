@@ -35,7 +35,7 @@ public class EmbStorageController {
         Boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embInStoreJson);
-            String embStoreQcode = json.get("embStoreQcode").getAsString();
+            String embStoreLocation = json.get("embStoreLocation").getAsString();
             JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
             Iterator iterator = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
@@ -46,7 +46,7 @@ public class EmbStorageController {
             int res1 = storageService.outStore(tailorQcodeList);
             List<EmbStorage> embStorageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                EmbStorage embStorage = new EmbStorage(embStoreQcode,tailorQcodeList.get(i));
+                EmbStorage embStorage = new EmbStorage(embStoreLocation,tailorQcodeList.get(i));
                 embStorageList.add(embStorage);
             }
             int res2 = embStorageService.embInStore(embStorageList);
@@ -73,7 +73,7 @@ public class EmbStorageController {
         JsonParser jsonParser = new JsonParser();
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embOutStoreJson);
-            String embStoreQcode = json.get("embStoreQcode").getAsString();
+            String embStoreLocation = json.get("embStoreLocation").getAsString();
             JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
             Iterator iterator = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
@@ -102,7 +102,7 @@ public class EmbStorageController {
         JsonParser jsonParser = new JsonParser();
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embChangeStoreJson);
-            String embStoreQcode = json.get("embStoreQcode").getAsString();
+            String embStoreLocation = json.get("embStoreLocation").getAsString();
             JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
             Iterator iterator = jsonTailorQcode.entrySet().iterator();
             List<String> tailorQcodeList = new ArrayList<>();
@@ -113,7 +113,7 @@ public class EmbStorageController {
             int res1 = embStorageService.embOutStore(tailorQcodeList);
             List<EmbStorage> embStorageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                EmbStorage embStorage = new EmbStorage(embStoreQcode,tailorQcodeList.get(i));
+                EmbStorage embStorage = new EmbStorage(embStoreLocation,tailorQcodeList.get(i));
                 embStorageList.add(embStorage);
             }
             int res2 = embStorageService.embInStore(embStorageList);
