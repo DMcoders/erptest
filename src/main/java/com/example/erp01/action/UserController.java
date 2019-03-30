@@ -76,29 +76,10 @@ public class UserController {
 
 
     @RequestMapping(value ="/adduser", method = RequestMethod.POST)
-    public String addUser(@RequestParam("userJson")String userJson,
-                          ModelMap map){
-        JsonParser jsonParser = new JsonParser();
-        try{
-            JsonObject json = (JsonObject) jsonParser.parse(userJson);
-            String userName = json.get("userName").getAsString();
-            String passWord = json.get("passWord").getAsString();
-            String role = json.get("role").getAsString();
-            String phoneNumber = json.get("phoneNumber").getAsString();
-            String userCardID = json.get("userCardID").getAsString();
-            User user = new User(userName,passWord,role,phoneNumber,userCardID);
-            int res = userService.addUser(user);
-            if (res == 0){
-                map.addAttribute("msg","添加成功！");
-            }else{
-                map.addAttribute("msg","添加失败！");
-            }
-        }catch (JsonIOException e){
-            e.printStackTrace();
-        }catch (JsonSyntaxException e){
-            e.printStackTrace();
-        }
-        return "index";
+    @ResponseBody
+    public int addUser(User user){
+        int res = userService.addUser(user);
+        return res;
     }
 
 
@@ -127,21 +108,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
-    public String deleteUser(@RequestParam("userID")Integer userID, ModelMap map){
+    @ResponseBody
+    public int deleteUser(@RequestParam("userID")Integer userID){
         int res = userService.deleteUser(userID);
-        if (0 == res){
-            map.addAttribute("msg","删除成功!");
-        }else{
-            map.addAttribute("msg","删除失败!");
-        }
-        return "index";
+        return res;
     }
+
     @RequestMapping(value = "/getuserbyid", method = RequestMethod.GET)
     @ResponseBody
     public User getUserByID(@RequestParam("userID")Integer userID){
         User user = userService.getUserByID(userID);
         return user;
     }
+
     @RequestMapping(value = "/getalluser", method = RequestMethod.GET)
     @ResponseBody
     public List<User> getAllUser(){
