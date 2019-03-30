@@ -1,5 +1,6 @@
 package com.example.erp01.action;
 
+import com.example.erp01.model.Customer;
 import com.example.erp01.model.User;
 import com.example.erp01.service.UserService;
 import com.google.gson.JsonIOException;
@@ -57,6 +58,20 @@ public class UserController {
         model.addAttribute("menuTag",0);
 
         return "homepage/homepage";
+    }
+
+    /**
+     * 进入用户信息页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/userStart")
+    public String userStart(Model model){
+        model.addAttribute("bigMenuTag",4);
+        model.addAttribute("menuTag",4);
+        List<User>  users = getAllUser();
+        model.addAttribute("users",users);
+        return "factoryMsg/user";
     }
 
 
