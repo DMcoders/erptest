@@ -40,6 +40,18 @@ public class EmbStoreController {
     }
 
     /**
+     * 进入衣胚出库页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/embOutStoreStart")
+    public String embOutStoreStart(Model model) {
+        model.addAttribute("bigMenuTag", 3);
+        model.addAttribute("menuTag", 2);
+        return "embMarket/embOutStore";
+    }
+
+    /**
      * 进入衣胚仓库页面
      * @param model
      * @return

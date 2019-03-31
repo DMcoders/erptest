@@ -89,7 +89,7 @@ public class EmbStorageController {
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return "embMarket/emtOutStore";
 
     }
 
