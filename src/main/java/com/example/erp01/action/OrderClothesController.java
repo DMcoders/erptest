@@ -24,12 +24,18 @@ public class OrderClothesController {
     @Autowired
     private OrderClothesService orderClothesService;
 
-    @RequestMapping(value = "/commitclothesorder",method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("clothesorderstring")String clothesorderstring,
+    /****
+     * 测试未通过
+     * @param orderclothesJson
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/commitorderclothes",method = RequestMethod.POST)
+    public String addOrderClothes(@RequestParam("orderclothesJson")String orderclothesJson,
                                   ModelMap map){
         JsonParser jsonParser = new JsonParser();
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(clothesorderstring);
+            JsonObject json = (JsonObject) jsonParser.parse(orderclothesJson);
             JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
@@ -101,7 +107,7 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getorderbyname", method = RequestMethod.GET)
     @ResponseBody
-    List<OrderClothes> getByNameDate(@RequestParam("orderName")String orderName){
+    List<OrderClothes> getByName(@RequestParam("orderName")String orderName){
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getOrderByName(orderName);
         return orderClothesList;
@@ -109,7 +115,7 @@ public class OrderClothesController {
     }
 
     @RequestMapping(value = "/deleteorderbyname", method = RequestMethod.POST)
-    String deleteByNameDate(@RequestParam("orderName")String orderName,
+    String deleteByName(@RequestParam("orderName")String orderName,
                             ModelMap map){
         int res = orderClothesService.deleteOrderByName(orderName);
         if (res == 0){

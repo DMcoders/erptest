@@ -5,7 +5,7 @@
 <mapper namespace="com.example.erp01.mapper.EmbStoreMapper">
 
     <insert id="addEmbStore">
-        INSERT INTO embstore(embStoreLocation,embStoreQcode,embStoreCount) VALUES (#{embStoreLocation},#{embStoreQcode},#{embStoreCount})
+        INSERT INTO embstore(embStoreLocation,embStoreCount) VALUES (#{embStoreLocation},#{embStoreCount})
     </insert>
 
     <delete id="deleteEmbStore">
@@ -15,7 +15,6 @@
     <update id="updateEmbStore" parameterType="com.example.erp01.model.StoreHouse">
         UPDATE embstore SET
         embStoreLocation=#{embStoreLocation},
-        embStoreQcode=#{embStoreQcode},
         embStoreCount=#{embStoreCount}
         WHERE embStoreID=#{embStoreID}
     </update>
