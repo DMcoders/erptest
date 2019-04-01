@@ -32,7 +32,7 @@
                                 <tbody>
                                     <#list customers as customer>
                                     <tr>
-                                        <td>${customer.customerID?c}</td>
+                                        <td>${customer_index+1}</td>
                                         <td>${customer.customerName!}</td>
                                         <td>${customer.companyName!}</td>
                                         <td>${customer.linkmanName!}</td>

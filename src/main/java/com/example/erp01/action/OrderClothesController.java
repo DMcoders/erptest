@@ -1,10 +1,12 @@
 package com.example.erp01.action;
 
+import com.example.erp01.model.Customer;
 import com.example.erp01.model.OrderClothes;
 import com.example.erp01.service.OrderClothesService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,16 +15,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class OrderClothesController {
 
     @Autowired
     private OrderClothesService orderClothesService;
+
+    /**
+     * 进入订单信息页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/orderStart")
+    public String orderStart(Model model){
+        model.addAttribute("bigMenuTag",1);
+        model.addAttribute("menuTag",1);
+        return "orderMsg/order";
+    }
 
     /****
      * 测试未通过
@@ -91,10 +102,12 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getallorderclothes", method = RequestMethod.GET)
     @ResponseBody
-    List<OrderClothes> getAllOrderClothes(){
+    public Map<String, Object> getAllOrderClothes(){
+        Map<String, Object> map = new HashMap();
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getAllOrderClothes();
-        return orderClothesList;
+        map.put("data",orderClothesList);
+        return map;
     }
 
     @RequestMapping(value = "/getordersummary", method = RequestMethod.GET)

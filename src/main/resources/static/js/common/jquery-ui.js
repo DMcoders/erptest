@@ -6342,7 +6342,7 @@ $.widget( "ui.accordion", {
 				})
 				.hide();
 
-		// make sure at least one header is in the tab order
+		// make sure at least one header is in the tab orderMsg
 		if ( !this.active.length ) {
 			this.headers.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
@@ -6511,9 +6511,9 @@ $.widget( "ui.accordion", {
 			"aria-hidden": "true"
 		});
 		toHide.prev().attr( "aria-selected", "false" );
-		// if we're switching panels, remove the old header from the tab order
-		// if we're opening from collapsed state, remove the previous header from the tab order
-		// if we're collapsing, then keep the collapsing header in the tab order
+		// if we're switching panels, remove the old header from the tab orderMsg
+		// if we're opening from collapsed state, remove the previous header from the tab orderMsg
+		// if we're collapsing, then keep the collapsing header in the tab orderMsg
 		if ( toShow.length && toHide.length ) {
 			toHide.prev().attr( "tabIndex", -1 );
 		} else if ( toShow.length ) {
@@ -14121,7 +14121,7 @@ $.widget( "ui.tabs", {
 				"aria-hidden": "true"
 			});
 
-		// Make sure one tab is in the tab order
+		// Make sure one tab is in the tab orderMsg
 		if ( !this.active.length ) {
 			this.tabs.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
@@ -14386,9 +14386,9 @@ $.widget( "ui.tabs", {
 			"aria-hidden": "true"
 		});
 		eventData.oldTab.attr( "aria-selected", "false" );
-		// If we're switching tabs, remove the old tab from the tab order.
-		// If we're opening from collapsed state, remove the previous tab from the tab order.
-		// If we're collapsing, then keep the collapsing tab in the tab order.
+		// If we're switching tabs, remove the old tab from the tab orderMsg.
+		// If we're opening from collapsed state, remove the previous tab from the tab orderMsg.
+		// If we're collapsing, then keep the collapsing tab in the tab orderMsg.
 		if ( toShow.length && toHide.length ) {
 			eventData.oldTab.attr( "tabIndex", -1 );
 		} else if ( toShow.length ) {

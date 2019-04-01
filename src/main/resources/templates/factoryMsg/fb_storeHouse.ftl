@@ -30,7 +30,7 @@
                                 <tbody>
                                     <#list storeHouses as storeHouse>
                                     <tr>
-                                        <td>${storeHouse.storehouseID?c}</td>
+                                        <td>${storeHouse_index+1}</td>
                                         <td>${storeHouse.storehouseLocation!}</td>
                                         <td>${storeHouse.storehouseCount?c}</td>
                                         <td><a href="#" style="color:#3e8eea" onclick="showQrCode('${storeHouse.storehouseLocation!}')">查看</a></td>

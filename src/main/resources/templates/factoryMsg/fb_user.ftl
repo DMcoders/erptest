@@ -32,7 +32,7 @@
                                 <tbody>
                                     <#list users as user>
                                     <tr>
-                                        <td>${user.userID?c}</td>
+                                        <td>${user_index+1}</td>
                                         <td>${user.userName!}</td>
                                         <td>${user.passWord!}</td>
                                         <td>${user.role!}</td>

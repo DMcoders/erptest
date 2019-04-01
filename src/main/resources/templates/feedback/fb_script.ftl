@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="/css/jquery.dropdown.css" type="text/css">
     <link rel="stylesheet" href="/css/chosen.css?t=201708231201" type="text/css">
     <link rel="stylesheet" href="/css/autoseacrh.css?t=201805031901" type="text/css">
+    <link rel="stylesheet" href="/css/dataTables.bootstrap.css" type="text/css">
+    <#--<link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css" type="text/css">-->
+
     <style type="text/css">
 
         @font-face {
@@ -72,5 +75,7 @@
     <script src="/js/common/jquery.simplePagination.js"></script>
     <script src="/js/common/flatpickr.min.js"></script>
     <script src="/js/common/jquery.searchableSelect.js"></script>
+    <script src="/js/common/jquery.dataTables.min.js"></script>
+    <script src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 </head>
 </#macro>
