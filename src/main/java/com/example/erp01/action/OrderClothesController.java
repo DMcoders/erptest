@@ -48,23 +48,24 @@ public class OrderClothesController {
     /****
      * 测试未通过
      * @param orderclothesJson
-     * @param map
      * @return
      */
-    @RequestMapping(value = "/commitorderclothes",method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("orderclothesJson")String orderclothesJson,
-                                  ModelMap map){
+    @RequestMapping("/commitorderclothes")
+    @ResponseBody
+    public int addOrderClothes(String orderclothesJson){
         JsonParser jsonParser = new JsonParser();
+        int result = 1;
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(orderclothesJson);
-            JsonArray orderArray = json.getAsJsonArray();
+            JsonArray orderArray = (JsonArray) jsonParser.parse(orderclothesJson);
+//            JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             for (int i=1; i<orderArray.size();i++){
-                JsonObject tmporder = orderArray.get(i).getAsJsonObject();
-                String name = String.valueOf(i);
-                JsonObject order = tmporder.get(name).getAsJsonObject();
+                JsonObject order = orderArray.get(i).getAsJsonObject();
+//                String name = String.valueOf(i);
+//                JsonObject order = tmporder.get(name).getAsJsonObject();
                 String customerName = order.get("customerName").getAsString();
                 String purchaseMethod = order.get("purchaseMethod").getAsString();
                 String orderName = order.get("orderName").getAsString();
@@ -83,7 +84,7 @@ public class OrderClothesController {
                     Map.Entry entry = (Map.Entry) iterator.next();
                     if (!(entry.getValue() == "")){
                         String tmpkey =  entry.getKey().toString();
-                        int tmpvalue = Integer.parseInt(entry.getValue().toString());
+                        int tmpvalue = Integer.parseInt(entry.getValue().toString().replace("\"",""));
                         sizeList.add(tmpkey);
                         sizeCountList.add(tmpvalue);
                     }
@@ -93,12 +94,7 @@ public class OrderClothesController {
                     orderClothesList.add(orderClothes);
                 }
             }
-            int res = orderClothesService.addOrderClothes(orderClothesList);
-            if (res == 0){
-                map.addAttribute("msg","添加成功！");
-            }else{
-                map.addAttribute("msg","添加失败！");
-            }
+            result = orderClothesService.addOrderClothes(orderClothesList);
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
@@ -106,7 +102,7 @@ public class OrderClothesController {
         }catch (ParseException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
 

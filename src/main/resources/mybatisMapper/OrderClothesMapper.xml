@@ -7,7 +7,7 @@
     <insert id="addOrderClothes" parameterType="java.util.List">
         INSERT INTO orderclothes(customerName,purchaseMethod,orderName,styleDescription,clothesVersionNumber,colorNumber,colorName,sizeName,count,orderDate,season,deadLine) VALUES
         <foreach collection="list" item="item" separator=",">
-            (#{item.customerName},#{item.purchaseMethod},#{item.orderName},#{item.styleDescription},#{item.clothesVersionNumber},#{item.colorNumber},#{item.colorName},#{item.sizeName},#{item.count},#{item.orderDate},#{season},#{item.deadLine})
+            (#{item.customerName},#{item.purchaseMethod},#{item.orderName},#{item.styleDescription},#{item.clothesVersionNumber},#{item.colorNumber},#{item.colorName},#{item.sizeName},#{item.count},#{item.orderDate},#{item.season},#{item.deadLine})
         </foreach>
     </insert>
 
