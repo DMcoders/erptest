@@ -1,5 +1,6 @@
 $(document).ready(function () {
     createOrderTable();
+    $('#mainFrameTabs').bTabs();
 });
 
 var basePath=$("#basePath").val();
@@ -38,6 +39,8 @@ function createOrderTable() {
         "paging": true,
         // "ordering" : false,
         "info": false,
+        searching:false,
+        lengthChange:false,
         "columns": [
         {
             "data": null,
@@ -91,7 +94,7 @@ function createOrderTable() {
                 "targets" : [7], // 指定的列
                 "data" : "orderClothesID",
                 "render" : function(data, type, full, meta) {
-                    return "<a href='#' style='color:#3e8eea' onclick='orderDetail("+data+")'>订单详情</a>&nbsp;&nbsp;<a href='#' style='color:red' onclick='deleteOrder("+data+")'>删除</a>";
+                    return "<a href='#' style='color:#3e8eea' onclick='orderDetail("+data+")'>订单详情</a>&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick='deleteOrder("+data+")'>删除</a>";
                 }
             }]
     });
@@ -211,4 +214,10 @@ function deleteCustomer(customerID) {
             }
         })
     });
+}
+
+var tabId = 1;
+function addOrder() {
+    $('#mainFrameTabs').bTabsAdd("tabId"+tabId,"订单录入","addOrderStart");
+    tabId++;
 }

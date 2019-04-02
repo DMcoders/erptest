@@ -35,6 +35,16 @@ public class OrderClothesController {
         return "orderMsg/order";
     }
 
+    /**
+     * 进入订单录入页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/addOrderStart")
+    public String addOrderStart(Model model){
+        return "orderMsg/fb_addOrder";
+    }
+
     /****
      * 测试未通过
      * @param orderclothesJson

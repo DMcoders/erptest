@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <#include "../feedback/fb_script.ftl">
+    <@script> </@script>
+    <link rel="stylesheet" href="/css/handsontable.full.min.css" type="text/css">
+    <#--<script src="/js/common/jquery-1.11.2.min.js" type="text/javascript" ></script>-->
+    <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
+    <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
+    <script src="/js/orderMsg/addOrder.js?t=201904022212"></script>
+</head>
+
+<body>
+    <div class="col-md-12" style="padding-top: 20px;padding-bottom:10px;margin-left: 10px">
+        <span style="font-size: 20px;font-family: PingFangSC-Semibold;color:rgb(55,56,57)">订单详情录入（直接粘贴数据）</span>
+    </div>
+    <div id="addOrderExcel" style="margin-left: 10px"></div>
+    <div class="col-md-12" style="text-align: center;margin-top: 20px">
+        <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addOrder()">提交</button>
+    </div>
+</body>
+</html>
+<style>
+    button {
+        background:rgb(45, 202, 147);
+        opacity:0.86;
+        color: white;
+        font-family: PingFangSC-Semibold, sans-serif;
+    }
+</style>
