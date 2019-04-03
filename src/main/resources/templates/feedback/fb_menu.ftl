@@ -39,7 +39,7 @@
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embInStoreStart"><span class="liActive">衣胚入库</span> </a></li>
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embOutStoreStart"><span class="liActive">衣胚出库</span> </a></li>
-                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">衣胚库存</span> </a></li>
+                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStoreStockStart#"><span class="liActive">衣胚库存</span> </a></li>
                             </ul>
                         </li>
 

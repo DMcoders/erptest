@@ -65,6 +65,14 @@ public class EmbStoreController {
         return "factoryMsg/embStore";
     }
 
+    @RequestMapping("/embStoreStockStart")
+    public String mebStoreStockStart(Model model) {
+        model.addAttribute("bigMenuTag", 3);
+        model.addAttribute("menuTag", 3);
+        return "/embMarket/embStoreStock";
+    }
+
+
     @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
     @ResponseBody
     public int addEmbStore(EmbStore embStore){

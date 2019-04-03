@@ -33,7 +33,7 @@
                 </section>
             </div>
             <div class="col-md-12" style="text-align: center;margin-top: 40px">
-                <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="emboutstore()">确认</button>
+                <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="#">确认</button>
             </div>
         </section>
     </section>
@@ -44,8 +44,7 @@
     <div class="wrapper">Notification</div>
 </aside>
 </section>
-<script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
-<script src="/js/embMarket/embOutStore.js?t=201903301912"></script>
+<script src="/js/embMarket/embInStore.js?t=201903231912"></script>
 
 </#macro>
 
