@@ -1,6 +1,10 @@
 $(document).ready(function () {
     createOrderTable();
     $('#mainFrameTabs').bTabs();
+
+    $('#orderListTab').click(function(){
+        createOrderTable();
+    });
 });
 
 //计算内容区域高度
@@ -25,7 +29,7 @@ function createOrderTable() {
     orderTable = $('#orderTable').DataTable({
         "retrieve": true,
         "ajax": {
-            "url": basePath + "getallorderclothes",
+            "url": basePath + "getordersummary",
             "data": {},
             "error": function () {
                 swal("OMG!", "发生了未知错误，请联系技术童鞋～～～!", "error");
@@ -56,6 +60,7 @@ function createOrderTable() {
         {
             "data": null,
             "title":"序号",
+            "width":"5%",
             "defaultContent": "",
             "sClass": "text-center",
             render: function (data, type, row, meta) {
@@ -65,36 +70,43 @@ function createOrderTable() {
         },{
             "data": "orderName",
             "title":"订单号",
+            "width":"15%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
             "data": "customerName",
             "title":"客户名",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
-            "data": "count",
+            "data": "orderSum",
             "title":"订单量",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
             "data": "orderDate",
             "title":"订货日期",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
             "data": "season",
             "title":"季度",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
             "data": "deadLine",
             "title":"交货日期",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
-            "data": "orderClothesID",
+            "data": "orderName",
             "title": "操作",
+            "width":"10%",
             "defaultContent": "",
             "sClass": "text-center",
         }
@@ -105,17 +117,17 @@ function createOrderTable() {
                 "targets" : [7], // 指定的列
                 "data" : "orderClothesID",
                 "render" : function(data, type, full, meta) {
-                    return "<a href='#' style='color:#3e8eea' onclick='orderDetail("+data+")'>订单详情</a>&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick='deleteOrder("+data+")'>删除</a>";
+                    return "<a href='#' style='color:#3e8eea' onclick='addOrder("+data+")'>订单详情</a>&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick='deleteOrder("+data+")'>删除</a>";
                 }
             }]
     });
 }
 
 
-function deleteCustomer(customerID) {
+function deleteOrder(orderName) {
     swal({
         title: "",
-        text: "<span style=\"font-weight:bolder;font-size: 20px\">您确定要删除该顾客的信息吗？</span>",
+        text: "<span style=\"font-weight:bolder;font-size: 20px\">您确定要删除该订单信息吗？</span>",
         type: "warning",
         html:true,
         showCancelButton: true,
@@ -126,23 +138,15 @@ function deleteCustomer(customerID) {
         showLoaderOnConfirm: true
     }, function() {
         $.ajax({
-            url: basePath + "deletecustomer",
+            url: basePath + "deleteorderbyname",
             type:'POST',
             data: {
-                customerID:customerID
+                orderName:orderName
             },
             success: function (data) {
                 if(data == 0) {
-                    $("input").val("");
-                    swal({
-                            type:"success",
-                            title:"",
-                            text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，删除成功！</span>",
-                            html: true
-                        },
-                        function(){
-                            location.href=basePath+"customerStart";
-                        });
+                    swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，删除成功！</span>",html: true});
+                    createOrderTable();
                 }else {
                     swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，删除失败！</span>",html: true});
                 }
@@ -155,8 +159,13 @@ function deleteCustomer(customerID) {
 }
 
 var tabId = 1;
-function addOrder() {
-    $('#mainFrameTabs').bTabsAdd("tabId"+tabId,"订单录入","addOrderStart");
+function addOrder(orderName) {
+    if(orderName) {
+        $('#mainFrameTabs').bTabsAdd("tabId" + orderName, "订单详情", "addOrderStart?orderName="+orderName);
+    }else {
+        $('#mainFrameTabs').bTabsAdd("tabId" + tabId, "订单录入", "addOrderStart");
+    }
     tabId++;
     calcHeight();
 }
+

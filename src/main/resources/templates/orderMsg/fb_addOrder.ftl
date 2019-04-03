@@ -6,19 +6,26 @@
     <link rel="stylesheet" href="/css/handsontable.full.min.css" type="text/css">
     <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
     <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
-    <script src="/js/orderMsg/addOrder.js?t=201904022112"></script>
+    <script src="/js/orderMsg/addOrder.js?t=201904022212"></script>
 </head>
 
 <body>
     <input  type="hidden" value="${basePath}"  id="basePath"/>
-
+    <input  type="hidden" value="${type}"  id="type"/>
+    <#if type == "detail">
+    <input  type="hidden" value="${orderName}"  id="orderName"/>
+    </#if>
+    <#if type == "add">
     <div class="col-md-12" style="padding-top: 20px;padding-bottom:10px;margin-left: 10px">
         <span style="font-size: 20px;font-family: PingFangSC-Semibold;color:rgb(55,56,57)">订单详情录入（直接粘贴数据）</span>
     </div>
+    </#if>
     <div id="addOrderExcel" style="margin-left: 10px"></div>
+    <#if type == "add">
     <div class="col-md-12" style="text-align: center;margin-top: 20px">
         <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addOrder()">提交</button>
     </div>
+    </#if>
 </body>
 </html>
 <style>

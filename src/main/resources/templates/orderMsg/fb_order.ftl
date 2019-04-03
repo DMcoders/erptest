@@ -9,7 +9,7 @@
 
             <div id="mainFrameTabs">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active noclose"><a href="#orderListDiv" data-toggle="tab">订单信息</a></li>
+                    <li role="presentation" class="active noclose" id="orderListTab"><a href="#orderListDiv" data-toggle="tab">订单信息</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="orderListDiv">
@@ -44,7 +44,7 @@
 
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/b.tabs.js"></script>
-<script src="/js/orderMsg/order.js?t=201904012212"></script>
+<script src="/js/orderMsg/order.js?t=201904032112"></script>
 
 </#macro>
 

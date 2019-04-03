@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +42,13 @@ public class OrderClothesController {
      * @return
      */
     @RequestMapping("/addOrderStart")
-    public String addOrderStart(Model model){
+    public String addOrderStart(Model model,String orderName){
+        if(orderName == null) {
+            model.addAttribute("type", "add");
+        }else {
+            model.addAttribute("orderName", orderName);
+            model.addAttribute("type", "detail");
+        }
         return "orderMsg/fb_addOrder";
     }
 
@@ -61,8 +68,7 @@ public class OrderClothesController {
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
 //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            for (int i=1; i<orderArray.size();i++){
+            for (int i=0; i<orderArray.size();i++){
                 JsonObject order = orderArray.get(i).getAsJsonObject();
 //                String name = String.valueOf(i);
 //                JsonObject order = tmporder.get(name).getAsJsonObject();
@@ -90,8 +96,15 @@ public class OrderClothesController {
                     }
                 }
                 for(int j=0;j<sizeList.size();j++){
-                    OrderClothes orderClothes = new OrderClothes(customerName,purchaseMethod,orderName,styleDescription,clothesVersionNumber,colorNumber,colorName,sizeList.get(j),sizeCountList.get(j),sdf.parse(orderDate),season,sdf.parse(deadLine));
-                    orderClothesList.add(orderClothes);
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                        OrderClothes orderClothes = new OrderClothes(customerName, purchaseMethod, orderName, styleDescription, clothesVersionNumber, colorNumber, colorName, sizeList.get(j), sizeCountList.get(j), sdf.parse(orderDate), season, sdf.parse(deadLine));
+                        orderClothesList.add(orderClothes);
+                    }catch (ParseException e) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        OrderClothes orderClothes = new OrderClothes(customerName, purchaseMethod, orderName, styleDescription, clothesVersionNumber, colorNumber, colorName, sizeList.get(j), sizeCountList.get(j), sdf.parse(orderDate), season, sdf.parse(deadLine));
+                        orderClothesList.add(orderClothes);
+                    }
                 }
             }
             result = orderClothesService.addOrderClothes(orderClothesList);
@@ -99,7 +112,7 @@ public class OrderClothesController {
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
-        }catch (ParseException e){
+        }catch (Exception e){
             e.printStackTrace();
         }
         return result;
@@ -118,10 +131,12 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getordersummary", method = RequestMethod.GET)
     @ResponseBody
-    public List<OrderClothes> getOrderSummary(){
+    public Map<String, Object> getOrderSummary(){
+        Map<String, Object> map = new HashMap();
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getOrderSummary();
-        return orderClothesList;
+        map.put("data",orderClothesList);
+        return map;
     }
 
     @RequestMapping(value = "/getorderbyname", method = RequestMethod.GET)
@@ -130,19 +145,12 @@ public class OrderClothesController {
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getOrderByName(orderName);
         return orderClothesList;
-
     }
 
-    @RequestMapping(value = "/deleteorderbyname", method = RequestMethod.POST)
-    String deleteByName(@RequestParam("orderName")String orderName,
-                            ModelMap map){
-        int res = orderClothesService.deleteOrderByName(orderName);
-        if (res == 0){
-            map.addAttribute("msg","删除成功");
-        }else {
-            map.addAttribute("msg","删除失败");
-        }
-        return "index";
+    @RequestMapping(value = "/deleteorderbyname")
+    @ResponseBody
+    public int deleteByName(@RequestParam("orderName")String orderName){
+        return orderClothesService.deleteOrderByName(orderName);
     }
 
     @RequestMapping(value = "/getorderhint",method = RequestMethod.GET)

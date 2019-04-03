@@ -16,7 +16,7 @@
     </select>
 
     <select id="getOrderSummary" resultType="map">
-        SELECT customerName,orderName,SUM(count) AS orderSum,orderDate,season,deadLine FROM orderclothes GROUP BY orderName
+        SELECT min(customerName) as customerName,min(orderName) as orderName,SUM(count) AS orderSum,min(orderDate) as orderDate,min(season) as season,min(deadLine) as deadLine FROM orderclothes GROUP BY orderName
     </select>
 
     <select id="getOrderByName" resultType="map">

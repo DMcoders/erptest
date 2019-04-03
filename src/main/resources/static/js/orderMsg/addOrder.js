@@ -1,5 +1,8 @@
 var hot;
+var basePath=$("#basePath").val();
+
 $(document).ready(function () {
+    var type=$("#type").val();
     var container = document.getElementById('addOrderExcel');
     hot = new Handsontable(container, {
         // data: data,
@@ -14,11 +17,45 @@ $(document).ready(function () {
         language:'zh-CN',
         licenseKey: 'non-commercial-and-evaluation'
     });
-
+    if(type == "detail") {
+        var orderName=$("#orderName").val();
+        $.ajax({
+            url: "/getorderbyname",
+            type:'GET',
+            data: {
+                orderName:orderName
+            },
+            success: function (data) {
+                console.log(data);
+                var hotData = [["顾客名","订购方式","订单号","款式描述","版单号","颜色号","颜色名","尺码","数量","签订日期","季度","交货日期"]];
+                var i = 1;
+                if(data) {
+                    $.each(data,function (index,item) {
+                        var tmp = [];
+                        tmp[0] = item.customerName;
+                        tmp[1] = item.purchaseMethod;
+                        tmp[2] = item.orderName;
+                        tmp[3] = item.styleDescription;
+                        tmp[4] = item.clothesVersionNumber;
+                        tmp[5] = item.colorNumber;
+                        tmp[6] = item.colorName;
+                        tmp[7] = item.sizeName;
+                        tmp[8] = item.count;
+                        tmp[9] = item.orderDate;
+                        tmp[10] = item.season;
+                        tmp[11] = item.deadLine;
+                        hotData[i] = tmp;
+                        i++;
+                    })
+                }
+                hot.loadData(hotData);
+            },
+            error: function () {
+                swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务发生未知错误～</span>",html: true});
+            }
+        })
+    }
 });
-
-
-var basePath=$("#basePath").val();
 
 function addOrder() {
     swal({
