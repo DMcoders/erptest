@@ -32,6 +32,14 @@ public class OrderClothes {
 
     private Integer orderSum;
 
+    public Integer getOrderSum() {
+        return orderSum;
+    }
+
+    public void setOrderSum(Integer orderSum) {
+        this.orderSum = orderSum;
+    }
+
     public OrderClothes(String customerName, String orderName, Integer orderSum, Date orderDate, String season, Date deadLine) {
         this.customerName = customerName;
         this.orderName = orderName;
