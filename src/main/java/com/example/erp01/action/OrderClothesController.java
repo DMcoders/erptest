@@ -1,10 +1,12 @@
 package com.example.erp01.action;
 
+import com.example.erp01.model.Customer;
 import com.example.erp01.model.OrderClothes;
 import com.example.erp01.service.OrderClothesService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,10 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class OrderClothesController {
@@ -24,26 +23,49 @@ public class OrderClothesController {
     @Autowired
     private OrderClothesService orderClothesService;
 
+    /**
+     * 进入订单信息页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/orderStart")
+    public String orderStart(Model model){
+        model.addAttribute("bigMenuTag",1);
+        model.addAttribute("menuTag",1);
+        return "orderMsg/order";
+    }
+
+    /**
+     * 进入订单录入页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/addOrderStart")
+    public String addOrderStart(Model model){
+        return "orderMsg/fb_addOrder";
+    }
+
     /****
      * 测试未通过
      * @param orderclothesJson
-     * @param map
      * @return
      */
-    @RequestMapping(value = "/commitorderclothes",method = RequestMethod.POST)
-    public String addOrderClothes(@RequestParam("orderclothesJson")String orderclothesJson,
-                                  ModelMap map){
+    @RequestMapping("/commitorderclothes")
+    @ResponseBody
+    public int addOrderClothes(String orderclothesJson){
         JsonParser jsonParser = new JsonParser();
+        int result = 1;
         try{
-            JsonObject json = (JsonObject) jsonParser.parse(orderclothesJson);
-            JsonArray orderArray = json.getAsJsonArray();
+            JsonArray orderArray = (JsonArray) jsonParser.parse(orderclothesJson);
+//            JsonArray orderArray = json.getAsJsonArray();
             List<JsonObject> objectList = new ArrayList<>();
             List<OrderClothes> orderClothesList = new ArrayList<>();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             for (int i=1; i<orderArray.size();i++){
-                JsonObject tmporder = orderArray.get(i).getAsJsonObject();
-                String name = String.valueOf(i);
-                JsonObject order = tmporder.get(name).getAsJsonObject();
+                JsonObject order = orderArray.get(i).getAsJsonObject();
+//                String name = String.valueOf(i);
+//                JsonObject order = tmporder.get(name).getAsJsonObject();
                 String customerName = order.get("customerName").getAsString();
                 String purchaseMethod = order.get("purchaseMethod").getAsString();
                 String orderName = order.get("orderName").getAsString();
@@ -62,7 +84,7 @@ public class OrderClothesController {
                     Map.Entry entry = (Map.Entry) iterator.next();
                     if (!(entry.getValue() == "")){
                         String tmpkey =  entry.getKey().toString();
-                        int tmpvalue = Integer.parseInt(entry.getValue().toString());
+                        int tmpvalue = Integer.parseInt(entry.getValue().toString().replace("\"",""));
                         sizeList.add(tmpkey);
                         sizeCountList.add(tmpvalue);
                     }
@@ -72,12 +94,7 @@ public class OrderClothesController {
                     orderClothesList.add(orderClothes);
                 }
             }
-            int res = orderClothesService.addOrderClothes(orderClothesList);
-            if (res == 0){
-                map.addAttribute("msg","添加成功！");
-            }else{
-                map.addAttribute("msg","添加失败！");
-            }
+            result = orderClothesService.addOrderClothes(orderClothesList);
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
@@ -85,16 +102,18 @@ public class OrderClothesController {
         }catch (ParseException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
 
     @RequestMapping(value = "/getallorderclothes", method = RequestMethod.GET)
     @ResponseBody
-    List<OrderClothes> getAllOrderClothes(){
+    public Map<String, Object> getAllOrderClothes(){
+        Map<String, Object> map = new HashMap();
         List<OrderClothes> orderClothesList = new ArrayList<>();
         orderClothesList = orderClothesService.getAllOrderClothes();
-        return orderClothesList;
+        map.put("data",orderClothesList);
+        return map;
     }
 
     @RequestMapping(value = "/getordersummary", method = RequestMethod.GET)

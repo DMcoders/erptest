@@ -14,7 +14,7 @@
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>订单模块</span> </a>
                             <ul class="nav lt">
-                                <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">订单信息</span> </a></li>
+                                <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/orderStart"><span class="liActive">订单信息</span> </a></li>
                             </ul>
                         </li>
 

@@ -644,7 +644,7 @@ table td:nth-child(2) {
 }
 .no-touch #cd-vertical-nav .cd-dot {
     position: relative;
-    /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
+    /* we set a top value in orderMsg to align the dot with the label. If you change label's font, you may need to change this top value*/
     top: 8px;
     height: 14px;
     width: 14px;

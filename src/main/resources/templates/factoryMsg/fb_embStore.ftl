@@ -30,7 +30,7 @@
                                 <tbody>
                                     <#list embStores as embStore>
                                     <tr>
-                                        <td>${embStore.embStoreID?c}</td>
+                                        <td>${embStore_index+1}</td>
                                         <td>${embStore.embStoreLocation!}</td>
                                         <td>${embStore.embStoreCount?c}</td>
                                         <td><a href="#" style="color:#3e8eea" onclick="showQrCode('${embStore.embStoreLocation!}')">查看</a></td>
