@@ -11,7 +11,7 @@ public interface OrderClothesService {
 
     List<OrderClothes> getAllOrderClothes();
 
-    String getOrderSummary();
+    List<OrderClothes> getOrderSummary();
 
     List<OrderClothes> getOrderByName(String orderName);
 

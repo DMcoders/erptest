@@ -15,7 +15,7 @@ public interface OrderClothesMapper {
 
     List<OrderClothes> getAllOrderClothes();
 
-    String getOrderSummary();
+    List<OrderClothes> getOrderSummary();
 
     List<OrderClothes> getOrderByName(String orderName);
 

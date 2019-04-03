@@ -40,13 +40,15 @@ public class OrderClothesServiceImpl implements OrderClothesService {
     }
 
     @Override
-    public String getOrderSummary() {
+    public List<OrderClothes> getOrderSummary() {
+        List<OrderClothes> orderClothesList = new ArrayList<>();
         try {
-            return orderClothesMapper.getOrderSummary();
+            orderClothesList = orderClothesMapper.getOrderSummary();
+            return orderClothesList;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return orderClothesList;
     }
 
     @Override

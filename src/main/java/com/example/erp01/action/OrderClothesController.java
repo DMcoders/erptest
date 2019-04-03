@@ -118,10 +118,10 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getordersummary", method = RequestMethod.GET)
     @ResponseBody
-    String getOrderSummary(){
-        String orderSummaryJson = null;
-        orderSummaryJson = orderClothesService.getOrderSummary();
-        return orderSummaryJson;
+    public List<OrderClothes> getOrderSummary(){
+        List<OrderClothes> orderClothesList = new ArrayList<>();
+        orderClothesList = orderClothesService.getOrderSummary();
+        return orderClothesList;
     }
 
     @RequestMapping(value = "/getorderbyname", method = RequestMethod.GET)

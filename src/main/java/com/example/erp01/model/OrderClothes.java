@@ -30,6 +30,32 @@ public class OrderClothes {
 
     private Date deadLine;
 
+    private Integer orderSum;
+
+    public OrderClothes(String customerName, String orderName, Integer orderSum, Date orderDate, String season, Date deadLine) {
+        this.customerName = customerName;
+        this.orderName = orderName;
+        this.orderDate = orderDate;
+        this.season = season;
+        this.deadLine = deadLine;
+        this.orderSum = orderSum;
+    }
+
+    public OrderClothes(Integer orderClothesID, String customerName, String purchaseMethod, String orderName, String styleDescription, String clothesVersionNumber, String colorNumber, String colorName, String sizeName, Integer count, Date orderDate, String season, Date deadLine) {
+        this.orderClothesID = orderClothesID;
+        this.customerName = customerName;
+        this.purchaseMethod = purchaseMethod;
+        this.orderName = orderName;
+        this.styleDescription = styleDescription;
+        this.clothesVersionNumber = clothesVersionNumber;
+        this.colorNumber = colorNumber;
+        this.colorName = colorName;
+        this.sizeName = sizeName;
+        this.count = count;
+        this.orderDate = orderDate;
+        this.season = season;
+        this.deadLine = deadLine;
+    }
 
     public OrderClothes(String customerName, String purchaseMethod, String orderName, String styleDescription, String clothesVersionNumber, String colorNumber, String colorName, String sizeName, Integer count, Date orderDate, String season, Date deadLine) {
         this.customerName = customerName;
