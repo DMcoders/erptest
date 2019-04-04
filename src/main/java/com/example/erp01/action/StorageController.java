@@ -5,6 +5,7 @@ import com.example.erp01.service.StorageService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,23 +24,25 @@ public class StorageController {
     @Autowired
     private StorageService storageService;
 
-    @RequestMapping(value = "/instore", method = RequestMethod.POST)
-    public String inStore(@RequestParam("instoreJson")String instoreJson,
+    @RequestMapping(value = "/inStore", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean inStore(@RequestParam("inStoreJson")String instoreJson,
                           ModelMap map){
         JsonParser jsonParser = new JsonParser();
+        boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(instoreJson);
-            String storehouseLocation = json.get("storehouseLocation").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
-            Iterator iterator1 = jsonTailorQcode.entrySet().iterator();
+            String storehouseLocation = json.get("cutStoreLocation").getAsString();
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
-            while(iterator1.hasNext()){
-                Map.Entry entry = (Map.Entry) iterator1.next();
-                tailorQcodeList.add(entry.getValue().toString());
+            while(iterator.hasNext()){
+                JsonPrimitive next = (JsonPrimitive) iterator.next();
+                tailorQcodeList.add(next.toString());
             }
             List<Storage> storageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"","").replace("\"",""));
+                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"",""));
                 storageList.add(storage);
             }
             //Gson gson = new Gson();
@@ -47,16 +50,15 @@ public class StorageController {
             //int res = storageService.inStore(storageJson);
             int res = storageService.inStore(storageList);
             if (0 == res){
-                map.addAttribute("msg","入库成功！");
-            }else{
-                map.addAttribute("msg","入库失败！");
+                //map.addAttribute("msg","入库成功！");
+                result = true;
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
     @RequestMapping(value = "/outstore", method = RequestMethod.POST)
@@ -130,6 +132,13 @@ public class StorageController {
         Gson gson=new Gson();
         String storageStateJson=gson.toJson(storageStateList);
         return storageStateJson;
+    }
+
+    @RequestMapping(value = "/instoreStart")
+    public String intoreStart(Model model){
+        model.addAttribute("bigMenuTag", 2);
+        model.addAttribute("menuTag", 3);
+        return "cutMarket/cutInStore";
     }
 
 }
