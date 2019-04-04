@@ -59,4 +59,14 @@ public class EmbStoreServiceImpl implements EmbStoreService {
         }
         return null;
     }
+
+    @Override
+    public EmbStore getEmbStoreByLocation(String embStoreLocation) {
+        try{
+            return embStoreMapper.getEmbStoreByLocation(embStoreLocation);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

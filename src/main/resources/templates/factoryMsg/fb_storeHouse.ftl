@@ -65,7 +65,7 @@
 </section>
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/qrcode.min.js" type="text/javascript" ></script>
-<script src="/js/factoryMsg/storeHouse.js?t=201903252212"></script>
+<script src="/js/factoryMsg/storeHouse.js?t=201904022212"></script>
 
 </#macro>
 

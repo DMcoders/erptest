@@ -56,6 +56,8 @@ function addStoreHouse(storehouseId,storehouseLocation,storehouseCount) {
                     function(){
                         location.href=basePath+"storeHouseStart";
                     });
+                }else if(data == 3) {
+                    swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，仓库名已存在，请重新输入！</span>",html: true});
                 }else {
                     swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，保存失败！</span>",html: true});
                 }

@@ -56,6 +56,11 @@ public class EmbStoreController {
     @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
     @ResponseBody
     public int addEmbStore(EmbStore embStore){
+        embStore.setEmbStoreID(null);
+        EmbStore store = embStoreService.getEmbStoreByLocation(embStore.getEmbStoreLocation());
+        if(store!=null) {
+            return 3;
+        }
         int res = embStoreService.addEmbStore(embStore);
         return res;
     }
@@ -71,6 +76,10 @@ public class EmbStoreController {
     @RequestMapping(value = "updateembstore", method = RequestMethod.POST)
     @ResponseBody
     public int updateEmbStore(EmbStore embStore){
+        EmbStore store = embStoreService.getEmbStoreByLocation(embStore.getEmbStoreLocation());
+        if(store!=null && store.getEmbStoreID().intValue()!=embStore.getEmbStoreID().intValue()) {
+            return 3;
+        }
         int res = embStoreService.updateEmbStore(embStore);
         return res;
     }

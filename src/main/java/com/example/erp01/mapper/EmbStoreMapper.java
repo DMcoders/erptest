@@ -18,4 +18,6 @@ public interface EmbStoreMapper {
 
     List<EmbStore> getAllEmbStore();
 
+    EmbStore getEmbStoreByLocation(String embStoreLocation);
+
 }

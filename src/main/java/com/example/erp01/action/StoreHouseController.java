@@ -42,6 +42,10 @@ public class StoreHouseController {
     @ResponseBody
     public int addStoreHouse(StoreHouse storeHouse){
         storeHouse.setStorehouseID(null);
+        StoreHouse house = getStoreHouseByQcode(storeHouse.getStorehouseLocation());
+        if(house!=null) {
+            return 3;
+        }
         int res = storeHouseService.addStoreHouse(storeHouse);
         return res;
     }
@@ -55,6 +59,10 @@ public class StoreHouseController {
     @RequestMapping(value = "/updatestorehouse")
     @ResponseBody
     public int updateStoreHouse(StoreHouse storeHouse){
+        StoreHouse house = getStoreHouseByQcode(storeHouse.getStorehouseLocation());
+        if(house!=null && house.getStorehouseID().intValue()!=storeHouse.getStorehouseID().intValue()) {
+            return 3;
+        }
         int res = storeHouseService.updateStoreHouse(storeHouse);
         return res;
 

@@ -65,7 +65,7 @@
 </section>
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/qrcode.min.js" type="text/javascript" ></script>
-<script src="/js/factoryMsg/embStore.js?t=201903272212"></script>
+<script src="/js/factoryMsg/embStore.js?t=201904042212"></script>
 
 </#macro>
 

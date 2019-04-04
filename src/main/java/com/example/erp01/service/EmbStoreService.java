@@ -16,4 +16,6 @@ public interface EmbStoreService {
 
     List<EmbStore> getAllEmbStore();
 
+    EmbStore getEmbStoreByLocation(String embStoreLocation);
+
 }
