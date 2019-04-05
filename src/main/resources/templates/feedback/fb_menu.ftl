@@ -24,7 +24,7 @@
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">输入裁片信息</span> </a></li>
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">扎号信息</span> </a></li>
-                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">裁片入库</span> </a></li>
+                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/instoreStart"><span class="liActive">裁片入库</span> </a></li>
                                 <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">裁片调库</span> </a></li>
                                 <li<#if menuTag==5> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">库存信息</span> </a></li>
                                 <li<#if menuTag==6> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/opaStart"><span class="liActive">花片出厂</span> </a></li>
@@ -38,8 +38,8 @@
                             <span>衣胚超市</span> </a>
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embInStoreStart"><span class="liActive">衣胚入库</span> </a></li>
-                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">衣胚调库</span> </a></li>
-                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">衣胚库存</span> </a></li>
+                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embOutStoreStart"><span class="liActive">衣胚出库</span> </a></li>
+                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStoreStockStart#"><span class="liActive">衣胚库存</span> </a></li>
                             </ul>
                         </li>
 
