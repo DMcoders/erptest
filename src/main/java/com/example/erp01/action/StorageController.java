@@ -141,6 +141,12 @@ public class StorageController {
         return "cutMarket/cutInStore";
     }
 
+    /**
+     * 没有测试
+     * @param matchJson
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/getmatch", method = RequestMethod.GET)
     @ResponseBody
     public List<String> getMatch(@RequestParam("matchJson")String matchJson,
