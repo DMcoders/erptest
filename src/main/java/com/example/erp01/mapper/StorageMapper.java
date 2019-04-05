@@ -17,4 +17,6 @@ public interface StorageMapper {
 
     List<Storage> getStorageState();
 
+    List<String> getMatch(List<String> tailorQcodeList);
+
 }

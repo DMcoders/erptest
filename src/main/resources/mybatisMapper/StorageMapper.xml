@@ -18,6 +18,13 @@
         </foreach>
     </delete>
 
+    <select id="getMatch" parameterType="java.util.List" resultType="java.util.List">
+        SELECT storehouseLocation FROM storage WHERE tailorQcode IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
     <select id="getStorageState" resultType="map">
         SELECT storehouseLocation,COUNT(*) as storageState  FROM storage GROUP BY storehouseLocation
     </select>

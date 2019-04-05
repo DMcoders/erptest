@@ -141,4 +141,28 @@ public class StorageController {
         return "cutMarket/cutInStore";
     }
 
+    @RequestMapping(value = "/getmatch", method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> getMatch(@RequestParam("matchJson")String matchJson,
+                           ModelMap map){
+        JsonParser jsonParser = new JsonParser();
+        try{
+            JsonArray tailorQcodeArray = (JsonArray) jsonParser.parse(matchJson);
+            Iterator iterator = tailorQcodeArray.iterator();
+            List<String> tailorQcodeList = new ArrayList<>();
+            while(iterator.hasNext()){
+                JsonPrimitive next = (JsonPrimitive) iterator.next();
+                tailorQcodeList.add(next.toString());
+            }
+            List<String> locationList = storageService.getMatch(tailorQcodeList);
+            return locationList;
+        }catch (JsonIOException e){
+            e.printStackTrace();
+        }catch (JsonSyntaxException e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 }
