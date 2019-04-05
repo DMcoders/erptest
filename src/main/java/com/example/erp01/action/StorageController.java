@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 //裁片出入库基本操作，包括裁片入库，裁片调库，裁片出库等
-@Controller
+@Controller(value = "/storage")
 public class StorageController {
 
     @Autowired

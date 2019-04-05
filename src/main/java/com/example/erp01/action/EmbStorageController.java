@@ -19,7 +19,7 @@ import java.util.Map;
 
 
 //衣胚出入库相关操作，出库，入库等
-@Controller
+@Controller(value = "/emb")
 public class EmbStorageController {
 
     @Autowired

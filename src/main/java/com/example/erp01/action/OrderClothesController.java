@@ -18,7 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Controller
+@Controller(value = "/order")
 public class OrderClothesController {
 
     @Autowired

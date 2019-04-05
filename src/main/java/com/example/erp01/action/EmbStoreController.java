@@ -21,7 +21,7 @@ import java.util.Map;
 
 //衣胚仓库相关操作，仓库信息维护，增加衣胚仓库，删除衣胚仓库，衣胚仓库信息维护
 
-@Controller
+@Controller(value = "/embstore")
 public class EmbStoreController {
 
     @Autowired
