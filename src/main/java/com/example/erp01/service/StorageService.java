@@ -14,4 +14,6 @@ public interface StorageService {
     int changeStore(String changestoreJson);
 
     List<Storage> getStorageState();
+
+    List<String> getMatch(List<String> tailorQcodeList);
 }
