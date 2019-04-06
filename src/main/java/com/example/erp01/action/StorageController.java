@@ -87,19 +87,20 @@ public class StorageController {
         return "index";
     }
 
-    @RequestMapping(value = "/changestore",method = RequestMethod.POST)
-    public String changeStore(@RequestParam("changestoreJson")String changestoreJson,
+    @RequestMapping(value = "/changeStore",method = RequestMethod.POST)
+    public boolean changeStore(@RequestParam("changestoreJson")String changestoreJson,
                               ModelMap map){
         JsonParser jsonParser = new JsonParser();
+        boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(changestoreJson);
             String storehouseLocation = json.get("storehouseLocation").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
-            Iterator iterator2 = jsonTailorQcode.entrySet().iterator();
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator2 = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator2.hasNext()){
-                Map.Entry entry = (Map.Entry) iterator2.next();
-                tailorQcodeList.add(entry.getValue().toString().replace("\"","").replace("\"",""));
+                JsonPrimitive next = (JsonPrimitive) iterator2.next();
+                tailorQcodeList.add(next.toString().replace("\"",""));
             }
             int res1 = storageService.outStore(tailorQcodeList);
             List<Storage> storageList = new ArrayList<>();
@@ -111,16 +112,15 @@ public class StorageController {
             //String storageJson = gson.toJson(storageList);
             int res2 = storageService.inStore(storageList);
             if (0 == res1 && 0 == res2){
-                map.addAttribute("msg","调库成功！");
-            }else{
-                map.addAttribute("msg","调库失败！");
+                //map.addAttribute("msg","调库成功！");
+                result = true;
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
 //    获取仓库存储状态信息
