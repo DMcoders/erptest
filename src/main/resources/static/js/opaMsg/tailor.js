@@ -56,45 +56,103 @@ function printer() {
         swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请选择要打印的信息！</span>",html: true});
     }else{
         console.log(tailorList);
-        $("#tailorBody input[type='checkbox']:checked").each(function () {
-            $("#printOrderName").text($(this).parent().parent().find("td").eq(2).text());
-            $("#printCustomerName").text($(this).parent().parent().find("td").eq(3).text());
-            $("#printColorName").text($(this).parent().parent().find("td").eq(4).text());
-            $("#printJarName").text($(this).parent().parent().find("td").eq(5).text());
-            $("#printBedNumber").text($(this).parent().parent().find("td").eq(6).text());
-            $("#printLayerCount").text($(this).parent().parent().find("td").eq(7).text());
-            $("#printPackageNumber").text($(this).parent().parent().find("td").eq(8).text());
-            $("#printPartName").text($(this).parent().parent().find("td").eq(9).text());
-            $("#printSizeName").text($(this).parent().parent().find("td").eq(10).text());
+        $("div[id^='qrcode']").remove();
+        $("div[id^='page']").remove();
+        $("#tailorBody input[type='checkbox']:checked").each(function (index) {
+            // $("#printOrderName").text($(this).parent().parent().find("td").eq(2).text());
+            // $("#printCustomerName").text($(this).parent().parent().find("td").eq(3).text());
+            // $("#printColorName").text($(this).parent().parent().find("td").eq(4).text());
+            // $("#printJarName").text($(this).parent().parent().find("td").eq(5).text());
+            // $("#printBedNumber").text($(this).parent().parent().find("td").eq(6).text());
+            // $("#printLayerCount").text($(this).parent().parent().find("td").eq(7).text());
+            // $("#printPackageNumber").text($(this).parent().parent().find("td").eq(8).text());
+            // $("#printPartName").text($(this).parent().parent().find("td").eq(9).text());
+            // $("#printSizeName").text($(this).parent().parent().find("td").eq(10).text());
+            // var tailorQcode = $(this).parent().parent().find("td").eq(11).text();
+            // var qrcode = new QRCode(document.getElementById("qrcode"), {
+            //     width : 150,
+            //     height : 150
+            // });
+            // qrcode.makeCode(tailorQcode);
+            var id = index+1;
+            var pageId = "page"+id;
+            var qrcodeId = "qrcode"+id;
+            var div = $("<div id='"+pageId+"'></div>");
+            div.appendTo(document.body);
+            div.append("<table style=\"border-spacing: 10px;\">\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">订单号</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printOrderName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(2).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">客户</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printCustomerName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(3).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">颜色</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printColorName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(4).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">缸号</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printJarName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(5).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">床号</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printBedNumber\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(6).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">数量</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printLayerCount\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(7).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">扎号</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printPackageNumber\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(8).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">部位</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printPartName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(9).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                    <tr>\n" +
+                "                        <td style=\"text-align: right\">尺码</td>\n" +
+                "                        <td style=\"text-align: left\"><span id=\"printSizeName\" style=\"margin-left: 20px\">"+$(this).parent().parent().find('td').eq(10).text()+"</span></td>\n" +
+                "                    </tr>\n" +
+                "                </table>" +
+                "                <div id='"+qrcodeId+"' style=\"width:130px; height:130px;text-align:left\"></div>\n" +
+                "");
             var tailorQcode = $(this).parent().parent().find("td").eq(11).text();
-            var qrcode = new QRCode(document.getElementById("qrcode"), {
-                width : 150,
-                height : 150
+            var qrcode = new QRCode(document.getElementById(qrcodeId), {
+                width : 130,
+                height : 130
             });
             qrcode.makeCode(tailorQcode);
-            var myDoc = {
-                documents:document,   // 要打印的div 对象在当前文档document中
-                copyrights:'杰创软件拥有版权  www.jatools.com'  // 版权声明,必须
-            };
-            var jcp = getJCP();
-            jcp.print().print(myDoc,false);//直接打印
+        });
 
-            $('#qrcode').empty();
-        });
-        $.ajax({
-            url: "/savetailordata",
-            data: {tailorList: JSON.stringify(tailorList)},
-            success:function(data){
-                if(data == 0) {
-                    swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，打印成功！</span>",html: true});
-                }else {
-                    swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，打印失败！</span>",html: true});
-                }
+        var myDoc = {
+            settings:{
+                paperWidth:80,
+                paperHeight:"auto"
             },
-            error:function(){
-                swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
-            }
-        });
+            documents:document,   // 要打印的div 对象在当前文档document中
+            copyrights:'杰创软件拥有版权  www.jatools.com'  // 版权声明,必须
+        };
+        var jcp = getJCP();
+        jcp.printPreview(myDoc,false);//直接打印
+
+        $('#qrcode').empty();
+        // $.ajax({
+        //     url: "/savetailordata",
+        //     data: {tailorList: JSON.stringify(tailorList)},
+        //     success:function(data){
+        //         if(data == 0) {
+        //             swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，打印成功！</span>",html: true});
+        //         }else {
+        //             swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，打印失败！</span>",html: true});
+        //         }
+        //     },
+        //     error:function(){
+        //         swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
+        //     }
+        // });
     }
 }
 
@@ -124,14 +182,14 @@ function showQrCode(obj) {
         message: $('#qrCodeWin')
     });
     // $('#qrcode').qrcode(storehouseLocation);
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width : 150,
-        height : 150
+    var qrcode = new QRCode(document.getElementById("qrCode"), {
+        width : 130,
+        height : 130
     });
     qrcode.makeCode(tailorQcode);
     $("#closeQrCodeWin").unbind("click").bind("click", function () {
         $.unblockUI();
-        $('#qrcode').empty();
+        $('#qrCode').empty();
     });
 }
 

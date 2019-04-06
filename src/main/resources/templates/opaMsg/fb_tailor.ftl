@@ -30,7 +30,7 @@
                                             <#--<a href="#" style="color:#3e8eea;font-size:20px" onclick="search()">查找</a>-->
                                         <#--</div>-->
                                     <#--</div>-->
-                                    <div style="text-align: center;font-family: PingFangSC-Semibold,sans-serif;overflow-x: auto;overflow-y: auto;max-height: 400px">
+                                    <div style="text-align: center;font-family: PingFangSC-Semibold,sans-serif;overflow-x: auto;overflow-y: auto;max-height: 350px">
                                         <table class="table table-striped" id="tailorTable" style="width:1500px">
                                             <thead>
                                             <tr bgcolor="#ffcb99" style="color: black;">
@@ -54,13 +54,13 @@
                                             </tbody>
                                         </table>
                                     </div>
-
+                                    <div class="col-md-12" style="text-align: center;margin-top: 20px">
+                                        <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold, sans-serif;"  onclick="printer()">打印</button>
+                                    </div>
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12" style="text-align: center;margin-top: 20px">
-                            <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold, sans-serif;"  onclick="printer()">打印</button>
-                        </div>
+
                     </div>
 
                 </div>
@@ -83,7 +83,7 @@
 <script src="/js/common/b.tabs.js"></script>
 <script src="/js/common/qrcode.js" type="text/javascript" ></script>
 <script src="/js/common/jcpfree.js" type="text/javascript" ></script>
-<script src="/js/opaMsg/tailor.js?t=201904072112"></script>
+<script src="/js/opaMsg/tailor.js?t=201904072212"></script>
 
 </#macro>
 
