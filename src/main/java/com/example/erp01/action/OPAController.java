@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@Controller(value = "/opa")
 public class OPAController {
 
     @Autowired
@@ -39,6 +39,37 @@ public class OPAController {
         List<OPA>  opaList = getAllOPA();
         model.addAttribute("opaList",opaList);
         return "opaMsg/opa";
+    }
+
+    /**
+     * 进入花片回场页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/opaBackStart")
+    public String opaBackStart(Model model) {
+        model.addAttribute ("bigMenuTag", 2);
+        model.addAttribute ("menuTag", 7);
+        return "cutMarket/opaBack";
+    }
+
+    /**
+     * 进入裁片入库页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/opaMatchStart")
+    public String opaMatchStart(Model model) {
+        model.addAttribute ("bigMenuTag", 2);
+        model.addAttribute ("menuTag", 8);
+        return "cutMarket/opaMatch";
+    }
+
+    @RequestMapping("/changeStoreStart")
+    public String changeStoreStart(Model model) {
+        model.addAttribute ("bigMenuTag", 2);
+        model.addAttribute ("menuTag",4);
+        return "cutMarket/changeStore";
     }
 
     @RequestMapping(value = "/addopa")

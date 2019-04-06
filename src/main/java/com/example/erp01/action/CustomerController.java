@@ -21,7 +21,7 @@ import java.util.List;
 
 //顾客信息相关操作
 
-@Controller
+@Controller(value = "/customer")
 public class CustomerController {
 
     @Autowired

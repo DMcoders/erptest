@@ -48,15 +48,29 @@ public class StorageServiceImpl implements StorageService {
 
     @Override
     public List<Storage> getStorageState() {
+        List<Storage> storageArrayList = new ArrayList<>();
         try{
-            List<Storage> storageArrayList = new ArrayList<>();
-
             storageArrayList = storageMapper.getStorageState();
 
             return storageArrayList;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return storageArrayList;
+    }
+
+    @Override
+    public List<String> getMatch(List<String> tailorQcodeList) {
+
+        List<String> locationList = new ArrayList<>();
+        for(String tailorQcode : tailorQcodeList) {
+            try{
+                String location = storageMapper.getMatch(tailorQcode);
+                locationList.add(location);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return locationList;
     }
 }

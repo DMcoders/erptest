@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@Controller(value = "/storehouse")
 public class StoreHouseController {
 
     @Autowired

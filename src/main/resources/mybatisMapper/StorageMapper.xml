@@ -18,6 +18,10 @@
         </foreach>
     </delete>
 
+    <select id="getMatch" parameterType="String" resultType="String">
+        SELECT storehouseLocation FROM storage WHERE tailorQcode = #{tailorQcode}
+    </select>
+
     <select id="getStorageState" resultType="map">
         SELECT storehouseLocation,COUNT(*) as storageState  FROM storage GROUP BY storehouseLocation order by storehouseLocation asc;
     </select>

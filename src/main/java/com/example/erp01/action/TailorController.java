@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
 
 //裁片基本操作，包括生成裁片信息，保存裁片信息，查询裁片数据等
-@Controller
+@Controller(value = "/tailor")
 public class TailorController {
     @Autowired
     private TailorService tailorService;

@@ -21,7 +21,7 @@ import java.util.Map;
 
 //用户基本操作，新增，删除，登录等操作
 
-@Controller
+@Controller(value = "/user")
 public class UserController {
 
 

@@ -21,7 +21,7 @@ import java.util.Map;
 
 //衣胚仓库相关操作，仓库信息维护，增加衣胚仓库，删除衣胚仓库，衣胚仓库信息维护
 
-@Controller
+@Controller(value = "/embstore")
 public class EmbStoreController {
 
     @Autowired
@@ -40,6 +40,18 @@ public class EmbStoreController {
     }
 
     /**
+     * 进入衣胚出库页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/embOutStoreStart")
+    public String embOutStoreStart(Model model) {
+        model.addAttribute("bigMenuTag", 3);
+        model.addAttribute("menuTag", 2);
+        return "embMarket/embOutStore";
+    }
+
+    /**
      * 进入衣胚仓库页面
      * @param model
      * @return
@@ -52,6 +64,14 @@ public class EmbStoreController {
         model.addAttribute("embStores",embStores);
         return "factoryMsg/embStore";
     }
+
+    @RequestMapping("/embStoreStockStart")
+    public String mebStoreStockStart(Model model) {
+        model.addAttribute("bigMenuTag", 3);
+        model.addAttribute("menuTag", 3);
+        return "/embMarket/embStoreStock";
+    }
+
 
     @RequestMapping(value = "/addembstore", method = RequestMethod.POST)
     @ResponseBody

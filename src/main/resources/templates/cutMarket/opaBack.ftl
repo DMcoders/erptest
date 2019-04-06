@@ -11,7 +11,7 @@
         <section class="hbox stretch">
             <#include "../feedback/fb_menu.ftl">
             <@aside></@aside>
-            <#include "fb_embInStore.ftl">
+            <#include "fb_opaBack.ftl">
             <@search> </@search>
         </section>
     </section>

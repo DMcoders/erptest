@@ -2,6 +2,7 @@ package com.example.erp01.mapper;
 
 import com.example.erp01.model.Storage;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,5 +17,7 @@ public interface StorageMapper {
     int changeStore(String changestoreJson);
 
     List<Storage> getStorageState();
+
+    String getMatch(String tailorQcode);
 
 }

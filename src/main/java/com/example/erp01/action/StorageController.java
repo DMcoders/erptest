@@ -15,29 +15,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
 
 //裁片出入库基本操作，包括裁片入库，裁片调库，裁片出库等
-@Controller
+@Controller(value = "/storage")
 public class StorageController {
 
     @Autowired
     private StorageService storageService;
 
-    @RequestMapping(value = "/instore", method = RequestMethod.POST)
-    public String inStore(@RequestParam("instoreJson")String instoreJson,
+    @RequestMapping(value = "/inStore", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean inStore(@RequestParam("inStoreJson")String instoreJson,
                           ModelMap map){
         JsonParser jsonParser = new JsonParser();
+        boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(instoreJson);
-            String storehouseLocation = json.get("storehouseLocation").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
-            Iterator iterator1 = jsonTailorQcode.entrySet().iterator();
+            String storehouseLocation = json.get("cutStoreLocation").getAsString();
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
-            while(iterator1.hasNext()){
-                Map.Entry entry = (Map.Entry) iterator1.next();
-                tailorQcodeList.add(entry.getValue().toString());
+            while(iterator.hasNext()){
+                JsonPrimitive next = (JsonPrimitive) iterator.next();
+                tailorQcodeList.add(next.toString());
             }
             List<Storage> storageList = new ArrayList<>();
             for (int i=0; i<tailorQcodeList.size(); i++){
-                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"","").replace("\"",""));
+                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"",""));
                 storageList.add(storage);
             }
             //Gson gson = new Gson();
@@ -45,16 +47,15 @@ public class StorageController {
             //int res = storageService.inStore(storageJson);
             int res = storageService.inStore(storageList);
             if (0 == res){
-                map.addAttribute("msg","入库成功！");
-            }else{
-                map.addAttribute("msg","入库失败！");
+                //map.addAttribute("msg","入库成功！");
+                result = true;
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
     @RequestMapping(value = "/outstore", method = RequestMethod.POST)
@@ -83,19 +84,20 @@ public class StorageController {
         return "index";
     }
 
-    @RequestMapping(value = "/changestore",method = RequestMethod.POST)
-    public String changeStore(@RequestParam("changestoreJson")String changestoreJson,
+    @RequestMapping(value = "/changeStore",method = RequestMethod.POST)
+    public boolean changeStore(@RequestParam("changestoreJson")String changestoreJson,
                               ModelMap map){
         JsonParser jsonParser = new JsonParser();
+        boolean result = false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(changestoreJson);
             String storehouseLocation = json.get("storehouseLocation").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
-            Iterator iterator2 = jsonTailorQcode.entrySet().iterator();
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator2 = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator2.hasNext()){
-                Map.Entry entry = (Map.Entry) iterator2.next();
-                tailorQcodeList.add(entry.getValue().toString().replace("\"","").replace("\"",""));
+                JsonPrimitive next = (JsonPrimitive) iterator2.next();
+                tailorQcodeList.add(next.toString().replace("\"",""));
             }
             int res1 = storageService.outStore(tailorQcodeList);
             List<Storage> storageList = new ArrayList<>();
@@ -107,16 +109,15 @@ public class StorageController {
             //String storageJson = gson.toJson(storageList);
             int res2 = storageService.inStore(storageList);
             if (0 == res1 && 0 == res2){
-                map.addAttribute("msg","调库成功！");
-            }else{
-                map.addAttribute("msg","调库失败！");
+                //map.addAttribute("msg","调库成功！");
+                result = true;
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
     }
 
 
@@ -141,6 +142,46 @@ public class StorageController {
         Gson gson=new Gson();
         String storageStateJson=gson.toJson(storageStateList);
         return storageStateJson;
+    }
+
+    @RequestMapping(value = "/instoreStart")
+    public String intoreStart(Model model){
+        model.addAttribute("bigMenuTag", 2);
+        model.addAttribute("menuTag", 3);
+        return "cutMarket/cutInStore";
+    }
+
+    /**
+     * 没有测试
+     * @param matchJson
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/getMatch", method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> getMatch(@RequestParam("matchJson")String matchJson,
+                           ModelMap map){
+        JsonParser jsonParser = new JsonParser();
+        try{
+            JsonObject json = (JsonObject) jsonParser.parse(matchJson);
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator = jsonTailorQcode.iterator();
+            List<String> tailorQcodeList = new ArrayList<>();
+            while(iterator.hasNext()){
+                JsonPrimitive next = (JsonPrimitive) iterator.next();
+                String tailorQcode = next.toString().replace("\"", "");
+                tailorQcodeList.add(tailorQcode);
+            }
+            List<String> locationList = storageService.getMatch(tailorQcodeList);
+
+            return locationList;
+        }catch (JsonIOException e){
+            e.printStackTrace();
+        }catch (JsonSyntaxException e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
 }

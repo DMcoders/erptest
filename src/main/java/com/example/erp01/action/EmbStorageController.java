@@ -20,7 +20,7 @@ import java.util.Map;
 
 
 //衣胚出入库相关操作，出库，入库等
-@Controller
+@Controller(value = "/emb")
 public class EmbStorageController {
 
     @Autowired
@@ -67,33 +67,33 @@ public class EmbStorageController {
 
     }
 
-    @RequestMapping(value = "/emboutstore", method = RequestMethod.POST)
-    public String embOutStore(@RequestParam("embOutStoreJson")String embOutStoreJson,
+    @RequestMapping(value = "/embOutstore", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean embOutStore(@RequestParam("embOutStoreJson")String embOutStoreJson,
                               ModelMap map){
 
         JsonParser jsonParser = new JsonParser();
+        boolean result =false;
         try{
             JsonObject json = (JsonObject) jsonParser.parse(embOutStoreJson);
             String embStoreLocation = json.get("embStoreLocation").getAsString();
-            JsonObject jsonTailorQcode = json.get("tailorQcode").getAsJsonObject();
-            Iterator iterator = jsonTailorQcode.entrySet().iterator();
+            JsonArray jsonArray = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator = jsonArray.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator.hasNext()){
-                Map.Entry entry = (Map.Entry) iterator.next();
-                tailorQcodeList.add(entry.getValue().toString().replace("\"","").replace("\"",""));
+                JsonPrimitive next = (JsonPrimitive) iterator.next();
+                tailorQcodeList.add(next.toString().replace("\"",""));
             }
             int res = embStorageService.embOutStore(tailorQcodeList);
             if (0 == res){
-                map.addAttribute("msg","出库成功！");
-            }else{
-                map.addAttribute("msg","出库失败！");
+                result = true;
             }
         }catch (JsonIOException e){
             e.printStackTrace();
         }catch (JsonSyntaxException e){
             e.printStackTrace();
         }
-        return "index";
+        return result;
 
     }
 
