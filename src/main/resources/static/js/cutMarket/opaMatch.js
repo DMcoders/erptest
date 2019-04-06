@@ -58,24 +58,18 @@ function opaMatch() {
     matchJson.tailorQcode = tailorQcode;
 
     $.ajax({
-        url: basePath + "getmatch",
-        type:'POST',
+        url: basePath + "getMatch",
+        type:'GET',
         data: {matchJson:JSON.stringify(matchJson)},
         success: function (data) {
-            if(data) {
-                $.unblockUI();
-                swal({
-                        type:"success",
-                        title:"",
-                        text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，花片回场成功！</span>",
-                        html: true
-                    },
-                    function(){
-                        location.href=basePath+"opaBackStart";
-                    });
-            }else {
-                swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，花片回场失败！</span>",html: true});
-            }
+            console.log(data);
+            var goodsLocation = "";
+            $.each(data, function(index, item) {
+                goodsLocation += item;
+                goodsLocation += "\n";
+            })
+            $("#storeLocation").val(goodsLocation);
+
         },
         error: function () {
             swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务发生未知错误～</span>",html: true});

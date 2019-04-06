@@ -18,11 +18,8 @@
         </foreach>
     </delete>
 
-    <select id="getMatch" parameterType="java.util.List" resultType="java.util.List">
-        SELECT storehouseLocation FROM storage WHERE tailorQcode IN
-        <foreach collection="list" item="item" open="(" separator="," close=")">
-            #{item}
-        </foreach>
+    <select id="getMatch" parameterType="String" resultType="String">
+        SELECT storehouseLocation FROM storage WHERE tailorQcode = #{tailorQcode}
     </select>
 
     <select id="getStorageState" resultType="map">

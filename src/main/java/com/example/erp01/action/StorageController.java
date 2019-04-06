@@ -147,20 +147,23 @@ public class StorageController {
      * @param map
      * @return
      */
-    @RequestMapping(value = "/getmatch", method = RequestMethod.GET)
+    @RequestMapping(value = "/getMatch", method = RequestMethod.GET)
     @ResponseBody
     public List<String> getMatch(@RequestParam("matchJson")String matchJson,
                            ModelMap map){
         JsonParser jsonParser = new JsonParser();
         try{
-            JsonArray tailorQcodeArray = (JsonArray) jsonParser.parse(matchJson);
-            Iterator iterator = tailorQcodeArray.iterator();
+            JsonObject json = (JsonObject) jsonParser.parse(matchJson);
+            JsonArray jsonTailorQcode = json.get("tailorQcode").getAsJsonArray();
+            Iterator iterator = jsonTailorQcode.iterator();
             List<String> tailorQcodeList = new ArrayList<>();
             while(iterator.hasNext()){
                 JsonPrimitive next = (JsonPrimitive) iterator.next();
-                tailorQcodeList.add(next.toString());
+                String tailorQcode = next.toString().replace("\"", "");
+                tailorQcodeList.add(tailorQcode);
             }
             List<String> locationList = storageService.getMatch(tailorQcodeList);
+
             return locationList;
         }catch (JsonIOException e){
             e.printStackTrace();

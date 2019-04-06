@@ -63,11 +63,13 @@ public class StorageServiceImpl implements StorageService {
     public List<String> getMatch(List<String> tailorQcodeList) {
 
         List<String> locationList = new ArrayList<>();
-        try{
-            locationList = storageMapper.getMatch(tailorQcodeList);
-            return locationList;
-        }catch (Exception e){
-            e.printStackTrace();
+        for(String tailorQcode : tailorQcodeList) {
+            try{
+                String location = storageMapper.getMatch(tailorQcode);
+                locationList.add(location);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return locationList;
     }
