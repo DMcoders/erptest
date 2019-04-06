@@ -19,7 +19,7 @@
     </delete>
 
     <select id="getStorageState" resultType="map">
-        SELECT storehouseLocation,COUNT(*) as storageState  FROM storage GROUP BY storehouseLocation
+        SELECT storehouseLocation,COUNT(*) as storageState  FROM storage GROUP BY storehouseLocation order by storehouseLocation asc;
     </select>
 
 

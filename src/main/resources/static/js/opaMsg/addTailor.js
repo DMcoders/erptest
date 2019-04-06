@@ -221,9 +221,9 @@ function addOrder() {
             tailorDataJson:JSON.stringify(tailorDataJson)
         },
         success: function (data) {
-            var json = JSON.parse(data);
-            console.log(json);
-            if(data) {
+            if(data && data!= "null") {
+                var json = JSON.parse(data);
+                console.log(json);
                 swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，生成成功！</span>",html: true},function () {
                     var href = $("li.active a[data-toggle='tab']",parent.document).attr("href");
                     var tabId = href.substr(7);
