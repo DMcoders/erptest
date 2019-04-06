@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/handsontable.full.min.css" type="text/css">
     <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
     <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
-    <script src="/js/orderMsg/addOrder.js?t=201904022212"></script>
+    <script src="/js/orderMsg/addOrder.js?t=201904062312"></script>
 </head>
 
 <body>

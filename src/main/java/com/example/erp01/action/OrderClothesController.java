@@ -155,18 +155,20 @@ public class OrderClothesController {
 
     @RequestMapping(value = "/getorderhint",method = RequestMethod.GET)
     @ResponseBody
-    List<String> getOrderHint(@RequestParam("subOrderName")String subOrderName){
-        List<String> orderNameList = new ArrayList<>();
-        orderNameList = orderClothesService.getOrderHint(subOrderName);
-        return orderNameList;
+    public Map<String,Object> getOrderHint(@RequestParam("subOrderName")String subOrderName){
+        Map<String,Object> result = new HashMap<>();
+        List<String> orderNameList = orderClothesService.getOrderHint(subOrderName);
+        result.put("orderNameList",orderNameList);
+        return result;
     }
 
     @RequestMapping(value = "/getcolorhint",method = RequestMethod.GET)
     @ResponseBody
-    List<String> getColorHint(@RequestParam("orderName")String orderName){
-        List<String> colorList = new ArrayList<>();
-        colorList = orderClothesService.getColorHint(orderName);
-        return colorList;
+    public Map<String,Object> getColorHint(@RequestParam("orderName")String orderName){
+        Map<String,Object> result = new HashMap<>();
+        List<String> colorList = orderClothesService.getColorHint(orderName);
+        result.put("colorList",colorList);
+        return result;
     }
 
     @RequestMapping(value = "/getcustomernamebyordername",method = RequestMethod.GET)

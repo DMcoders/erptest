@@ -5,6 +5,7 @@ import com.example.erp01.service.StorageService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -119,6 +120,19 @@ public class StorageController {
             e.printStackTrace();
         }
         return "index";
+    }
+
+
+    /**
+     * 进入库存信息页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/storageStateStart")
+    public String storageStateStart(Model model){
+        model.addAttribute("bigMenuTag",2);
+        model.addAttribute("menuTag",5);
+        return "opaMsg/storageState";
     }
 
 //    获取仓库存储状态信息

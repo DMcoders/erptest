@@ -11,8 +11,8 @@ $(document).ready(function () {
         autoColumnSize:true,
         dropdownMenu: true,
         contextMenu:true,
-        minRows:16,
-        minCols:20,
+        minRows:12,
+        minCols:18,
         // colWidths:70,
         language:'zh-CN',
         licenseKey: 'non-commercial-and-evaluation'
@@ -76,7 +76,7 @@ function addOrder() {
         var titleRow = data[0];
         var endIndex = titleRow.length;
         $.each(titleRow,function (index, item) {
-            if(item==null && item=="") {
+            if(item==null || item=="") {
                 endIndex = index;
                 return false;
             }

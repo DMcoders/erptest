@@ -6,6 +6,7 @@ import com.example.erp01.service.StorageService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -128,6 +129,19 @@ public class EmbStorageController {
             e.printStackTrace();
         }
         return "index";
+    }
+
+
+    /**
+     * 进入衣胚库存页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/embStorageStateStart")
+    public String embStorageStateStart(Model model){
+        model.addAttribute("bigMenuTag",3);
+        model.addAttribute("menuTag",3);
+        return "embMarket/embStorageState";
     }
 
 //    获取裁片仓库信息

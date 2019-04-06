@@ -43,6 +43,7 @@ function createOrderTable() {
                 first : "第一页",
                 last : "最后一页"
             },
+            search:"搜索：",
             zeroRecords : "没有内容",//table tbody内容为空时，tbody的内容。
             //下面三者构成了总体的左下角的内容。
             info : "第 _PAGE_/_PAGES_页 共 _TOTAL_条记录",//左下角的信息显示，大写的词为关键字。
@@ -54,13 +55,13 @@ function createOrderTable() {
         "paging": true,
         // "ordering" : false,
         "info": false,
-        searching:false,
+        searching:true,
         lengthChange:false,
         "columns": [
         {
             "data": null,
             "title":"序号",
-            "width":"5%",
+            "width":"8%",
             "defaultContent": "",
             "sClass": "text-center",
             render: function (data, type, row, meta) {
@@ -70,7 +71,7 @@ function createOrderTable() {
         },{
             "data": "orderName",
             "title":"订单号",
-            "width":"15%",
+            "width":"13%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
@@ -94,7 +95,7 @@ function createOrderTable() {
         }, {
             "data": "season",
             "title":"季度",
-            "width":"10%",
+            "width":"7%",
             "defaultContent": "",
             "sClass": "text-center",
         }, {
@@ -106,7 +107,7 @@ function createOrderTable() {
         }, {
             "data": "orderName",
             "title": "操作",
-            "width":"10%",
+            "width":"12%",
             "defaultContent": "",
             "sClass": "text-center",
         }
