@@ -23,10 +23,10 @@
                             <span>裁片超市</span> </a>
                             <ul class="nav lt">
                                 <#--<li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">输入裁片信息</span> </a></li>-->
-                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">扎号信息</span> </a></li>
-                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">裁片入库</span> </a></li>
-                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">裁片调库</span> </a></li>
-                                <li<#if menuTag==5> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="#"><span class="liActive">库存信息</span> </a></li>
+                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/tailorStart"><span class="liActive">扎号信息</span> </a></li>
+                                <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/instoreStart"><span class="liActive">裁片入库</span> </a></li>
+                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/changeStoreStart"><span class="liActive">裁片调库</span> </a></li>
+                                <li<#if menuTag==5> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/storageStateStart"><span class="liActive">库存信息</span> </a></li>
                                 <li<#if menuTag==6> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/opaStart"><span class="liActive">花片出厂</span> </a></li>
                                 <li<#if menuTag==7> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/opaBackStart"><span class="liActive">花片回厂</span> </a></li>
                                 <li<#if menuTag==8> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/opaMatchStart"><span class="liActive">花片配对</span> </a></li>
