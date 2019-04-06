@@ -32,7 +32,7 @@ function addTailor(orderName) {
         $('#mainFrameTabs').bTabsAdd("tabId" + tabId, "裁片信息录入", "addTailorStart");
     }
     tabId++;
-    calcHeight();
+    // calcHeight();
 }
 
 
@@ -170,7 +170,8 @@ function showQrCode(obj) {
     $.blockUI({
         css: {
             width: '20%',
-            top: '15%',
+            top: '10%',
+            left:'45%',
             border: 'none',
             padding: '15px',
             backgroundColor: '#fff',
@@ -195,5 +196,5 @@ function showQrCode(obj) {
 
 function updateTailor(tabId) {
     $('#mainFrameTabs').bTabsAdd(tabId, "裁片信息录入", "addTailorStart");
-    calcHeight();
+    // calcHeight();
 }

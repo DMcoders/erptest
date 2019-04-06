@@ -167,6 +167,6 @@ function addOrder(orderName) {
         $('#mainFrameTabs').bTabsAdd("tabId" + tabId, "订单录入", "addOrderStart");
     }
     tabId++;
-    calcHeight();
+    // calcHeight();
 }
 

@@ -12,7 +12,7 @@
                     <li role="presentation" class="active noclose" id="orderListTab"><a id="tailorA" href="#orderListDiv" data-toggle="tab">扎号信息</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="orderListDiv" style="background-color: #f7f7f7;">
+                    <div class="tab-pane fade in active" id="orderListDiv" style="background-color: #f7f7f7;overflow-y:auto">
                         <div class="col-md-12" style="padding-top: 20px">
                             <section class="panel panel-default">
                                 <div class="panel-body" style="text-align: left;">
@@ -30,7 +30,7 @@
                                             <#--<a href="#" style="color:#3e8eea;font-size:20px" onclick="search()">查找</a>-->
                                         <#--</div>-->
                                     <#--</div>-->
-                                    <div style="text-align: center;font-family: PingFangSC-Semibold,sans-serif;overflow-x: auto;overflow-y: auto;max-height: 350px">
+                                    <div style="text-align: center;font-family: PingFangSC-Semibold,sans-serif;overflow-x: auto;">
                                         <table class="table table-striped" id="tailorTable" style="width:1500px">
                                             <thead>
                                             <tr bgcolor="#ffcb99" style="color: black;">
@@ -83,7 +83,7 @@
 <script src="/js/common/b.tabs.js"></script>
 <script src="/js/common/qrcode.js" type="text/javascript" ></script>
 <script src="/js/common/jcpfree.js" type="text/javascript" ></script>
-<script src="/js/opaMsg/tailor.js?t=201904072212"></script>
+<script src="/js/opaMsg/tailor.js?t=201904071212"></script>
 
 </#macro>
 
