@@ -62,7 +62,7 @@ function opaMatch() {
         type:'GET',
         data: {matchJson:JSON.stringify(matchJson)},
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var goodsLocation = "";
             $.each(data, function(index, item) {
                 goodsLocation += item;

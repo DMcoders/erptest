@@ -7,7 +7,7 @@ $(document).ready(function () {
             if(data && data != "null") {
                 var json = JSON.parse(data);
                 var rows = [];
-                console.log(json);
+                // console.log(json);
                 $.each(json,function (index,item) {
                     var locations = item.storehouseLocation.split("-");
                     if(rows.indexOf(locations[0]) != -1) {

@@ -15,7 +15,7 @@ $(document).ready(function () {
         minRows:20,
         minCols:1,
         maxCols:1,
-        colWidths:130,
+        colWidths:113,
         language:'zh-CN',
         licenseKey: 'non-commercial-and-evaluation'
     });
@@ -28,7 +28,7 @@ $(document).ready(function () {
                 orderName:orderName
             },
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 var hotData = [["顾客名","订购方式","订单号","款式描述","版单号","颜色号","颜色名","尺码","数量","签订日期","季度","交货日期"]];
                 var i = 1;
                 if(data) {
@@ -85,42 +85,7 @@ $(document).ready(function () {
             }
         });
 
-        $.ajax({
-            url: "/getcustomernamebyordername",
-            data: {"orderName": keywords},
-            success:function(data){
-                $("#customerName").val(data);
-            },
-            error:function(){
-            }
-        });
-        $.ajax({
-            url: "/getmaxbednumber",
-            data: {"orderName": keywords},
-            success:function(data){
-                if(data) {
-                    $("#bedNumber").val(data+1);
-                }else {
-                    $("#bedNumber").val(1);
-                }
-            },
-            error:function(){
-            }
-        });
-        $("#colorName").empty();
-        $.ajax({
-            url: "/getcolorhint",
-            data: {"orderName": keywords},
-            success:function(data){
-                if (data.colorList) {
-                    $.each(data.colorList, function(index,element){
-                        $("#colorName").append("<option value="+element.colorName+">"+element.colorName+"</option>");
-                    })
-                }
-            },
-            error:function(){
-            }
-        });
+        autoComplete(keywords);
     });
 
     $(document).on('click','.click_work',function(){
@@ -128,51 +93,56 @@ $(document).ready(function () {
         $('#orderName').val(word);
         $('#orderNameTips').hide();
 
-        $.ajax({
-            url: "/getcustomernamebyordername",
-            data: {"orderName": word},
-            success:function(data){
-                $("#customerName").val(data);
-            },
-            error:function(){
-            }
-        });
-        $.ajax({
-            url: "/getmaxbednumber",
-            data: {"orderName": word},
-            success:function(data){
-                if(data) {
-                    $("#bedNumber").val(data+1);
-                }else {
-                    $("#bedNumber").val(1);
-                }
-            },
-            error:function(){
-            }
-        });
-
-        $("#colorName").empty();
-        $.ajax({
-            url: "/getcolorhint",
-            data: {"orderName": word},
-            success:function(data){
-                if (data.colorList) {
-                    $.each(data.colorList, function(index,element){
-                        $("#colorName").append("<option value="+element.colorName+">"+element.colorName+"</option>");
-                    })
-                }
-            },
-            error:function(){
-            }
-        });
+        autoComplete(word);
     });
 
     $("#orderName").blur(function(){
         setTimeout(function(){
             $('#orderNameTips').hide();
         },300);
+        autoComplete($(this).val());
     });
 });
+
+function autoComplete(orderName) {
+    $.ajax({
+        url: "/getcustomernamebyordername",
+        data: {"orderName": orderName},
+        success:function(data){
+            $("#customerName").val(data);
+        },
+        error:function(){
+        }
+    });
+    $.ajax({
+        url: "/getmaxbednumber",
+        data: {"orderName": orderName},
+        success:function(data){
+            if(data) {
+                $("#bedNumber").val(data+1);
+            }else {
+                $("#bedNumber").val(1);
+            }
+        },
+        error:function(){
+        }
+    });
+
+    $("#colorName").empty();
+    $.ajax({
+        url: "/getcolorhint",
+        data: {"orderName": orderName},
+        success:function(data){
+            if (data.colorList) {
+                $.each(data.colorList, function(index,element){
+                    $("#colorName").append("<option value="+element.colorName+">"+element.colorName+"</option>");
+                })
+            }
+        },
+        error:function(){
+        }
+    });
+}
 
 function addOrder() {
     var flag = false;
@@ -197,7 +167,7 @@ function addOrder() {
     tailorDataJson.colorName = $("#colorName").val();
     tailorDataJson.bedNumber = $("#bedNumber").val();
     var data = hot.getData();
-    console.log(data);
+    // console.log(data);
     var layerCount = {};
     flag = true;
     $.each(data,function (index, item) {
@@ -239,7 +209,7 @@ function addOrder() {
         return false;
     }
     tailorDataJson.partName =partName;
-    console.log(tailorDataJson);
+    // console.log(tailorDataJson);
     $.ajax({
         url: "/generatetailordata",
         type:'POST',
@@ -249,8 +219,13 @@ function addOrder() {
         success: function (data) {
             if(data && data!= "null") {
                 var json = JSON.parse(data);
-                console.log(json);
-                swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，生成成功！</span>",html: true},function () {
+                // console.log(json);
+                swal(
+                    {   type:"success",
+                        title:"",
+                        text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，生成成功！</span>",
+                        html: true,
+                    },function () {
                     var href = $("li.active a[data-toggle='tab']",parent.document).attr("href");
                     var tabId = href.substr(7);
                     window.parent.document.getElementById("tailorA").click();
@@ -271,7 +246,7 @@ function addOrder() {
                             "<td>"+item.partName+"</td>" +
                             "<td>"+item.sizeName+"</td>" +
                             "<td>"+item.tailorQcode+"</td>" +
-                            "<td><a href='#' style='color:#3e8eea' onclick='showQrCode(this)'>查看</a>&nbsp;&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick=updateTailor('"+tabId+"')>修改</a></td>" +
+                            "<td><a href='#' style='color:#3e8eea' onclick='showQrCode(this)'>查看</a>&nbsp;&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick=updateTailor('"+tabId+"')>修改</a>&nbsp;&nbsp;&nbsp;<a href='#' style='color:#3e8eea' onclick='delTailor(this)'>删除</a></td>" +
                             "</tr>";
                             numberId++;
                     })

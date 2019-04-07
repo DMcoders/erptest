@@ -26,7 +26,7 @@ $(document).ready(function () {
                 orderName:orderName
             },
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 var hotData = [["顾客名","订购方式","订单号","款式描述","版单号","颜色号","颜色名","尺码","数量","签订日期","季度","交货日期"]];
                 var i = 1;
                 if(data) {
@@ -72,7 +72,7 @@ function addOrder() {
     }, function() {
         var orderclothesJson = [];
         var data = hot.getData();
-        console.log(data);
+        // console.log(data);
         var titleRow = data[0];
         var endIndex = titleRow.length;
         $.each(titleRow,function (index, item) {
@@ -105,7 +105,7 @@ function addOrder() {
                 orderclothesJson.push(orderclothes);
             }
         });
-        console.log(orderclothesJson);
+        // console.log(orderclothesJson);
         $.ajax({
             url: "/commitorderclothes",
             type:'POST',

@@ -36,7 +36,7 @@ function addTailor(orderName) {
 }
 
 
-function printer() {
+function printer(type) {
     var tailorList = [];
     $("#tailorBody input[type='checkbox']:checked").each(function () {
         var tailor = {};
@@ -55,25 +55,10 @@ function printer() {
     if(tailorList.length<1){
         swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请选择要打印的信息！</span>",html: true});
     }else{
-        console.log(tailorList);
+        // console.log(tailorList);
         $("div[id^='qrcode']").remove();
         $("div[id^='page']").remove();
         $("#tailorBody input[type='checkbox']:checked").each(function (index) {
-            // $("#printOrderName").text($(this).parent().parent().find("td").eq(2).text());
-            // $("#printCustomerName").text($(this).parent().parent().find("td").eq(3).text());
-            // $("#printColorName").text($(this).parent().parent().find("td").eq(4).text());
-            // $("#printJarName").text($(this).parent().parent().find("td").eq(5).text());
-            // $("#printBedNumber").text($(this).parent().parent().find("td").eq(6).text());
-            // $("#printLayerCount").text($(this).parent().parent().find("td").eq(7).text());
-            // $("#printPackageNumber").text($(this).parent().parent().find("td").eq(8).text());
-            // $("#printPartName").text($(this).parent().parent().find("td").eq(9).text());
-            // $("#printSizeName").text($(this).parent().parent().find("td").eq(10).text());
-            // var tailorQcode = $(this).parent().parent().find("td").eq(11).text();
-            // var qrcode = new QRCode(document.getElementById("qrcode"), {
-            //     width : 150,
-            //     height : 150
-            // });
-            // qrcode.makeCode(tailorQcode);
             var id = index+1;
             var pageId = "page"+id;
             var qrcodeId = "qrcode"+id;
@@ -126,8 +111,6 @@ function printer() {
             });
             qrcode.makeCode(tailorQcode);
 
-            // printJS(pageId, 'html')
-
         });
 
         var myDoc = {
@@ -139,23 +122,26 @@ function printer() {
             copyrights:'杰创软件拥有版权  www.jatools.com'  // 版权声明,必须
         };
         var jcp = getJCP();
-        jcp.printPreview(myDoc,false);//直接打印
-
-
-        $.ajax({
-            url: "/savetailordata",
-            data: {tailorList: JSON.stringify(tailorList)},
-            success:function(data){
-                if(data == 0) {
-                    swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，打印成功！</span>",html: true});
-                }else {
-                    swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，打印失败！</span>",html: true});
+        if (type == 'preView') {
+            jcp.printPreview(myDoc, false);
+        } else if (type == 'dialog') {
+            jcp.print(myDoc, true);
+        } else {
+            $.ajax({
+                url: "/savetailordata",
+                data: {tailorList: JSON.stringify(tailorList)},
+                success:function(data){
+                    if(data == 0) {
+                        jcp.print(myDoc, false); // 不弹出对话框打印
+                    }else {
+                        swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，保存扎号信息失败！</span>",html: true});
+                    }
+                },
+                error:function(){
+                    swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
                 }
-            },
-            error:function(){
-                swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
-            }
-        });
+            });
+        }
     }
 }
 
@@ -200,4 +186,28 @@ function showQrCode(obj) {
 function updateTailor(tabId) {
     $('#mainFrameTabs').bTabsAdd(tabId, "裁片信息录入", "addTailorStart");
     // calcHeight();
+}
+
+function delTailor(obj) {
+    swal({
+        title: "",
+        text: "<span style=\"font-weight:bolder;font-size: 20px\">您确定要删除该条裁片信息吗？</span>",
+        type: "warning",
+        html:true,
+        showCancelButton: true,
+        closeOnConfirm: false,
+        confirmButtonText: "确定",
+        cancelButtonText:"我再想想",
+        confirmButtonColor: "#ec6c62",
+        showLoaderOnConfirm: false
+    }, function() {
+        $(obj).parent().parent().remove();
+        swal({
+                type:"success",
+                title:"",
+                text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，删除成功！</span>",
+                html: true
+            });
+    });
+    
 }

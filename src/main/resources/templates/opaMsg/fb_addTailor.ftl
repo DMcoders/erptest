@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/handsontable.full.min.css" type="text/css">
     <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
     <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
-    <script src="/js/opaMsg/addTailor.js?t=201904072112"></script>
+    <script src="/js/opaMsg/addTailor.js?t=201904072312"></script>
 </head>
 
 <body>
@@ -19,17 +19,17 @@
         <span style="font-size: 20px;font-family: PingFangSC-Semibold;color:rgb(55,56,57)">输入裁片信息</span>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <section class="panel panel-default">
                 <header class="panel-heading font-bold">
                     <span class="label bg-success pull-right"></span>数量录入
                 </header>
-                <div  style="width:100%; overflow-x: hidden;overflow-y: auto;height: 410px;">
-                    <div id="layerCountExcel" style="margin-left: 50px;"></div>
+                <div  style="width:100%;overflow-y: auto;height: 410px;">
+                    <div id="layerCountExcel"></div>
                 </div>
             </section>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <section class="panel panel-default">
                 <header class="panel-heading font-bold">
                     <span class="label bg-success pull-right"></span>基本信息
@@ -101,16 +101,63 @@
                 <header class="panel-heading font-bold">
                     <span class="label bg-success pull-right"></span>部位选择
                 </header>
-                <div style="height: 50px">
+                <div style="height: 120px">
                 <div class="RadioStyle">
-                    <input type="checkbox" id="love1" value="大身"/>
-                    <label for="love1" style="margin-left: 20px">大身</label>
-                    <input type="checkbox" id="love2" value="前身"/>
-                    <label for="love2" style="margin-left: 20px">前身</label>
-                    <input type="checkbox" id="love3" value="后身"/>
-                    <label for="love3" style="margin-left: 20px">后身</label>
-                    <input type="checkbox" id="love4" value="左胸"/>
-                    <label for="love4" style="margin-left: 20px">左胸</label>
+                    <div>
+                        <input type="checkbox" id="part1" value="大身"/>
+                        <label for="part1">大身</label>
+                        <input type="checkbox" id="part2" value="前身"/>
+                        <label for="part2">前身</label>
+                        <input type="checkbox" id="part3" value="后身"/>
+                        <label for="part3">后身</label>
+                        <input type="checkbox" id="part4" value="左胸"/>
+                        <label for="part4">左胸</label>
+                        <input type="checkbox" id="part5" value="大身2"/>
+                        <label for="part5">大身2</label>
+                        <input type="checkbox" id="part6" value="前身2"/>
+                        <label for="part6">前身2</label>
+                        <input type="checkbox" id="part7" value="后身2"/>
+                        <label for="part7">后身2</label>
+                        <input type="checkbox" id="part8" value="左胸2"/>
+                        <label for="part8">左胸2</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="part9" value="大身3"/>
+                        <label for="part9">大身3</label>
+                        <input type="checkbox" id="part10" value="前身3"/>
+                        <label for="part10">前身3</label>
+                        <input type="checkbox" id="part11" value="后身3"/>
+                        <label for="part11">后身3</label>
+                        <input type="checkbox" id="part12" value="左胸3"/>
+                        <label for="part12">左胸3</label>
+                        <input type="checkbox" id="part13" value="大身4"/>
+                        <label for="part13">大身4</label>
+                        <input type="checkbox" id="part14" value="前身4"/>
+                        <label for="part14">前身4</label>
+                        <input type="checkbox" id="part15" value="后身4"/>
+                        <label for="part15">后身4</label>
+                        <input type="checkbox" id="part16" value="左胸4"/>
+                        <label for="part16">左胸4</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="part17" value="大身5"/>
+                        <label for="part17">大身5</label>
+                        <input type="checkbox" id="part18" value="前身5"/>
+                        <label for="part18">前身5</label>
+                        <input type="checkbox" id="part19" value="后身5"/>
+                        <label for="part19">后身5</label>
+                        <input type="checkbox" id="part20" value="左胸5"/>
+                        <label for="part20">左胸5</label>
+                        <input type="checkbox" id="part21" value="大身6"/>
+                        <label for="part21">大身6</label>
+                        <input type="checkbox" id="part22" value="前身6"/>
+                        <label for="part22">前身6</label>
+                        <input type="checkbox" id="part23" value="后身6"/>
+                        <label for="part23">后身6</label>
+                        <input type="checkbox" id="part24" value="左胸6"/>
+                        <label for="part24">左胸6</label>
+                    </div>
+
                 </div>
                 </div>
             </section>
@@ -141,11 +188,12 @@
         color: #666;
         padding: 2px 10px 2px 5px;
         line-height: 28px;
-        min-width: 80px;
+        min-width: 70px;
         text-align: center;
-        float: left;
+        /*float: left;*/
         margin: 2px;
-        border-radius: 4px
+        border-radius: 4px;
+        margin-left: 12px;
     }
     .RadioStyle input:checked + label {
         background: url("/images/ico_checkon.svg") no-repeat right bottom;

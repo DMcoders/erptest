@@ -47,7 +47,7 @@
                                                 <th style="width: 3%;text-align:center;font-size:14px">部位</th>
                                                 <th style="width: 3%;text-align:center;font-size:14px">尺码</th>
                                                 <th style="width: 15%;text-align:center;font-size:14px">二维码</th>
-                                                <th style="width: 6%;text-align:center;font-size:14px">操作</th>
+                                                <th style="width: 7%;text-align:center;font-size:14px">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody id="tailorBody">
@@ -55,7 +55,9 @@
                                         </table>
                                     </div>
                                     <div class="col-md-12" style="text-align: center;margin-top: 20px">
-                                        <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold, sans-serif;"  onclick="printer()">打印</button>
+                                        <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold;"  onclick="printer('preView')">打印预览</button>
+                                        <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold;"  onclick="printer('dialog')">打印机选择对话框</button>
+                                        <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold;"  onclick="printer('print')">打印</button>
                                     </div>
                                 </div>
                             </section>
@@ -85,7 +87,7 @@
 <script src="/js/common/qrcode.js" type="text/javascript" ></script>
 <script src="/js/common/jcpfree.js" type="text/javascript" ></script>
 <script src="https://printjs-4de6.kxcdn.com/print.min.js" type="text/javascript" ></script>
-<script src="/js/opaMsg/tailor.js?t=201904081212"></script>
+<script src="/js/opaMsg/tailor.js?t=201904081412"></script>
 
 </#macro>
 
@@ -94,6 +96,6 @@
         background:rgb(45, 202, 147);
         opacity:0.86;
         color: white;
-        font-family: PingFangSC-Semibold, sans-serif;
+        font-family: PingFangSC-Semibold;
     }
 </style>
