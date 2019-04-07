@@ -10,6 +10,31 @@ public class EmbStorage {
 
     private Integer embStorageState;
 
+    private Integer embStoreCount;
+
+
+    public String getEmbStoreLocation() {
+        return embStoreLocation;
+    }
+
+    public void setEmbStoreLocation(String embStoreLocation) {
+        this.embStoreLocation = embStoreLocation;
+    }
+
+    public Integer getEmbStoreCount() {
+        return embStoreCount;
+    }
+
+    public void setEmbStoreCount(Integer embStoreCount) {
+        this.embStoreCount = embStoreCount;
+    }
+
+    public EmbStorage(String embStoreLocation, Integer embStorageState, Integer embStoreCount) {
+        this.embStoreLocation = embStoreLocation;
+        this.embStorageState = embStorageState;
+        this.embStoreCount = embStoreCount;
+    }
+
     public EmbStorage(String embStoreLocation, Integer embStorageState) {
         this.embStoreLocation = embStoreLocation;
         this.embStorageState = embStorageState;
@@ -45,13 +70,6 @@ public class EmbStorage {
         this.embStorageID = embStorageID;
     }
 
-    public String getembStoreLocation() {
-        return embStoreLocation;
-    }
-
-    public void setembStoreLocation(String embStoreLocation) {
-        this.embStoreLocation = embStoreLocation;
-    }
 
     public String getTailorQcode() {
         return tailorQcode;

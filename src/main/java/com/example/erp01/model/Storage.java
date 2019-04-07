@@ -10,6 +10,30 @@ public class Storage {
 
     private Integer storageState;
 
+    private Integer storehouseCount;
+
+    public String getStorehouseLocation() {
+        return storehouseLocation;
+    }
+
+    public void setStorehouseLocation(String storehouseLocation) {
+        this.storehouseLocation = storehouseLocation;
+    }
+
+    public Integer getStorehouseCount() {
+        return storehouseCount;
+    }
+
+    public void setStorehouseCount(Integer storehouseCount) {
+        this.storehouseCount = storehouseCount;
+    }
+
+    public Storage(String storehouseLocation, Integer storageState, Integer storehouseCount) {
+        this.storehouseLocation = storehouseLocation;
+        this.storageState = storageState;
+        this.storehouseCount = storehouseCount;
+    }
+
     public Storage() {
     }
 
@@ -44,14 +68,6 @@ public class Storage {
 
     public void setStorageID(Integer storageID) {
         this.storageID = storageID;
-    }
-
-    public String getstorehouseLocation() {
-        return storehouseLocation;
-    }
-
-    public void setstorehouseLocation(String storehouseLocation) {
-        this.storehouseLocation = storehouseLocation;
     }
 
     public String getTailorQcode() {
