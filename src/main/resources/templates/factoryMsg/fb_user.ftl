@@ -35,7 +35,13 @@
                                         <td>${user_index+1}</td>
                                         <td>${user.userName!}</td>
                                         <td>${user.passWord!}</td>
-                                        <td>${user.role!}</td>
+                                        <td>
+                                            <#if user.role == "root">管理员
+                                                <#elseif user.role == "role1">文员
+                                                <#elseif user.role == "role2">仓储员工
+                                                <#elseif user.role == "role3">衣胚员工
+                                            </#if>
+                                        </td>
                                         <td>${user.phoneNumber!}</td>
                                         <td>${user.userCardID!}</td>
                                         <td><a href="#" style="color:red" onclick="deleteUser(${user.userID?c})">删除</a></td>
@@ -68,7 +74,7 @@
 </section>
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/qrcode.min.js" type="text/javascript" ></script>
-<script src="/js/factoryMsg/user.js?t=201903272212"></script>
+<script src="/js/factoryMsg/user.js?t=201904042212"></script>
 
 </#macro>
 

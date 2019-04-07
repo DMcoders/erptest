@@ -44,6 +44,7 @@
     <div class="wrapper">Notification</div>
 </aside>
 </section>
+<script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/embMarket/embInStore.js?t=201904011912"></script>
 
 </#macro>

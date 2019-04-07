@@ -2,14 +2,14 @@
 $(document).ready(function () {
     var basePath=$("#basePath").val();
     $.ajax({
-        url: basePath+"getstoragestate",
+        url: basePath+"getembstoragestate",
         success:function(data){
             if(data && data != "null") {
                 var json = JSON.parse(data);
                 var rows = [];
                 console.log(json);
                 $.each(json,function (index,item) {
-                    var locations = item.storehouseLocation.split("-");
+                    var locations = item.embStoreLocation.split("-");
                     if(rows.indexOf(locations[0]) != -1) {
                         return true;
                     }
@@ -34,7 +34,7 @@ $(document).ready(function () {
                     var tr = "<tr>";
                     var td = "";
                     $.each(json,function (s_index,s_item) {
-                        var s_locations = s_item.storehouseLocation.split("-");
+                        var s_locations = s_item.embStoreLocation.split("-");
                         if(item==s_locations[0] && cols.indexOf(s_locations[1])==-1) {
                             cols.push(s_locations[1]);
                             td += "<td style='font-size: 16px;font-family: PingFangSC-Semibold;width:60px;'><span style=\"margin-left: 34px;\">"+s_locations[1]+"</span></td>";
@@ -50,8 +50,8 @@ $(document).ready(function () {
                             var location = item+"-"+ss_item+"-"+i;
                             var flag = true;
                             $.each(json,function (sss_index,sss_item) {
-                                if(location == sss_item.storehouseLocation) {
-                                    var radio = sss_item.storageState/sss_item.storehouseCount;
+                                if(location == sss_item.embStoreLocation) {
+                                    var radio = sss_item.embStorageState/sss_item.embStoreCount;
                                     if(radio < 0.3) {
                                         td += "<td><label style=\"margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>";
                                     }else if (0.3<=radio && radio<=0.9) {

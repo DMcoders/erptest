@@ -53,7 +53,10 @@ public class UserController {
     }
 
     @RequestMapping(value ="/homepage")
-    public String getHomePageStart(Model model) {
+    public String getHomePageStart(Model model,HttpServletRequest request) {
+        String userName = (String) request.getSession().getAttribute("userName");
+        User user = getUserByName(userName);
+        request.getSession().setAttribute("role", user.getRole());
         model.addAttribute("bigMenuTag",0);
         model.addAttribute("menuTag",0);
 
@@ -78,6 +81,10 @@ public class UserController {
     @RequestMapping(value ="/adduser", method = RequestMethod.POST)
     @ResponseBody
     public int addUser(User user){
+        User user1 = getUserByName(user.getUserName());
+        if(user1!=null && user1.getUserID()!=null) {
+            return 3;
+        }
         int res = userService.addUser(user);
         return res;
     }

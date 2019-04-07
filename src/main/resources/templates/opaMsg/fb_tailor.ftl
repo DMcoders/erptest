@@ -78,12 +78,14 @@
 </section>
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="/css/b.tabs.css" type="text/css">
+<link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css" type="text/css">
 
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/b.tabs.js"></script>
 <script src="/js/common/qrcode.js" type="text/javascript" ></script>
 <script src="/js/common/jcpfree.js" type="text/javascript" ></script>
-<script src="/js/opaMsg/tailor.js?t=201904071212"></script>
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" type="text/javascript" ></script>
+<script src="/js/opaMsg/tailor.js?t=201904081212"></script>
 
 </#macro>
 

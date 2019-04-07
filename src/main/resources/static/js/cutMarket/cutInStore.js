@@ -84,7 +84,7 @@ function inStore() {
                         html: true
                     },
                     function(){
-                        location.href=basePath+"opaBackStart";
+                        location.href=basePath+"instoreStart";
                     });
             }else {
                 swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，入库失败！</span>",html: true});

@@ -15,67 +15,12 @@
                 <label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <span style="font-size: 16px;font-family: PingFangSC-Semibold">空仓</span>
             </div>
-
-            <#--<div class="col-sm-1" style="margin-top: 30px;text-align: right">-->
-                <#--<span style="font-size: 26px;font-family: PingFangSC-Semibold">1</span>-->
-            <#--</div>-->
-            <#--<div class="col-sm-11">-->
-                <#--<section class="panel panel-default">-->
-                    <#--<div class="panel-body" style="text-align: left">-->
-                        <#--<table id="storageStateTable">-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                        <#--</table>-->
-                    <#--</div>-->
-                <#--</section>-->
-            <#--</div>-->
-
-
-            <#--<div class="col-sm-1" style="margin-top: 30px;text-align: right">-->
-                <#--<span style="font-size: 26px;font-family: PingFangSC-Semibold">1</span>-->
-            <#--</div>-->
-            <#--<div class="col-sm-11">-->
-                <#--<section class="panel panel-default">-->
-                    <#--<div class="panel-body" style="text-align: left">-->
-                        <#--<table id="storageStateTable">-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                            <#--<tr>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                                <#--<td><label style="margin-left: 20px;border-radius: 6px;background: rgb(45,202,147)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>-->
-                            <#--</tr>-->
-                        <#--</table>-->
-                    <#--</div>-->
-                <#--</section>-->
-            <#--</div>-->
         </section>
     </section>
 </section>
 </section>
 
-<script src="/js/opaMsg/storageState.js?t=201904072112"></script>
+<script src="/js/opaMsg/storageState.js?t=201904072312"></script>
 
 
 </#macro>

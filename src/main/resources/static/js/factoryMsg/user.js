@@ -38,6 +38,10 @@ function addUser() {
             swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请输入密码！</span>",html: true});
             return false;
         }
+        if($("#role").val()=="") {
+            swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">请选择职务！</span>",html: true});
+            return false;
+        }
         $.ajax({
             url: url,
             type: 'POST',
@@ -61,6 +65,8 @@ function addUser() {
                     function(){
                         location.href=basePath+"userStart";
                     });
+                }else if(data==3){
+                    swal({type:"warning",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">该用户名已被使用，请重新输入！</span>",html: true});
                 }else {
                     swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，保存失败！</span>",html: true});
                 }

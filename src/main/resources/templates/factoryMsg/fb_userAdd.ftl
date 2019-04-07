@@ -28,7 +28,13 @@
                         <label class="control-label" style="margin-bottom: 15px;text-align: right;">职务</label>
                     </td>
                     <td>
-                        <input id="role" class="form-control" style="margin-bottom: 15px;width: 100%;border-top: none;border-right: none;border-left: none;">
+                        <select id="role" class="form-control" style="margin-bottom: 15px;width: 100%;border-top: none;border-right: none;border-left: none;">
+                            <option value=""></option>
+                            <option value="root">管理员</option>
+                            <option value="role1">文员</option>
+                            <option value="role2">仓储员工</option>
+                            <option value="role3">衣胚员工</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>

@@ -23,7 +23,7 @@
     </select>
 
     <select id="getStorageState" resultType="map">
-        SELECT st.storehouseLocation, COUNT(*) as storageState, sh.storehouseCount  FROM storage st LEFT JOIN storehouse sh ON st.storehouseLocation = sh.storehouseLocation  GROUP BY storehouseLocation order by storehouseLocation asc;
+        SELECT st.storehouseLocation, COUNT(*) as storageState, min(sh.storehouseCount) as storehouseCount  FROM storage st LEFT JOIN storehouse sh ON st.storehouseLocation = sh.storehouseLocation  GROUP BY storehouseLocation order by storehouseLocation asc;
     </select>
 
 </mapper>
