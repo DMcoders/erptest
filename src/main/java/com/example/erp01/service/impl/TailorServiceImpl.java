@@ -11,8 +11,6 @@ import java.util.List;
 @Service
 public class TailorServiceImpl implements TailorService {
 
-
-
     @Autowired
     private TailorMapper tailorMapper;
 
@@ -64,13 +62,13 @@ public class TailorServiceImpl implements TailorService {
     }
 
     @Override
-    public int getMaxBedNumber(String orderName) {
+    public Integer getMaxBedNumber(String orderName) {
         try{
-            int bedNumber = tailorMapper.getMaxBedNumber(orderName);
+            Integer bedNumber = tailorMapper.getMaxBedNumber(orderName);
             return bedNumber;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 }

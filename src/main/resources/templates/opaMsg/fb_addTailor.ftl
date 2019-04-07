@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/handsontable.full.min.css" type="text/css">
     <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
     <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
-    <script src="/js/opaMsg/addTailor.js?t=201904062112"></script>
+    <script src="/js/opaMsg/addTailor.js?t=201904072112"></script>
 </head>
 
 <body>

@@ -218,8 +218,8 @@ public class TailorController {
     // 测试未通过
     @RequestMapping(value = "/getmaxbednumber", method = RequestMethod.GET)
     @ResponseBody
-    public int getMaxBedNumber(@RequestParam("orderName")String orderName){
-        int bedNumber = tailorService.getMaxBedNumber(orderName);
+    public Integer getMaxBedNumber(@RequestParam("orderName")String orderName){
+        Integer bedNumber = tailorService.getMaxBedNumber(orderName);
         return bedNumber;
     }
 

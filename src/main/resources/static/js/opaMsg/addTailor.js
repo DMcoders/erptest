@@ -94,6 +94,19 @@ $(document).ready(function () {
             error:function(){
             }
         });
+        $.ajax({
+            url: "/getmaxbednumber",
+            data: {"orderName": keywords},
+            success:function(data){
+                if(data) {
+                    $("#bedNumber").val(data+1);
+                }else {
+                    $("#bedNumber").val(1);
+                }
+            },
+            error:function(){
+            }
+        });
         $("#colorName").empty();
         $.ajax({
             url: "/getcolorhint",
@@ -117,9 +130,22 @@ $(document).ready(function () {
 
         $.ajax({
             url: "/getcustomernamebyordername",
-            data: {"orderName": $("#orderName").val()},
+            data: {"orderName": word},
             success:function(data){
                 $("#customerName").val(data);
+            },
+            error:function(){
+            }
+        });
+        $.ajax({
+            url: "/getmaxbednumber",
+            data: {"orderName": word},
+            success:function(data){
+                if(data) {
+                    $("#bedNumber").val(data+1);
+                }else {
+                    $("#bedNumber").val(1);
+                }
             },
             error:function(){
             }
@@ -128,7 +154,7 @@ $(document).ready(function () {
         $("#colorName").empty();
         $.ajax({
             url: "/getcolorhint",
-            data: {"orderName": $("#orderName").val()},
+            data: {"orderName": word},
             success:function(data){
                 if (data.colorList) {
                     $.each(data.colorList, function(index,element){
