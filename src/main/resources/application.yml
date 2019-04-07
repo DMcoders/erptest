@@ -22,7 +22,8 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-#  mvc:
+
+  #  mvc:
 #    view:
 #      suffix: .html
 #    static-path-pattern: /**

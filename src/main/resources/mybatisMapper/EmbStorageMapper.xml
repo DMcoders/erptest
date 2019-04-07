@@ -18,8 +18,12 @@
         </foreach>
     </delete>
 
+    <!--<select id="getEmbStorageState" resultType="map">-->
+        <!--SELECT embStoreLocation,COUNT(*) as embStorageState  FROM embstorage GROUP BY embStoreLocation-->
+    <!--</select>-->
+
     <select id="getEmbStorageState" resultType="map">
-        SELECT embStoreLocation,COUNT(*) as embStorageState  FROM embstorage GROUP BY embStoreLocation
+        SELECT st.embStoreLocation, COUNT(*) as embStorageState, sh.embStoreCount  FROM embstorage st LEFT JOIN embstorehouse sh ON st.embStoreLocation = sh.embStoreLocation  GROUP BY embStoreLocation order by embStoreLocation asc;
     </select>
 
 </mapper>
