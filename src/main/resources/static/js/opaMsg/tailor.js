@@ -125,6 +125,9 @@ function printer() {
                 height : 130
             });
             qrcode.makeCode(tailorQcode);
+
+            // printJS(pageId, 'html')
+
         });
 
         var myDoc = {
@@ -138,21 +141,21 @@ function printer() {
         var jcp = getJCP();
         jcp.printPreview(myDoc,false);//直接打印
 
-        $('#qrcode').empty();
-        // $.ajax({
-        //     url: "/savetailordata",
-        //     data: {tailorList: JSON.stringify(tailorList)},
-        //     success:function(data){
-        //         if(data == 0) {
-        //             swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，打印成功！</span>",html: true});
-        //         }else {
-        //             swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，打印失败！</span>",html: true});
-        //         }
-        //     },
-        //     error:function(){
-        //         swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
-        //     }
-        // });
+
+        $.ajax({
+            url: "/savetailordata",
+            data: {tailorList: JSON.stringify(tailorList)},
+            success:function(data){
+                if(data == 0) {
+                    swal({type:"success",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，打印成功！</span>",html: true});
+                }else {
+                    swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">对不起，打印失败！</span>",html: true});
+                }
+            },
+            error:function(){
+                swal({type:"error",title:"",text: "<span style=\"font-weight:bolder;font-size: 20px\">服务器发生了未知错误～！</span>",html: true});
+            }
+        });
     }
 }
 
