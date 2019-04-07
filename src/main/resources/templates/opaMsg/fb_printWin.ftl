@@ -4,7 +4,7 @@
             <div style="text-align: right;margin-bottom:10px;">
                 <a id="closeQrCodeWin" href="#" style="font-size:20px"><i class="fa fa-times icon" style="color: rgb(182,182,182)"></i></a>
             </div>
-            <div id="page1">
+            <#--<div id="page1">-->
             <div style="text-align: center">
                 <table style="border-spacing: 10px;margin-left: 20px">
                     <tr>
@@ -44,9 +44,9 @@
                         <td style="text-align: left"><span id="printSizeName" style="margin-left: 20px">M</span></td>
                     </tr>
                 </table>
+                <div id="qrCode" style="width:130px; height:130px;margin: 0 auto;"></div>
             </div>
-            <div id="qrcode" style="width:150px; height:150px;margin: 0 auto;"></div>
-            </div>
+            <#--</div>-->
         </div>
     </div>
 

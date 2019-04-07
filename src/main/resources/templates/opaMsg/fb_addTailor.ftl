@@ -116,7 +116,7 @@
             </section>
         </div>
     </div>
-    <div class="col-md-12" style="text-align: center;margin-top: 20px">
+    <div class="col-md-12" style="text-align: center;margin-top: auto">
         <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addOrder()">生成</button>
     </div>
 </body>
@@ -127,6 +127,10 @@
         opacity:0.86;
         color: white;
         font-family: PingFangSC-Semibold, sans-serif;
+    }
+
+    label {
+        font-family: PingFangSC-Semibold;
     }
 
     .RadioStyle input {

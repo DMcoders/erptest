@@ -20,7 +20,9 @@
         <span style="font-size: 20px;font-family: PingFangSC-Semibold;color:rgb(55,56,57)">订单详情录入（直接粘贴数据）</span>
     </div>
     </#if>
-    <div id="addOrderExcel" style="margin-left: 10px"></div>
+    <div>
+        <div id="addOrderExcel" style="margin-left: 10px;"></div>
+    </div>
     <#if type == "add">
     <div class="col-md-12" style="text-align: center;margin-top: 20px">
         <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="addOrder()">提交</button>
@@ -33,6 +35,6 @@
         background:rgb(45, 202, 147);
         opacity:0.86;
         color: white;
-        font-family: PingFangSC-Semibold, sans-serif;
+        font-family: PingFangSC-Semibold;
     }
 </style>

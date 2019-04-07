@@ -7,19 +7,19 @@
                 <li class="active">订单信息</li>
             </ul>
 
-            <div id="mainFrameTabs">
+            <div id="mainFrameTabs" style="height:80%">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active noclose" id="orderListTab"><a href="#orderListDiv" data-toggle="tab">订单信息</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="orderListDiv" style="background-color: #f7f7f7;">
+                    <div class="tab-pane fade in active" id="orderListDiv" style="background-color: #f7f7f7;overflow-y:auto">
                         <div class="col-md-12" style="padding-top: 20px;">
                             <section class="panel panel-default">
                                 <div class="panel-body" style="text-align: left">
                                     <div class="row" style="margin-left: 0;margin-bottom: 20px">
                                         <button  class="btn btn-s-lg" style="border-radius: 5px;color:white;font-family: PingFangSC-Semibold, sans-serif;"  onclick="addOrder()">录入订单</button>
                                     </div>
-                                    <div style="text-align: center;font-family: PingFangSC-Semibold,sans-serif;">
+                                    <div style="text-align: center;font-family: PingFangSC-Semibold;">
                                         <table id="orderTable" class="table table-striped table-hover">
                                         </table>
                                     </div>
@@ -44,7 +44,7 @@
 
 <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
 <script src="/js/common/b.tabs.js"></script>
-<script src="/js/orderMsg/order.js?t=201904071212"></script>
+<script src="/js/orderMsg/order.js?t=201904071512"></script>
 
 </#macro>
 
