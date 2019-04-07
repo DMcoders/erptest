@@ -70,13 +70,6 @@ public class EmbStorage {
         this.embStorageID = embStorageID;
     }
 
-    public String getembStoreLocation() {
-        return embStoreLocation;
-    }
-
-    public void setembStoreLocation(String embStoreLocation) {
-        this.embStoreLocation = embStoreLocation;
-    }
 
     public String getTailorQcode() {
         return tailorQcode;

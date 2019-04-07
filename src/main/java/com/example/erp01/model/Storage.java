@@ -70,14 +70,6 @@ public class Storage {
         this.storageID = storageID;
     }
 
-    public String getstorehouseLocation() {
-        return storehouseLocation;
-    }
-
-    public void setstorehouseLocation(String storehouseLocation) {
-        this.storehouseLocation = storehouseLocation;
-    }
-
     public String getTailorQcode() {
         return tailorQcode;
     }
