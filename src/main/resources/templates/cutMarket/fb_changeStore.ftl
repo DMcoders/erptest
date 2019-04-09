@@ -15,25 +15,25 @@
                 <section class="panel panel-default">
                     <div class="panel-body" style="text-align: left">
                         <div class="row" style="margin-left: 10px;">
-                            <span style="font-family: PingFangSC-Semibold,sans-serif;color:black">请扫描货架二维码</span>
+                            <span style="font-family: PingFangSC-Semibold,sans-serif;color:black;font-size: 20px;">请扫描货架二维码</span>
                         </div>
                         <div class="row" style="margin-left: 10px;margin-top: 10px;">
                             <input id="changeStoreQcode" type="text" class="form-control" style="background: rgb(248,248,248);width: 80%;">
                         </div>
                         <div class="row" style="margin-left: 10px;margin-top: 30px;">
-                            <span style="font-family: PingFangSC-Semibold,sans-serif;color:black">请扫描裁片二维码</span>
+                            <span style="font-family: PingFangSC-Semibold,sans-serif;color:black;font-size: 20px;">请扫描裁片二维码</span>
                         </div>
                         <div class="row" style="margin-left: 10px;margin-top: 10px;">
                             <textarea id="tailorQcode" rows="6" class="form-control" style="background: rgb(248,248,248);width: 80%;"></textarea>
                         </div>
                         <div class="row" style="margin-top: 10px;text-align: right">
-                            <span id="scanNum" style="font-family: PingFangSC-Semibold;font-size:18px;margin-right: 225px;">已扫描0件</span>
+                            <span id="scanNum" style="font-family: PingFangSC-Semibold;font-size:22px;margin-right: 225px;">已扫描0件</span>
                         </div>
                     </div>
                 </section>
             </div>
             <div class="col-md-12" style="text-align: center;margin-top: 40px">
-                <button  class="btn btn-s-lg" style="border-radius: 5px;"  onclick="changeStore()">确认</button>
+                <button  class="btn btn-s-lg" style="border-radius: 5px;;font-size: 20px;"  onclick="changeStore()">确认</button>
             </div>
         </section>
     </section>
