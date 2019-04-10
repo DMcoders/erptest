@@ -26,4 +26,19 @@
         SELECT st.embStoreLocation, COUNT(*) as embStorageState, min(sh.embStoreCount) as embStoreCount  FROM embstorage st LEFT JOIN embstore sh ON st.embStoreLocation = sh.embStoreLocation  GROUP BY embStoreLocation order by embStoreLocation asc;
     </select>
 
+    <select id="embStorageQuery" resultType="hashmap">
+        SELECT embStoreLocation,COUNT(tailorQcode) AS embStorageQueryCount FROM embstorage
+        WHERE tailorQcode LIKE CONCAT(#{orderName},'%')
+        <if test = "colorName!=null">
+            AND tailorQcode LIKE CONCAT('%-%-%-%-',#{colorName},'-%-%-%')
+        </if>
+        <if test = "bedNumber!=null">
+            AND tailorQcode LIKE CONCAT('%-%-',#{bedNumber},'-%-%-%-%-%')
+        </if>
+        <if test = "sizeName!=null">
+            AND tailorQcode LIKE CONCAT('%-%-%-%-%-',#{sizeName},'-%-%')
+        </if>
+        GROUP BY embStoreLocation
+    </select>
+
 </mapper>

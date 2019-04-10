@@ -22,4 +22,8 @@
         SELECT MAX(bedNumber) FROM tailor WHERE orderName=#{orderName}
     </select>
 
+    <select id="getTailorByOrderNameBedNum" resultType="map">
+        SELECT orderName,customerName,bedNumber,colorName,sizeName,count(*) as opaTailorCount FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} GROUP BY colorName,sizeName
+    </select>
+
 </mapper>

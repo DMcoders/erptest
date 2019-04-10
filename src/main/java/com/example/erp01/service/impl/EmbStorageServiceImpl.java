@@ -60,4 +60,16 @@ public class EmbStorageServiceImpl implements EmbStorageService {
         }
         return null;
     }
+
+    @Override
+    public List<Object> embStorageQuery(String orderName, String colorName, Integer bedNumber, String sizeName) {
+        List<Object> queryResult = new ArrayList<>();
+        try{
+            queryResult = embStorageMapper.embStorageQuery(orderName, colorName, bedNumber, sizeName);
+            return queryResult;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return queryResult;
+    }
 }

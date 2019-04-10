@@ -14,4 +14,5 @@ public interface EmbStorageService {
 
     List<EmbStorage> getEmbStorageState();
 
+    List<Object> embStorageQuery(String orderName,String colorName,Integer bedNumber,String sizeName);
 }

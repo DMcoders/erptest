@@ -6,6 +6,7 @@ import com.example.erp01.service.TailorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,5 +71,18 @@ public class TailorServiceImpl implements TailorService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public List<Tailor> getTailorByOrderNameBedNum(String orderName, int bedNumber) {
+        List<Tailor> tailorList = new ArrayList<>();
+
+        try{
+            tailorList = tailorMapper.getTailorByOrderNameBedNum(orderName,bedNumber);
+            return tailorList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return tailorList;
     }
 }

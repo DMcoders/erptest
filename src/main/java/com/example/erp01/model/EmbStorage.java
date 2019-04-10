@@ -12,6 +12,15 @@ public class EmbStorage {
 
     private Integer embStoreCount;
 
+    private Integer embStorageQueryCount;
+
+    public Integer getEmbStorageQueryCount() {
+        return embStorageQueryCount;
+    }
+
+    public void setEmbStorageQueryCount(Integer embStorageQueryCount) {
+        this.embStorageQueryCount = embStorageQueryCount;
+    }
 
     public String getEmbStoreLocation() {
         return embStoreLocation;
@@ -34,6 +43,7 @@ public class EmbStorage {
         this.embStorageState = embStorageState;
         this.embStoreCount = embStoreCount;
     }
+
 
     public EmbStorage(String embStoreLocation, Integer embStorageState) {
         this.embStoreLocation = embStoreLocation;

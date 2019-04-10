@@ -223,4 +223,19 @@ public class TailorController {
         return bedNumber;
     }
 
+
+    /**
+     * 花片出厂详情调用
+     * @param orderName
+     * @param bedNUmber
+     * @return
+     */
+    @RequestMapping(value = "/getbyordernamebednum", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Tailor> getTailorByOrderNameBedNum(@RequestParam("orderName")String orderName,
+                                                   @RequestParam("bedNumber")int bedNUmber){
+        List<Tailor> tailorList = tailorService.getTailorByOrderNameBedNum(orderName,bedNUmber);
+        return tailorList;
+    }
+
 }

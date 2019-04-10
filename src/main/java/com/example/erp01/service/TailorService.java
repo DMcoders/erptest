@@ -16,4 +16,6 @@ public interface TailorService {
 
     Integer getMaxBedNumber(String orderName);
 
+    List<Tailor> getTailorByOrderNameBedNum(String orderName,int bedNumber);
+
 }

@@ -155,4 +155,26 @@ public class EmbStorageController {
         return storageStateJson;
     }
 
+
+    /**
+     * 前端限定orderName不能为空
+     * @param orderName
+     * @param colorName
+     * @param bedNumber
+     * @param sizeName
+     * @return
+     */
+    @RequestMapping(value = "/embstoragequery", method = RequestMethod.GET)
+    @ResponseBody
+    public String embStorageQuery(@RequestParam("orderName")String orderName,
+                                  @RequestParam("colorName")String colorName,
+                                  @RequestParam("bedNumber")Integer bedNumber,
+                                  @RequestParam("sizeName")String sizeName){
+        List<Object> queryResult = embStorageService.embStorageQuery(orderName, colorName, bedNumber, sizeName);
+        Gson gson = new Gson();
+        String res = gson.toJson(queryResult);
+        return res;
+    }
+
+
 }
