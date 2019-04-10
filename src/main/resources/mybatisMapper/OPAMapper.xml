@@ -5,7 +5,7 @@
 <mapper namespace="com.example.erp01.mapper.OPAMapper">
 
     <insert id="addOPA">
-        INSERT INTO opa(orderName,customerName,destination,sizeName,opaCount,opaDate) VALUES (#{orderName},#{customerName},#{destination},#{sizeName},#{opaCount},#{opaDate})
+        INSERT INTO opa(orderName,customerName,destination,bedNumber,opaCount,opaDate) VALUES (#{orderName},#{customerName},#{destination},#{bedNumber},#{opaCount},#{opaDate})
     </insert>
 
     <delete id="deleteOPA">

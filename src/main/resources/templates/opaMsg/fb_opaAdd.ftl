@@ -32,10 +32,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="control-label" style="margin-bottom: 15px;text-align: right;">尺码</label>
+                        <label class="control-label" style="margin-bottom: 15px;text-align: right;">床号</label>
                     </td>
                     <td>
-                        <input id="sizeName" class="form-control" style="margin-bottom: 15px;width: 100%;border-top: none;border-right: none;border-left: none;">
+                        <input id="bedNumber" class="form-control" style="margin-bottom: 15px;width: 100%;border-top: none;border-right: none;border-left: none;">
                     </td>
                 </tr>
                 <tr>

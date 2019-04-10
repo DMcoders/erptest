@@ -39,6 +39,7 @@
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embInStoreStart"><span class="liActive">衣胚入库</span> </a></li>
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embOutStoreStart"><span class="liActive">衣胚调库</span> </a></li>
+                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStorageQueryStart"><span class="liActive">衣胚查询</span> </a></li>
                                 <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStorageStateStart"><span class="liActive">衣胚库存</span> </a></li>
                             </ul>
                         </li>
@@ -88,6 +89,7 @@
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embInStoreStart"><span class="liActive">衣胚入库</span> </a></li>
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embOutStoreStart"><span class="liActive">衣胚调库</span> </a></li>
+                                <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStorageQueryStart"><span class="liActive">衣胚查询</span> </a></li>
                                 <li<#if menuTag==3> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/embStorageStateStart"><span class="liActive">衣胚库存</span> </a></li>
                             </ul>
                         </li>

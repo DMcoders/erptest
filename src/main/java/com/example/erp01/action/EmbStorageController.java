@@ -155,6 +155,18 @@ public class EmbStorageController {
         return storageStateJson;
     }
 
+    /**
+     * 进入衣胚查询页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/embStorageQueryStart")
+    public String embStorageQueryStart(Model model){
+        model.addAttribute("bigMenuTag",3);
+        model.addAttribute("menuTag",4);
+        return "embMarket/embStorageQuery";
+    }
+
 
     /**
      * 前端限定orderName不能为空
@@ -170,6 +182,12 @@ public class EmbStorageController {
                                   @RequestParam("colorName")String colorName,
                                   @RequestParam("bedNumber")Integer bedNumber,
                                   @RequestParam("sizeName")String sizeName){
+        if("".equals(colorName)) {
+            colorName = null;
+        }
+        if("".equals(sizeName)) {
+            sizeName = null;
+        }
         List<Object> queryResult = embStorageService.embStorageQuery(orderName, colorName, bedNumber, sizeName);
         Gson gson = new Gson();
         String res = gson.toJson(queryResult);
