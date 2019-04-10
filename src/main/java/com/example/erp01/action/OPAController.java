@@ -81,11 +81,11 @@ public class OPAController {
             String orderName = request.getParameter("orderName");
             String customerName = request.getParameter("customerName");
             String destination = request.getParameter("destination");
-            String sizeName = request.getParameter("sizeName");
+            String bedNumber = request.getParameter("bedNumber");
             String opaDate = request.getParameter("opaDate");
             String opaCount = request.getParameter("opaCount");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            OPA opa = new OPA(orderName,customerName,destination,sizeName,Integer.parseInt(opaCount),sdf.parse(opaDate));
+            OPA opa = new OPA(orderName,customerName,destination,Integer.parseInt(bedNumber),Integer.parseInt(opaCount),sdf.parse(opaDate));
             result = opaService.addOPA(opa);
         }catch (JsonIOException e){
             e.printStackTrace();

@@ -12,18 +12,26 @@ public class OPA {
 
     private String destination;
 
-    private String sizeName;
+    private Integer bedNumber;
 
     private Integer opaCount;
 
     private Date opaDate;
 
-    public OPA(Integer opaID, String orderName, String customerName, String destination, String sizeName, Integer opaCount, Date opaDate) {
+    public Integer getBedNumber() {
+        return bedNumber;
+    }
+
+    public void setBedNumber(Integer bedNumber) {
+        this.bedNumber = bedNumber;
+    }
+
+    public OPA(Integer opaID, String orderName, String customerName, String destination, Integer bedNumber, Integer opaCount, Date opaDate) {
         this.opaID = opaID;
         this.orderName = orderName;
         this.customerName = customerName;
         this.destination = destination;
-        this.sizeName = sizeName;
+        this.bedNumber = bedNumber;
         this.opaCount = opaCount;
         this.opaDate = opaDate;
     }
@@ -31,11 +39,11 @@ public class OPA {
     public OPA() {
     }
 
-    public OPA(String orderName, String customerName, String destination, String sizeName, Integer opaCount, Date opaDate) {
+    public OPA(String orderName, String customerName, String destination, Integer bedNumber, Integer opaCount, Date opaDate) {
         this.orderName = orderName;
         this.customerName = customerName;
         this.destination = destination;
-        this.sizeName = sizeName;
+        this.bedNumber = bedNumber;
         this.opaCount = opaCount;
         this.opaDate = opaDate;
     }
@@ -70,14 +78,6 @@ public class OPA {
 
     public void setDestination(String destination) {
         this.destination = destination;
-    }
-
-    public String getSizeName() {
-        return sizeName;
-    }
-
-    public void setSizeName(String sizeName) {
-        this.sizeName = sizeName;
     }
 
     public Integer getOpaCount() {
