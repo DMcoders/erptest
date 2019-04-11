@@ -24,7 +24,7 @@
     </select>
 
     <select id="getTailorByOrderNameBedNum" resultType="map">
-        SELECT orderName,customerName,bedNumber,colorName,sizeName,count(*) as opaTailorCount FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} GROUP BY colorName,sizeName
+        SELECT min(orderName) as orderName,min(customerName) as customerName,min(bedNumber) as bedNumber,min(colorName) as colorName,min(sizeName) as sizeName,count(*) as opaTailorCount FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} GROUP BY colorName,sizeName
     </select>
 
 </mapper>

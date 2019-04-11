@@ -42,6 +42,19 @@ public class OPAController {
     }
 
     /**
+     * 进入详情页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/detailOpaStart")
+    public String detailOpaStart(Model model,String orderName,String bedNumber){
+        model.addAttribute("orderName", orderName);
+        model.addAttribute("bedNumber", bedNumber);
+        return "opaMsg/fb_detailOpa";
+    }
+
+
+    /**
      * 进入花片回场页面
      * @param model
      * @return

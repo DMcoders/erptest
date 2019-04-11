@@ -3,6 +3,8 @@ $(document).ready(function () {
         elem: '#opaDate', //指定元素
         trigger: 'click'
     });
+
+    $('#mainFrameTabs').bTabs();
 });
 
 var basePath=$("#basePath").val();
@@ -42,7 +44,7 @@ function addOPA() {
                 orderName:$("#orderName").val(),
                 customerName:$("#customerName").val(),
                 destination:$("#destination").val(),
-                sizeName:$("#sizeName").val(),
+                bedNumber:$("#bedNumber").val(),
                 opaCount:$("#opaCount").val(),
                 opaDate:$("#opaDate").val(),
             },
@@ -115,4 +117,8 @@ function deleteOPA(opaID) {
             }
         })
     });
+}
+
+function detail(orderName, bedNumber) {
+    $('#mainFrameTabs').bTabsAdd("tabId" + orderName, "详情", "detailOpaStart?orderName="+orderName+"&bedNumber="+bedNumber);
 }
