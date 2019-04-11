@@ -80,7 +80,7 @@ function inStore() {
                 swal({
                         type:"success",
                         title:"",
-                        text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，入库成功！</span>",
+                        text: "<span style=\"font-weight:bolder;font-size: 20px\">恭喜你，该床号的这个尺码和颜色全部入库成功！</span>",
                         html: true
                     },
                     function(){

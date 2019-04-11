@@ -53,12 +53,10 @@ public class StorageController {
             String sizeName = subQcode[5];
             System.out.println(sizeName);
             List<Tailor> tailorList = tailorService.getTailorByOrderNameBedNumSizeColor(orderName,Integer.parseInt(bedNumber),sizeName,colorName);
-            System.out.println(tailorList);
             for (int i = 0; i < tailorList.size(); i++) {
                 Tailor t = tailorList.get(i);
                 Storage storage = new Storage(storehouseLocation,t.getTailorQcode());
                 storageList.add(storage);
-                System.out.println(storageList);
             }
             //Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"",""));
             //storageList.add(storage);
