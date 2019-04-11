@@ -6,7 +6,7 @@
 
 
     <insert id="saveTailorData" parameterType="java.util.List">
-        INSERT INTO tailor(orderName,customerName,bedNumber,jarName,colorName,sizeName,partName,layerCount,packageNumber,tailorQcode) VALUES
+        INSERT IGNORE INTO tailor(orderName,customerName,bedNumber,jarName,colorName,sizeName,partName,layerCount,packageNumber,tailorQcode) VALUES
         <foreach collection="list" item="item" separator=",">
             (#{item.orderName},#{item.customerName},#{item.bedNumber},#{item.jarName},#{item.colorName},#{item.sizeName},#{item.partName},#{item.layerCount},#{item.packageNumber},#{item.tailorQcode})
         </foreach>

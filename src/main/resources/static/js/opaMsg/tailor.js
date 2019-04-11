@@ -115,8 +115,8 @@ function printer(type) {
 
         var myDoc = {
             settings:{
-                paperWidth:80,
-                paperHeight:"auto"
+                paperWidth:45,
+                paperHeight:100
             },
             documents:document,   // 要打印的div 对象在当前文档document中
             copyrights:'杰创软件拥有版权  www.jatools.com'  // 版权声明,必须
