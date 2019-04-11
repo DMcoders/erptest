@@ -1,7 +1,9 @@
 package com.example.erp01.action;
 
 import com.example.erp01.model.Storage;
+import com.example.erp01.model.Tailor;
 import com.example.erp01.service.StorageService;
+import com.example.erp01.service.TailorService;
 import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ public class StorageController {
 
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private TailorService tailorService;
 
     @RequestMapping(value = "/inStore", method = RequestMethod.POST)
     @ResponseBody
@@ -38,10 +42,28 @@ public class StorageController {
                 tailorQcodeList.add(next.toString());
             }
             List<Storage> storageList = new ArrayList<>();
-            for (int i=0; i<tailorQcodeList.size(); i++){
-                Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"",""));
+            String firstTailorQcode = tailorQcodeList.get(0).replace("\"","");
+            String[] subQcode = firstTailorQcode.split("-");
+            String orderName = subQcode[0];
+            System.out.println(orderName);
+            String bedNumber = subQcode[2];
+            System.out.println(bedNumber);
+            String colorName = subQcode[4];
+            System.out.println(colorName);
+            String sizeName = subQcode[5];
+            System.out.println(sizeName);
+            List<Tailor> tailorList = tailorService.getTailorByOrderNameBedNumSizeColor(orderName,Integer.parseInt(bedNumber),sizeName,colorName);
+            System.out.println(tailorList);
+            for (int i = 0; i < tailorList.size(); i++) {
+                Tailor t = tailorList.get(i);
+                Storage storage = new Storage(storehouseLocation,t.getTailorQcode());
                 storageList.add(storage);
+                System.out.println(storageList);
             }
+            //Storage storage = new Storage(storehouseLocation,tailorQcodeList.get(i).replace("\"",""));
+            //storageList.add(storage);
+
+
             //Gson gson = new Gson();
             //String storageJson = gson.toJson(storageList);
             //int res = storageService.inStore(storageJson);

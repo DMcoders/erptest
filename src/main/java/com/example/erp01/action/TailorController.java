@@ -238,4 +238,15 @@ public class TailorController {
         return tailorList;
     }
 
+    @RequestMapping(value = "/gettailorbyordernamebednumsizecolor", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Tailor> getTailorByOrderNameBedNumSizeColor(@RequestParam("orderName")String orderName,
+                                                   @RequestParam("bedNumber")int bedNUmber,
+                                                            @RequestParam("sizeName")String sizeName,
+                                                            @RequestParam("colorName")String colorName){
+        List<Tailor> tailorList = tailorService.getTailorByOrderNameBedNumSizeColor(orderName, bedNUmber, sizeName, colorName);
+        return tailorList;
+    }
+
+
 }

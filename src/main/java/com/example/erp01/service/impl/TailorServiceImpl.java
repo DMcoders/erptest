@@ -86,4 +86,16 @@ public class TailorServiceImpl implements TailorService {
         }
         return tailorList;
     }
+
+    @Override
+    public List<Tailor> getTailorByOrderNameBedNumSizeColor(String orderName, int bedNumber, String sizeName, String colorName) {
+        List<Tailor> tailorList = new ArrayList<>();
+        try{
+            tailorList = tailorMapper.getTailorByOrderNameBedNumSizeColor(orderName, bedNumber, sizeName, colorName);
+            return tailorList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return tailorList;
+    }
 }

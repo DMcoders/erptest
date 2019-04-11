@@ -22,6 +22,7 @@ public interface TailorMapper {
     //由订单号获取当前最大床号
     Integer getMaxBedNumber(String orderName);
 
+    List<Tailor> getTailorByOrderNameBedNumSizeColor(@Param("orderName")String orderName,@Param("bedNumber") int bedNumber,@Param("sizeName")String sizeName,@Param("colorName")String colorName);
 
     List<Tailor> getTailorByOrderNameBedNum(@Param("orderName")String orderName,@Param("bedNumber") int bedNumber);
 
