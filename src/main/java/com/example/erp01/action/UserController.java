@@ -44,6 +44,7 @@ public class UserController {
             result.put("flag","true");
             result.put("msg","登录成功！");
             request.getSession().setAttribute("userName", user.getUserName());
+            request.getSession().setAttribute("role", user.getRole());
             request.getSession().setMaxInactiveInterval(1800);
         }else{
             result.put("msg","登录失败，用户名或密码错误！");
@@ -54,12 +55,8 @@ public class UserController {
 
     @RequestMapping(value ="/homepage")
     public String getHomePageStart(Model model,HttpServletRequest request) {
-        String userName = (String) request.getSession().getAttribute("userName");
-        User user = getUserByName(userName);
-        request.getSession().setAttribute("role", user.getRole());
         model.addAttribute("bigMenuTag",0);
         model.addAttribute("menuTag",0);
-
         return "homepage/homepage";
     }
 

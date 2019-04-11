@@ -20,7 +20,7 @@ public class UrlInterceptor  implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o)  {
         String requestURI = request.getRequestURI();
-        if(!"/".equals(requestURI) && request.getSession().getAttribute("userName")==null) {
+        if(!"/".equals(requestURI) && (request.getSession().getAttribute("userName")==null || request.getSession().getAttribute("role")==null)) {
             String path=request.getContextPath();
             String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
             request.getSession().setAttribute("basePath", basePath);
