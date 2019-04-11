@@ -6,6 +6,7 @@ import com.example.erp01.service.TailorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class TailorServiceImpl implements TailorService {
     }
 
     @Override
-    public List<Tailor> getAllTailorData() {
+    public List<Tailor> getAllTailorData(){
         List<Tailor> tailorList = null;
         try{
             tailorList = tailorMapper.getAllTailorData();
@@ -79,6 +80,18 @@ public class TailorServiceImpl implements TailorService {
 
         try{
             tailorList = tailorMapper.getTailorByOrderNameBedNum(orderName,bedNumber);
+            return tailorList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return tailorList;
+    }
+
+    @Override
+    public List<Tailor> getTailorByOrderNameBedNumSizeColor(String orderName, int bedNumber, String sizeName, String colorName) {
+        List<Tailor> tailorList = new ArrayList<>();
+        try{
+            tailorList = tailorMapper.getTailorByOrderNameBedNumSizeColor(orderName, bedNumber, sizeName, colorName);
             return tailorList;
         }catch (Exception e){
             e.printStackTrace();

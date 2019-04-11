@@ -37,6 +37,21 @@ public class Tailor {
         this.tailorQcode = tailorQcode;
     }
 
+    public Tailor(Integer tailorID, String orderName, String customerName, Integer bedNumber, String jarName, String colorName, String sizeName, String partName, Integer layerCount, Integer packageNumber, String tailorQcode) {
+        this.tailorID = tailorID;
+        this.orderName = orderName;
+        this.customerName = customerName;
+        this.bedNumber = bedNumber;
+        this.jarName = jarName;
+        this.colorName = colorName;
+        this.sizeName = sizeName;
+        this.partName = partName;
+        this.layerCount = layerCount;
+        this.packageNumber = packageNumber;
+        this.tailorQcode = tailorQcode;
+    }
+
+
     public Integer getTailorID() {
         return tailorID;
     }

@@ -4,10 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.erp01.mapper.TailorMapper">
 
+
     <insert id="saveTailorData" parameterType="java.util.List">
         INSERT INTO tailor(orderName,customerName,bedNumber,jarName,colorName,sizeName,partName,layerCount,packageNumber,tailorQcode) VALUES
         <foreach collection="list" item="item" separator=",">
-          (#{item.orderName},#{item.customerName},#{item.bedNumber},#{item.jarName},#{item.colorName},#{item.sizeName},#{item.partName},#{item.layerCount},#{item.packageNumber},#{item.tailorQcode})
+            (#{item.orderName},#{item.customerName},#{item.bedNumber},#{item.jarName},#{item.colorName},#{item.sizeName},#{item.partName},#{item.layerCount},#{item.packageNumber},#{item.tailorQcode})
         </foreach>
     </insert>
 
@@ -24,6 +25,10 @@
 
     <select id="getTailorByOrderNameBedNum" resultType="map">
         SELECT min(orderName) as orderName,min(customerName) as customerName,min(bedNumber) as bedNumber,min(colorName) as colorName,min(sizeName) as sizeName,count(*) as opaTailorCount FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} GROUP BY colorName,sizeName
+    </select>
+
+    <select id="getTailorByOrderNameBedNumSizeColor" resultType="com.example.erp01.model.Tailor">
+        SELECT orderName,customerName,bedNumber,jarName,colorName,sizeName,partName,layerCount,packageNumber,tailorQcode FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} AND sizeName=#{sizeName} AND colorName=#{colorName}
     </select>
 
 </mapper>
