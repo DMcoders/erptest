@@ -9,7 +9,7 @@
                         <#--<li><a href="/homepage"> <i-->
                                 <#--class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>主页</span>-->
                         <#--</a></li>-->
-                        <#if role=='root'>
+                        <#if role! == 'root'>
                         <li <#if bigMenuTag==1> class="active"</#if>> <a href="#" <#if bigMenuTag==1> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>订单模块</span> </a>
@@ -54,7 +54,7 @@
                                 <li<#if menuTag==4> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/userStart"> <span class="liActive">用户信息</span> </a></li>
                             </ul>
                         </li>
-                        <#elseif role=='role1'>
+                        <#elseif role! == 'role1'>
                         <li <#if bigMenuTag==1> class="active"</#if>> <a href="#" <#if bigMenuTag==1> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>订单模块</span> </a>
@@ -69,7 +69,7 @@
                                 <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/tailorStart"><span class="liActive">扎号信息</span> </a></li>
                             </ul>
                         </li>
-                        <#elseif role=='role2'>
+                        <#elseif role! == 'role2'>
                         <li <#if bigMenuTag==2> class="active"</#if>> <a href="#" <#if bigMenuTag==2> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>裁片超市</span> </a>
@@ -82,7 +82,7 @@
                                 <li<#if menuTag==8> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/opaMatchStart"><span class="liActive">花片配对</span> </a></li>
                             </ul>
                         </li>
-                        <#elseif role=='role3'>
+                        <#elseif role! == 'role3'>
                         <li <#if bigMenuTag==3> class="active"</#if>> <a href="#" <#if bigMenuTag==3> class="active"</#if>> <i class="fa fa-clock-o fa-flip-horizontal icon"></i>
                             <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span>
                             <span>衣胚超市</span> </a>
