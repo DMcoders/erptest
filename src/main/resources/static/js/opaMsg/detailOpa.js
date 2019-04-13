@@ -29,6 +29,7 @@ $(document).ready(function () {
             // console.log(data);
             var hotData = [["订单号","顾客名","床号","颜色","尺码","数量"]];
             var i = 1;
+            var sumCount = 0;
             if(data) {
                 $.each(data,function (index,item) {
                     var tmp = [];
@@ -38,10 +39,19 @@ $(document).ready(function () {
                     tmp[3] = item.colorName;
                     tmp[4] = item.sizeName;
                     tmp[5] = item.opaTailorCount;
+                    sumCount = sumCount + item.opaTailorCount;
                     hotData[i] = tmp;
                     i++;
                 })
             }
+            var tmpsum = [];
+            tmpsum[0] = "";
+            tmpsum[1] = "";
+            tmpsum[2] = "";
+            tmpsum[3] = "";
+            tmpsum[4] = "总量";
+            tmpsum[5] = sumCount;
+            hotData[i] = tmpsum;
             hot.loadData(hotData);
         },
         error: function () {

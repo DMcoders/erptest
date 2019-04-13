@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>祥胜制衣管理系统</title>
+    <title>诚远制衣管理系统</title>
 </head>
 <#include "feedback/fb_script.ftl">
 <@script> </@script>
 <body>
     <input  type="hidden" value="${basePath}"  id="basePath"/>
     <div class="row" style="text-align: center">
-        <label style="color:rgb(45, 202, 147);font-size: 50px;margin-top: 8%;">祥胜制衣管理系统</label>
+        <label style="color:rgb(45, 202, 147);font-size: 50px;margin-top: 8%;">诚远制衣管理系统</label>
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3" style="margin-top: 50px;">
