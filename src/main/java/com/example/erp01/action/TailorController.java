@@ -248,5 +248,16 @@ public class TailorController {
         return tailorList;
     }
 
+    @RequestMapping(value = "/tailorreport", method = RequestMethod.GET)
+    @ResponseBody
+    public String getTailorReport(@RequestParam("orderName")String orderName,
+                                  @RequestParam("bedNumber")int bedNumber){
+
+        List<Object> reportList = tailorService.tailorReport(orderName, bedNumber);
+        Gson gson = new Gson();
+        String res = gson.toJson(reportList);
+        return res;
+    }
+
 
 }

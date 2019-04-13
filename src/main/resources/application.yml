@@ -52,7 +52,7 @@ spring:
 #日志
 logging:
   level:
-    root: warn
+    root: info
 mybatis:
   # 指定全局配置文件位置
   #config-location: classpath:mybatis/mybatis-config.xml

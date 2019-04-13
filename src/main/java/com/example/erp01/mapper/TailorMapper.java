@@ -26,4 +26,5 @@ public interface TailorMapper {
 
     List<Tailor> getTailorByOrderNameBedNum(@Param("orderName")String orderName,@Param("bedNumber") int bedNumber);
 
+    List<Object> tailorReport(@Param("orderName")String orderName,@Param("bedNumber")int bedNumber);
 }

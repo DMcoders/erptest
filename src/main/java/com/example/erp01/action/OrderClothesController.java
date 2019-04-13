@@ -52,6 +52,20 @@ public class OrderClothesController {
         return "orderMsg/fb_addOrder";
     }
 
+
+    /**
+     * 进入报表查询
+     * @param model
+     * @return
+     */
+    @RequestMapping("/reportStart")
+    public String reportStart(Model model){
+        model.addAttribute("bigMenuTag",1);
+        model.addAttribute("menuTag",2);
+        return "orderMsg/report";
+    }
+
+
     /****
      * 测试未通过
      * @param orderclothesJson

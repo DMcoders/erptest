@@ -98,4 +98,16 @@ public class TailorServiceImpl implements TailorService {
         }
         return tailorList;
     }
+
+    @Override
+    public List<Object> tailorReport(String orderName, int bedNumber) {
+        List<Object> reportList = new ArrayList<>();
+        try{
+            reportList = tailorMapper.tailorReport(orderName, bedNumber);
+            return reportList;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

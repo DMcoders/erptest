@@ -15,6 +15,7 @@
                             <span>订单模块</span> </a>
                             <ul class="nav lt">
                                 <li<#if menuTag==1> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/orderStart"><span class="liActive">订单信息</span> </a></li>
+                                <li<#if menuTag==2> class="active" style="background:rgb(45, 202, 147)" </#if>><a href="/reportStart"><span class="liActive">报表查询</span> </a></li>
                             </ul>
                         </li>
 

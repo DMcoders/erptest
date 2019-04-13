@@ -24,6 +24,16 @@ public class Tailor {
 
     private String tailorQcode;
 
+    private Integer tailorReportCount;
+
+    public Integer getTailorReportCount() {
+        return tailorReportCount;
+    }
+
+    public void setTailorReportCount(Integer tailorReportCount) {
+        this.tailorReportCount = tailorReportCount;
+    }
+
     public Tailor(String orderName, String customerName, Integer bedNumber, String jarName, String colorName, String sizeName, String partName, Integer layerCount, Integer packageNumber, String tailorQcode) {
         this.orderName = orderName;
         this.customerName = customerName;

@@ -31,4 +31,8 @@
         SELECT orderName,customerName,bedNumber,jarName,colorName,sizeName,partName,layerCount,packageNumber,tailorQcode FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} AND sizeName=#{sizeName} AND colorName=#{colorName}
     </select>
 
+    <select id="tailorReport" resultType="hashmap">
+        SELECT colorName,sizeName,COUNT(tailorQcode) AS tailorReportCount FROM tailor WHERE orderName=#{orderName} AND bedNumber=#{bedNumber} GROUP BY colorName,sizeName
+    </select>
+
 </mapper>

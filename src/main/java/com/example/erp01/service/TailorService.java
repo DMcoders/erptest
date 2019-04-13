@@ -22,5 +22,6 @@ public interface TailorService {
 
     List<Tailor> getTailorByOrderNameBedNumSizeColor(String orderName, int bedNumber, String sizeName, String colorName);
 
+    List<Object> tailorReport(String orderName,int bedNumber);
 
 }
