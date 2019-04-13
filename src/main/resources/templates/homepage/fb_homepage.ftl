@@ -7,7 +7,7 @@
                 <li class="active">主页</li>
             </ul>
             <div class="m-b-md">
-                <h3 class="m-b-none">欢迎来到祥胜制衣管理系统，请在左侧选择操作</h3>
+                <h3 class="m-b-none">欢迎来到诚远制衣管理系统，请在左侧选择操作</h3>
             </div
         </section>
     </section>

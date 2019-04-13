@@ -49,7 +49,7 @@ $(document).ready(function () {
             tmpsum[1] = "";
             tmpsum[2] = "";
             tmpsum[3] = "";
-            tmpsum[4] = "";
+            tmpsum[4] = "总量";
             tmpsum[5] = sumCount;
             hotData[i] = tmpsum;
             hot.loadData(hotData);
