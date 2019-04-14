@@ -61,7 +61,7 @@
     <script src="/js/common/handsontable.full.min.js" type="text/javascript" ></script>
     <script src="/js/common/zh-CN.js" type="text/javascript" ></script>
     <script src="/js/common/jquery.blockUI.js" type="text/javascript" ></script>
-    <script src="/js/orderMsg/report.js?t=201904131659"></script>
+    <script src="/js/orderMsg/report.js?t=201904141659"></script>
 
 </#macro>
 

@@ -1,7 +1,7 @@
 var hot;
+var basePath=$("#basePath").val();
 
 $(document).ready(function () {
-    var basePath=$("#basePath").val();
 });
 
 function reportCut() {
@@ -30,18 +30,18 @@ function reportCut() {
         return false;
     }
     $.ajax({
-        url: "/tailorreport",
+        url: basePath+"tailorreport",
         type:'GET',
         data: {
-            orderName:$("#orderName1"),
-            bedNumber:$("#bedNumber1"),
+            orderName:$("#orderName1").val(),
+            bedNumber:$("#bedNumber1").val(),
         },
         success: function (data) {
             console.log(data);
             var hotData = [["颜色","尺码","数量"]];
             var i = 1;
             if(data) {
-                $.each(data,function (index,item) {
+                $.each(JSON.parse(data),function (index,item) {
                     var tmp = [];
                     tmp[0] = item.colorName;
                     tmp[1] = item.sizeName;
